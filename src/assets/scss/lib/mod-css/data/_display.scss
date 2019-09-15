@@ -1,0 +1,23 @@
+$map-display: (
+  d: (
+    is-responsive: true,
+    default: false,
+    modifiers: (
+      none: (
+        display: none
+      ),
+      flex: (
+        display: flex
+      ),
+      inline-block: (
+        display: inline-block
+      ),
+      inline: (
+        display: inline
+      ),
+      block: (
+        display: block
+      )
+    )
+  ),
+)

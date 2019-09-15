@@ -1,0 +1,91 @@
+$map-flex: (
+  justify-content: (
+    is-responsive: true,
+    modifiers: (
+      start: (
+        justify-content: flex-start,
+      ),
+      center: (
+        justify-content: center,
+      ),
+      end: (
+        justify-content: flex-end,
+      )
+    )
+  ),
+  align-items: (
+    is-responsive: true,
+    modifiers: (
+      start: (
+        align-items: flex-start,
+      ),
+      center: (
+        align-items center,
+      ),
+      end: (
+        justify-content: flex-end,
+      )
+    )
+  ),
+  flex: (
+    is-responsive: true,
+    modifiers: (
+      column: (
+        flex-direction: column,
+      ),
+      column-reverse: (
+        flex-direction: column-reverse,
+      ),
+      row: (
+        flex-direction: row,
+      ),
+      row-reverse: (
+        flex-direction: row-reverse,
+      ),
+      end: (
+        justify-content: flex-end,
+      )
+    )
+  ),
+  order: (
+    is-responsive: true,
+    modifiers: (
+      1: (
+        order: 1,
+      ),
+      2: (
+        order: 2,
+      ),
+      3: (
+        order: 3,
+      ),
+      4: (
+        order: 4,
+      ),
+      5: (
+        order: 5,
+      ),
+      6: (
+        order: 6,
+      ),
+      7: (
+        order: 7,
+      ),
+      8: (
+        order: 8,
+      ),
+      9: (
+        order: 9,
+      ),
+      10: (
+        order: 10,
+      ),
+      11: (
+        order: 11,
+      ),
+      12: (
+        order: 12,
+      ),
+    )
+  )
+)

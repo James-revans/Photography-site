@@ -1,0 +1,17 @@
+$map-position: (
+  position: (
+    is-responsive: true,
+    default: false,
+    modifiers: (
+      relative: (
+        position: relative
+      ),
+      absolute: (
+        position: absolute
+      ),
+      fixed: (
+        position: fixed
+      )
+    )
+  ),
+)

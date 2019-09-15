@@ -1,0 +1,10 @@
+$map-row: (
+  row: (
+    is-responsive: false,
+    default: (
+      display: flex,
+      flex-wrap: wrap,
+      width: 100%
+    ),
+  )
+)

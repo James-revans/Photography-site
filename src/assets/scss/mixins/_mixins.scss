@@ -1,0 +1,33 @@
+@import '../variables/';
+
+@mixin break-up($name) {
+  @if $name == xs {
+      @content;
+  } @else if $name == sm {
+      @media (min-width: map-get($breakpoints, 'sm')) { @content; }
+  } @else if $name == md {
+      @media (min-width: map-get($breakpoints, 'md')) { @content; }
+  } @else if $name == lg {
+      @media (min-width: map-get($breakpoints, 'lg')) { @content; }
+  } @else if $name == xl {
+      @media (min-width: map-get($breakpoints, 'xl')) { @content; }
+  } @else if $name == xxl {
+      @media (min-width: map-get($breakpoints, 'xxl')) { @content; }
+  } 
+};
+
+@mixin break-down($name) {
+  @if $name == xs {
+    @content;
+  } @else if $name == sm {
+      @media (max-width: map-get($breakpoints, 'sm')) { @content; }
+  } @else if $name == md {
+      @media (max-width: map-get($breakpoints, 'md')) { @content; }
+  } @else if $name == lg {
+      @media (max-width: map-get($breakpoints, 'lg')) { @content; }
+  } @else if $name == xl {
+      @media (max-width: map-get($breakpoints, 'xl')) { @content; }
+  } @else if $name == xxl {
+      @media (max-width: map-get($breakpoints, 'xxl')) { @content; }
+  } 
+};
