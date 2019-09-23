@@ -6,7 +6,8 @@
 	import Gallery from './components/gallery/Gallery.svelte';
 	import Videography from './components/videography/Videography.svelte';
 	import Contact from './components/contact/Contact.svelte';
-	import Nav from './components/nav/Nav.svelte';
+	import HamburgerNav from './components/nav/HamburgerNav.svelte';
+
 	
 	//import specific lifecycle methods
 	import { onMount } from 'svelte';
@@ -28,8 +29,7 @@
 </style>
 
 <div id="app">
-	<Nav/>
-
+	<HamburgerNav/>
 	<div class="small">
 		<Router>
 			<Route fallback exact path="" component={Home}/>

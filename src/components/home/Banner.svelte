@@ -94,7 +94,6 @@ import bannerArray from '../../cmsdata/banner.js';
 
 </style>
 
-
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each bannerArray as item}

@@ -8,8 +8,7 @@ import GalleryBanner from './GalleryBanner.svelte';
 
 </style>
 
-<div>
 
 
-</div>
+
 <GalleryBanner/>

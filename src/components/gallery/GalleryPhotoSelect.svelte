@@ -36,7 +36,7 @@ const dispatch = createEventDispatcher();
     position: fixed;
     
     &__close {
-      background: rgba(255, 255, 255, 0.575);
+      background: rgba(255, 255, 255, 0.651);
       position: absolute; 
       width: 100vw;
       height: 100vh;
