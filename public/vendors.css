@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Prata&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Vollkorn+SC&display=swap");
 [data-aos][data-aos][data-aos-duration="50"], body[data-aos-duration="50"] [data-aos] {
   transition-duration: 50ms; }
 
@@ -3305,6 +3306,15 @@ body, html {
   background: black;
   color: white; }
 
+.sg-green {
+  color: #445B47; }
+
+.sg-cream {
+  color: #FBFBE7; }
+
+.sg-tan {
+  color: #F0DEB4; }
+
 .raleway {
   font-family: 'Raleway', sans-serif; }
 
@@ -3313,6 +3323,9 @@ body, html {
 
 .p-marker {
   font-family: 'Permanent Marker', cursive; }
+
+.vollkorn {
+  font-family: 'Vollkorn SC', serif; }
 
 /**
  * Swiper 4.5.1

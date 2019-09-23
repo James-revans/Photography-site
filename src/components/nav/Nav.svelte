@@ -5,7 +5,7 @@
 <style type="text/scss">
 .sg-nav {
     position: sticky;
-    z-index: 1000;
+    z-index: 3;
     width: 100%;
     text-align: right;
     font-weight: 100;

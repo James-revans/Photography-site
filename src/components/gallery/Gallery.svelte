@@ -1,6 +1,5 @@
 <script>
 import GalleryBanner from './GalleryBanner.svelte';
-import GalleryMasonry from './GalleryMasonry.svelte';
 
 </script>
 
@@ -9,6 +8,8 @@ import GalleryMasonry from './GalleryMasonry.svelte';
 
 </style>
 
+<div>
 
+
+</div>
 <GalleryBanner/>
-<GalleryMasonry/>

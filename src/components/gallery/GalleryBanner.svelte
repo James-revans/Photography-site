@@ -1,5 +1,21 @@
+<script>
+    import portraitsArray from '../../cmsdata/galleryPortrait.js';
+    import familyArray from '../../cmsdata/galleryFamily.js';
+    import eventsArray from '../../cmsdata/galleryEvents.js';
+    import miscArray from '../../cmsdata/galleryMisc.js';
+
+    import GalleryMasonry from './GalleryMasonry.svelte';
+    export let galleryMode = portraitsArray;
+
+</script>
+
+
 <style type="text/scss">
 .gallery {
+    position: relative;
+    h1 {
+        font-weight: 100;
+    }
     &__filter {
         button {
             border: none;
@@ -12,25 +28,34 @@
             &:hover {
                 cursor: pointer;
                 border-color: black;
-            }
-            &:focus {
-                border-bottom: solid 2px #F0DEB4;
-                transition: 0.2s;
-            }     
+            }    
         }
-
+        .active {
+            border-bottom: solid 4px #F0DEB4;
+            transition: 0.2s;
+        }  
     }
 }
 
 </style>
 
 
-<div class="p-3">
-    <h1 class="prata">Gallery</h1>
+<div class="p-3 gallery">
+    <h1 class="vollkorn sg-green">Gallery</h1>
     <div class="gallery__filter raleway">
-        <button>portraits</button>
-        <button>family</button>
-        <button>events</button>
-        <button>misc</button>
+        <button class="sg-green" class:active="{galleryMode === portraitsArray}" on:click="{() => galleryMode = portraitsArray}">portraits</button>
+        <button class="sg-green" class:active="{galleryMode === familyArray}" on:click="{() => galleryMode = familyArray}">family</button>
+        <button class="sg-green" class:active="{galleryMode === eventsArray}" on:click="{() => galleryMode = eventsArray}">events</button>
+        <button class="sg-green" class:active="{galleryMode === miscArray}" on:click="{() => galleryMode = miscArray}">misc</button>
     </div>
 </div>
+
+{#if galleryMode == portraitsArray}
+    <GalleryMasonry photoArray={galleryMode}/>
+{:else if galleryMode == familyArray}
+    <GalleryMasonry photoArray={galleryMode}/>
+{:else if galleryMode == eventsArray}
+    <GalleryMasonry photoArray={galleryMode}/>
+{:else}
+    <GalleryMasonry photoArray={galleryMode}/>
+{/if}

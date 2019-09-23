@@ -17,12 +17,14 @@
 </script>
 
 <style type="text/scss">
-:global(html) {
-	scroll-behavior: smooth;
-}
-#app {
+:global(body) {
 	min-height: 100%;
 }
+:global(html) {
+	scroll-behavior: smooth;
+	height: 100%;
+}
+
 </style>
 
 <div id="app">
