@@ -22,7 +22,7 @@
             border-radius: 0;
             background: transparent;
             border-bottom: solid thin transparent;
-            transition: 0.2s;
+            transition: 0.25s;
             margin-right: 40px;
             
             &:hover {
