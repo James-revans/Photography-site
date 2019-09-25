@@ -13,6 +13,7 @@
 <style type="text/scss">
 .gallery {
     position: relative;
+    padding: 4%;
     h1 {
         font-weight: 100;
     }
@@ -40,7 +41,7 @@
 </style>
 
 
-<div class="p-3 gallery">
+<div class="gallery">
     <h1 class="vollkorn sg-green">Gallery</h1>
     <div class="gallery__filter raleway">
         <button class="sg-green" class:active="{galleryMode === portraitsArray}" on:click="{() => galleryMode = portraitsArray}">portraits</button>

@@ -23,15 +23,17 @@ let showNav = false;
         top: 0;
         right: 0;
         text-align: right;
-        
         padding: 20px 44px;
         font-size: 30px;
+        transition: 0.3s;
         @media only screen and (min-width: 577px) {
             padding: 20px 30px;
         }
         
         &:hover {
             cursor: pointer;
+            transform: scale(1.1);
+            transition: 0.2s;
         }
     }
     &__menu {

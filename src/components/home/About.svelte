@@ -32,13 +32,15 @@ onMount(async () => {
             color: #445B47;
             
             &__header {
-                
+                border-bottom: solid 1px black;
+                padding-bottom: 15px;
+                display: inline-block;
+                text-align: center;
                 h2 {
                     display: inline;
                     font-size: 40px;
                     margin: 5% 0;
-                    border-bottom: solid 1px black;
-                    padding-bottom: 15px;
+                    
                     font-weight: 100;
                     color: #445B47;
                 }
@@ -53,7 +55,9 @@ onMount(async () => {
             @media only screen and (min-width: 800px) {
                 width: 50%;
                 padding: 2.5%;
-                
+                &__header {
+                    text-align: left;
+                }
                 &__content {
                     padding-right: 100px;
                     p {
@@ -76,7 +80,7 @@ onMount(async () => {
     </div>
     <div class="about__bio col">
         <div class="about__bio__header vollkorn">
-            <h2>Behing the lens</h2>
+            <h2>Behind the lens</h2>
         </div>
         <div class="about__bio__content raleway">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum. In tempora ratione voluptate perferendis aliquid! Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum. In tempora ratione voluptate perferendis aliquid!</p>
