@@ -14,6 +14,7 @@ onMount(async () => {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    padding-top: 20px;
         &__photo {
             width: 100%;
             padding: 2.5%;
@@ -32,7 +33,7 @@ onMount(async () => {
             color: #445B47;
             
             &__header {
-                border-bottom: solid 1px black;
+                border-bottom: solid 1px #445B47;
                 padding-bottom: 15px;
                 display: inline-block;
                 text-align: center;
@@ -43,10 +44,10 @@ onMount(async () => {
                     
                     font-weight: 100;
                     color: #445B47;
-                }
+                }   
             }
             &__content {
-                padding-top: 50px;
+                padding-top: 10px;
                 
                 p {
                     font-size: 15px;
@@ -61,16 +62,22 @@ onMount(async () => {
                 &__content {
                     padding-right: 100px;
                     p {
-                        font-size: 1.1vw;
+                        font-size: 1.2vw;
                     }
                 }
             }
         }
+
+    @media only screen and (min-width: 800px) {
+        padding-top: 75px;
+    }
+
 }
 .about-nav {
     position: relative;
     top: -60px;
 }
+
 </style>
 
 <div class="about-nav" id="about"></div>

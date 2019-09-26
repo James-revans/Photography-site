@@ -14,6 +14,7 @@ onMount(async () => {
           enabled: true,
         },
         autoHeight: true,
+        spaceBetween: 20,
         navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -40,6 +41,7 @@ const dispatch = createEventDispatcher();
       position: absolute; 
       width: 100vw;
       height: 100vh;
+
     }
 }
 
@@ -62,6 +64,7 @@ const dispatch = createEventDispatcher();
 }
 
 .swiper-slide {
+
   text-align: center;
   font-size: 18px;
   background: transparent;
@@ -80,7 +83,9 @@ const dispatch = createEventDispatcher();
   align-items: center;
   img {
     width: 90vw;
+    height: 85vh;
     object-fit: scale-down;
+
     @media only screen and (min-width: 1023px) {
       width: 50vw;
       height: 85vh;
@@ -99,8 +104,8 @@ const dispatch = createEventDispatcher();
     </div>
 
     <!-- Add Arrows -->
-    <div class="swiper-button-next swiper-button-black"></div>
-    <div class="swiper-button-prev swiper-button-black"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
     
   </div>
 </div>

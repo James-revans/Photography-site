@@ -3327,6 +3327,13 @@ body, html {
 .vollkorn {
   font-family: 'Vollkorn SC', serif; }
 
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #445b47;
+  opacity: 0.34; }
+
 /**
  * Swiper 4.5.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions

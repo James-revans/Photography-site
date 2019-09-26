@@ -7,13 +7,7 @@ export let img;
     width: 100vw;
     height: 75vh;
     position: relative;
-    .white-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgb(255, 255, 255);
-        opacity: 0.3;
-    }
+
     img {
         width: 100%;
         height: 100%;
@@ -37,10 +31,9 @@ export let img;
 
 </style>
 
-
 <div class="page-banner">
     <img src="{img}">
-    <div class="white-overlay"></div>
+    <div class="overlay"></div>
     <div class="page-banner__header p-marker">
         <slot></slot>
     </div>

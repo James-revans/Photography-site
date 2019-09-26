@@ -28,7 +28,7 @@
             
             &:hover {
                 cursor: pointer;
-                border-color: black;
+                border-color: #445B47;
             }    
         }
         .active {

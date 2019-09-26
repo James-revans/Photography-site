@@ -18,7 +18,7 @@ let showNav = false;
     border-radius: 1px;
 
     i {
-        
+        color: #F0DEB4;
         position: absolute;
         top: 0;
         right: 0;
@@ -55,7 +55,7 @@ let showNav = false;
 <div class="ham-nav d-none d-md-flex flex-row">
     {#if showNav}
         <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks/>
+            <NavLinks on:click="{()=> showNav = false}"/>
         </div>
     {/if}
     <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i>
@@ -65,7 +65,7 @@ let showNav = false;
     <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i>
     {#if showNav}
         <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks/>
+            <NavLinks on:click="{()=> showNav = false}"/>
         </div>
     {/if}
 </div>

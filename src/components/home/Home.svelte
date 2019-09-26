@@ -4,6 +4,15 @@
     import Footer from './Footer.svelte';
 </script>
 
-<Banner/>
-<About/>
-<Footer/>
+<style>
+.sg-home {
+    scroll-behavior: smooth;
+}
+</style>
+
+<div class="sg-home">
+    <Banner/>
+    <About/>
+    <Footer/>
+</div>
+

@@ -46,7 +46,6 @@ onMount(async () => {
       transition: 0.3s;
       &:hover {
           cursor: pointer;
-          transform: scale(1.05);
           box-shadow: 0px 2px 10px 2px rgb(161, 161, 161);
           transition: 0.2s;
       } 

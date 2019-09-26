@@ -19,14 +19,46 @@
             }
         }
         &__form {
-            input, textarea {
+            input, textarea, select {
                 width: 100%;
                 padding: 10px;
                 margin: 5px auto;  
+                border-color: rgb(68, 91, 71);
+                color: rgb(68, 91, 71);
+            }
+            textarea {
+                height: 200px;
+                resize: none;
+            }
+            ::placeholder { 
+                color: rgb(68, 91, 71);
+            }
+            select {
+                option {
+                    &:hover {
+                        background: rgb(68, 91, 71);
+                        color: white;
+                    }
+                }
+            }
+            button {
+                background: white;
+                padding: 8px 35px;
+                transition: 0.3s;
+                border: solid 2px rgb(68, 91, 71);
+                color: rgb(68, 91, 71);
+                
+                &:hover {
+                    cursor: pointer;
+                    background: rgb(68, 91, 71);
+                    color: white;
+                    transition: 0.2s;
+                    border-color: rgb(68, 91, 71);
+                }
             }
         }
         
-        @media only screen and (min-width: 800px) {
+        @media only screen and (min-width: 900px) {
             width: 40%;
             float: left;
             margin: 50px auto;
@@ -34,20 +66,24 @@
     }
     &__image {
         width: 100%;
-        margin: 20px auto;
+        margin: 80px auto;
+        margin-bottom: 0;
 
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
-        @media only screen and (min-width: 800px) {
+        @media only screen and (min-width: 900px) {
             width: 40%;
             float: right;
             margin: 50px auto;
         }
     }
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 520px) {
+        padding: 120px;
+    }
+    @media only screen and (min-width: 900px) {
         padding: 60px;
     }
 }
@@ -59,12 +95,19 @@
 <div class="sg-form">
     <div class="sg-form__wrapper">
         <div class="sg-form__wrapper__header sg-green vollkorn"><h1>Let's chat</h1></div>
-        <form class="sg-form__wrapper__form">
+        <form class="sg-form__wrapper__form raleway">
             <input name="name" type="text" placeholder="name">
             <input name="email" type="email" placeholder="email">
-            <input name="subject" type="text" placeholder="subject">
             <input name="phone" type="phone" placeholder="phone">
-            <textarea name="message" placeholder="Tell me about what services you would like"></textarea>
+            <select name="package"> 
+                <option value="" disabled selected>Select a package</option>
+                <option value="portrait">portrait</option>
+                <option value="family">family</option>
+                <option value="event">event</option>
+                <option value="misc">misc</option>
+            </select>
+
+            <textarea name="message" placeholder="Tell me about the services you are interested in"></textarea>
             <button name="submit" type="submit">Send message</button>
         </form>
     </div>

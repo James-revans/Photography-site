@@ -46,12 +46,12 @@ import bannerArray from '../../cmsdata/banner.js';
     text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);
     text-align: center;
     h1 {
-      font-size: calc(12px + 4.6vw);
+      font-size: calc(15px + 4.6vw);
       margin-bottom: 8px;
       font-weight: 100;
     }
     h2 {
-      font-size: calc(12px + 2.2vw);
+      font-size: calc(9px + 2.2vw);
       margin-top: 0px;
       font-weight: 100;
     }
@@ -81,23 +81,13 @@ import bannerArray from '../../cmsdata/banner.js';
   }
 }
 
-.white-overlay {
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
-  background: white;
-  position: absolute;
-  z-index: 2;
-
-}
-
 
 </style>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each bannerArray as item}
-      <div class="swiper-slide"><div class="white-overlay"></div><img src="{item.img}" alt="{item.alt}"></div>
+      <div class="swiper-slide"><div class="overlay"></div><img src="{item.img}" alt="{item.alt}"></div>
     {/each}
     </div>
 
@@ -108,8 +98,8 @@ import bannerArray from '../../cmsdata/banner.js';
     
   </div>
 
-  <div class="caption p-marker">
-      <h1>SAVANNA GRUNZKE</h1>
-      <h2>photo and video</h2>
+  <div class="caption">
+      <h1 class="p-marker">SRG</h1>
+      <h2 class="vollkorn">PHOTO & VIDEO</h2>
   </div>
 
