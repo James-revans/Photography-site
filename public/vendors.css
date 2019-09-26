@@ -3328,11 +3328,14 @@ body, html {
   font-family: 'Vollkorn SC', serif; }
 
 .overlay {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: absolute;
   background: #445b47;
   opacity: 0.34; }
+
+.no-scroll {
+  overflow-y: hidden; }
 
 /**
  * Swiper 4.5.1

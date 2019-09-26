@@ -6,7 +6,8 @@ import VideoBlade from './VideoBlade.svelte';
 
 <style type="text/scss">
 .sg-video-list {
-    padding: 50px 0px;
+    padding-top: 50px;
+    padding-bottom: 0;
     position: relative;
 
     iframe {
@@ -41,6 +42,7 @@ import VideoBlade from './VideoBlade.svelte';
     }
     @media only screen and (min-width: 800px) {
         padding-top: 5%;
+        
     }
 }
 

@@ -25,6 +25,10 @@
             border-bottom: solid thin transparent;
             transition: 0.25s;
             margin-right: 40px;
+            @media only screen and (max-width: 800px) {
+                font-size: 12px;
+                margin-right: 20px;
+            }
             
             &:hover {
                 cursor: pointer;

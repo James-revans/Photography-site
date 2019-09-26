@@ -21,11 +21,9 @@
 
 <style type="text/scss">
 :global(body) {
-	// min-height: 100%;
 	overflow-x: hidden;
 }
 :global(html) {
-	// height: 100%;
 }
 
 </style>
