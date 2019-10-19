@@ -51,7 +51,8 @@ function showMobileNav() {
         padding-right: 5px;
         padding-left: 5px;
         padding-top: 60px;    
-        background: rgba(255, 255, 255, 0.753);
+        background: rgb(255, 255, 246);
+        opacity: 0.73;
         @media only screen and (min-width: 577px) {
             padding-right: 80px;
             padding-top: 0;

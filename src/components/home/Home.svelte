@@ -1,6 +1,7 @@
 <script>
     import Banner from './Banner.svelte';
     import About from './About.svelte';
+    import Recent from './Recent.svelte';
     import Footer from './Footer.svelte';
 </script>
 
@@ -13,6 +14,7 @@
 <div class="sg-home">
     <Banner/>
     <About/>
+    <Recent/>
     <Footer/>
 </div>
 

@@ -43,12 +43,13 @@ import bannerArray from '../../cmsdata/banner.js';
     z-index: 2;
     color: white;
     font-weight: 100;
-    text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);
     text-align: center;
     h1 {
       font-size: calc(15px + 4.6vw);
       margin-bottom: 8px;
       font-weight: 100;
+      text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);
+
     }
     h2 {
       font-size: calc(9px + 2.2vw);
@@ -79,6 +80,11 @@ import bannerArray from '../../cmsdata/banner.js';
     height: 100%;
     object-fit: cover;
   }
+}
+
+.swiper-button-next, .swiper-button-prev {
+  width: 26px;
+  height: 22px;
 }
 
 
