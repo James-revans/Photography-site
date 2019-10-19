@@ -10,9 +10,9 @@
         scroll(0,0);
         navSelect = tab;
         console.log(tab);
-        if(tab == 'bio') {
-            scroll(0, windowSize);
-        }
+        // if(tab == 'bio') {
+        //     scroll(0, windowSize);
+        // }
         if(window.innerWidth < 577) {
             showLinks = false;
             dispatch('close', false);
@@ -69,7 +69,13 @@
     <Link on:click="{() => tabSelect('home')}" href="/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
     <Link on:click="{() => tabSelect('gallery')}" href="/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
     <Link on:click="{() => tabSelect('videos')}" href="/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
-    <Link on:click="{() => tabSelect('bio')}" href="/about" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
+    <Link on:click="{() => tabSelect('bio')}" href="/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
     <Link on:click="{() => tabSelect('contact')}" href="/contact" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'contact'}">contact</p></Link>
 </div>
+
+    <!-- <Link on:click="{() => tabSelect('home')}" href="/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
+    <Link on:click="{() => tabSelect('gallery')}" href="/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
+    <Link on:click="{() => tabSelect('videos')}" href="/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
+    <Link on:click="{() => tabSelect('bio')}" href="/about" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
+    <Link on:click="{() => tabSelect('contact')}" href="/contact" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'contact'}">contact</p></Link> -->
 

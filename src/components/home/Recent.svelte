@@ -2,21 +2,23 @@
 import axios from 'axios'
 import { onMount } from 'svelte';
 import API_GET_PHOTOS from '../../cmsdata/homeRecent.js';
-
+import sal from 'sal.js';
 
 let recentArray = []
 
 onMount(async () => {
-    
+    sal({threshold: 0.01});
     API_GET_PHOTOS()
     .then((response) => {
         console.log(response)
         recentArray = response
+        
         return recentArray
     })
     .catch((error)=> {
         console.log(error)
     })
+
 })
 
 
@@ -71,7 +73,7 @@ onMount(async () => {
 
 <div class="recent">
     <div class="recent__header"><h2 class="vollkorn sg-green">Most Recent</h2></div>
-    <div class="recent__photos">
+    <div data-sal="fade" data-sal-duration="1000" class="recent__photos">
     {#if recentArray.length > 0}
         {#each recentArray as item}
             <div class="recent__photos__photo"><img src="{item}" alt="SG recent photos"/></div>

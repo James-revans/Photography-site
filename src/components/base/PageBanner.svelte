@@ -18,6 +18,7 @@ export let img;
     &__header {
         color: white;
         position: absolute;
+        text-align: center;
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
