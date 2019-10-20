@@ -25,7 +25,7 @@ import VideoBlade from './VideoBlade.svelte';
     p {
         margin-bottom: 20px;
         font-family: 'Montserrat', sans-serif;
-        font-size: 15px;
+        font-size: 18px;
         font-variant: small-caps;
     }
     a {

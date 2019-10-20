@@ -45,7 +45,7 @@ import bannerArray from '../../cmsdata/banner.js';
     font-weight: 100;
     text-align: center;
     h1 {
-      font-size: calc(15px + 4.6vw);
+      font-size: calc(80px + 4.6vw);
       margin-bottom: 8px;
       font-weight: 100;
       text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);

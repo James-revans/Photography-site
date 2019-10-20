@@ -41,6 +41,7 @@
         display: block;
         border-bottom: solid thin transparent;
         padding-bottom: 5px;
+        text-transform: uppercase;
         &:active {
             border-bottom-color: rgb(68, 91, 71);
         }
@@ -65,7 +66,7 @@
 </style>
 
 
-<div class="link-container d-flex flex-column flex-md-row">
+<div class="link-container d-flex flex-column flex-md-row montserrat">
     <Link on:click="{() => tabSelect('home')}" href="/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
     <Link on:click="{() => tabSelect('gallery')}" href="/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
     <Link on:click="{() => tabSelect('videos')}" href="/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>

@@ -25,6 +25,7 @@
             border-bottom: solid thin transparent;
             transition: 0.25s;
             margin-right: 40px;
+            text-transform: uppercase;
             @media only screen and (max-width: 800px) {
                 font-size: 12px;
                 margin-right: 20px;
@@ -47,7 +48,7 @@
 
 <div class="gallery">
     <h1 class="vollkorn sg-green">Gallery</h1>
-    <div class="gallery__filter raleway">
+    <div class="gallery__filter montserrat">
         <button class="sg-green" class:active="{galleryMode === portraitsArray}" on:click="{() => galleryMode = portraitsArray}">portraits</button>
         <button class="sg-green" class:active="{galleryMode === familyArray}" on:click="{() => galleryMode = familyArray}">family</button>
         <button class="sg-green" class:active="{galleryMode === eventsArray}" on:click="{() => galleryMode = eventsArray}">events</button>

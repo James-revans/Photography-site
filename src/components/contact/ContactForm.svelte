@@ -25,6 +25,7 @@
                 margin: 5px auto;  
                 border-color: rgb(68, 91, 71);
                 color: rgb(68, 91, 71);
+                text-transform: uppercase;
             }
             textarea {
                 height: 200px;
@@ -47,6 +48,7 @@
                 transition: 0.3s;
                 border: solid 2px rgb(68, 91, 71);
                 color: rgb(68, 91, 71);
+                text-transform: uppercase;
                 
                 &:hover {
                     cursor: pointer;
@@ -95,7 +97,7 @@
 <div class="sg-form">
     <div class="sg-form__wrapper">
         <div class="sg-form__wrapper__header sg-green vollkorn"><h1>Let's chat</h1></div>
-        <form class="sg-form__wrapper__form raleway">
+        <form class="sg-form__wrapper__form montserrat">
             <input name="name" type="text" placeholder="name">
             <input name="email" type="email" placeholder="email">
             <input name="phone" type="phone" placeholder="phone">
