@@ -7,6 +7,7 @@ export let img;
     width: 100vw;
     height: 75vh;
     position: relative;
+    z-index: 1000;
 
     img {
         width: 100%;

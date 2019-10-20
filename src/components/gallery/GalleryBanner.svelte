@@ -27,7 +27,7 @@
             margin-right: 40px;
             text-transform: uppercase;
             @media only screen and (max-width: 800px) {
-                font-size: 12px;
+                font-size: 10px;
                 margin-right: 20px;
             }
             

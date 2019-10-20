@@ -9,6 +9,8 @@
 	import Videography from './components/videography/Videography.svelte';
 	import Contact from './components/contact/Contact.svelte';
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
+	import ScrollTop from './components/home/ScrollTop.svelte';
+
 
 	
 	//import specific lifecycle methods
@@ -25,12 +27,14 @@
 	overflow-x: hidden;
 }
 :global(html) {
+	scroll-behavior: smooth;
 }
 
 </style>
 
 <div id="app">
 	<HamburgerNav/>
+	<ScrollTop/>
 	<div class="small">
 		<Router>
 			<Route fallback exact path="" component={Home}/>
@@ -40,6 +44,7 @@
 			<Route path="/contact" component={Contact}/>	
 		</Router>
 	</div>
+	
 
 </div> 
 <!-- 

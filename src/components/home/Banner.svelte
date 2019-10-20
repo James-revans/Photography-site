@@ -27,7 +27,7 @@ import bannerArray from '../../cmsdata/banner.js';
 .swiper-container {
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 1000;
     .swiper-button-next, .swiper-button-previous {
       color: white;
     }
@@ -40,7 +40,7 @@ import bannerArray from '../../cmsdata/banner.js';
     left: 50%;
     width: 80%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 1001;
     color: white;
     font-weight: 100;
     text-align: center;
