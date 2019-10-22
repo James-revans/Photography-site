@@ -23,9 +23,9 @@ import VideoBlade from './VideoBlade.svelte';
     } 
     p {
         margin-bottom: 20px;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Alegreya Sans SC', sans-serif;
         font-size: 18px;
-        font-variant: small-caps;
+        // font-variant: small-caps;
     }
     a {
         color: #445B47;

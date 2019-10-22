@@ -101,7 +101,7 @@
     <div class="sg-form__wrapper">
         <div class="sg-form__wrapper__header sg-green vollkorn">
             <h1>Let's chat</h1>
-            <p class="montserrat" style="font-variant: small-caps; font-size: 20px;">I’m so glad that you’re interested in working with me. Fill out the form and let’s get planning! Talk to you soon!</p>
+            <p class="alegreya" style="font-size: 25px;">I’m so glad that you’re interested in working with me. Fill out the form and let’s get planning! Talk to you soon!</p>
         </div>
         <form class="sg-form__wrapper__form montserrat">
             <input name="name" type="text" placeholder="name">

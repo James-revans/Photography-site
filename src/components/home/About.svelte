@@ -56,13 +56,13 @@ onMount(async () => {
             &__content {
                 padding-top: 10px;
                 padding-bottom: 50px;
-                font-variant: small-caps;
+                // font-variant: small-caps;
 
 
                 
-                p {
+                p {  
                     // font-size: 15px;
-                    font-size: 15px;
+                    font-size: 18px;
                     // text-transform: lowercase;
 
                     // &:first-letter {
@@ -88,7 +88,7 @@ onMount(async () => {
                 &__content {
                     padding-right: 100px;
                     p {
-                        font-size: 1.3vw;
+                        font-size: 1.4vw;
                     }
                     &__signature {
                         transform: translate(10%, 0%);
@@ -124,7 +124,7 @@ onMount(async () => {
         <div class="about__bio__header vollkorn">
             <h2>Behind the lens</h2>
         </div>
-        <div class="about__bio__content montserrat">
+        <div class="about__bio__content alegreya">
             <p>Hey! I’m Savanna Rose Grunzke (SRG). I’ve loved photography and media for as long as i can remember. Movies were my first love, and they still win my heart every time, but growing up in a small town in Southern MN didn’t give me many oportunities to learn more about film, so I took up photography and tought myself!</p>
             <p>I envy the art of capturing a moment and keeping it forever. My job and passion is to help you capture your moments. For more information, go to my bio or contact me for questions.</p>
             <p>XOXO,</p>
