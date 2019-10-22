@@ -1,12 +1,45 @@
 <script>
-    import portraitsArray from '../../cmsdata/galleryPortrait.js';
-    import familyArray from '../../cmsdata/galleryFamily.js';
-    import eventsArray from '../../cmsdata/galleryEvents.js';
-    import miscArray from '../../cmsdata/galleryMisc.js';
+import API_GET_PORTRAITS from '../../cmsdata/galleryPortrait.js';
+import API_GET_FAMILY from '../../cmsdata/galleryFamily.js';
+import API_GET_EVENTS from '../../cmsdata/galleryEvents.js';
+import API_GET_MISC from '../../cmsdata/galleryMisc.js';
 
-    import GalleryMasonry from './GalleryMasonry.svelte';
-    export let galleryMode = portraitsArray;
+import GalleryMasonry from './GalleryMasonry.svelte';
 
+import axios from 'axios'
+import { onMount } from 'svelte';
+
+
+let portraitsArray = []
+let familyArray = []
+let eventsArray = []
+let miscArray = []
+
+export let galleryMode = [];
+
+onMount(async () => {
+    API_GET_PORTRAITS()
+    .then((response) => {
+        portraitsArray = response
+        galleryMode = portraitsArray
+    })
+    API_GET_FAMILY()
+    .then((response) => {
+        familyArray = response
+    })
+    API_GET_EVENTS()
+    .then((response) => {
+        eventsArray = response
+    })
+    API_GET_MISC()
+    .then((response) => {
+        miscArray = response
+        return portraitsArray, familyArray, eventsArray, miscArray
+    })
+    .catch((error)=> {
+        console.log(error)
+    })
+})
 </script>
 
 

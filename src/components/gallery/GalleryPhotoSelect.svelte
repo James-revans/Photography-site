@@ -124,7 +124,7 @@ const dispatch = createEventDispatcher();
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each photo.array as item}
-      <div class="swiper-slide"><img src="{item.img}" alt="{item.alt}"></div>
+      <div class="swiper-slide"><img src="{item}" alt="SRG photography image"></div>
     {/each}
     </div>
 

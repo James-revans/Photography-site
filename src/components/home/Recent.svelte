@@ -1,18 +1,19 @@
 <script>
+import sal from 'sal.js';
+
 import axios from 'axios'
 import { onMount } from 'svelte';
-import API_GET_PHOTOS from '../../cmsdata/homeRecent.js';
-import sal from 'sal.js';
+import API_GET_RECENT from '../../cmsdata/homeRecent.js';
+
 
 let recentArray = []
 
 onMount(async () => {
-    sal({threshold: 0.01});
-    API_GET_PHOTOS()
+    sal({threshold: 0.2});
+    API_GET_RECENT()
     .then((response) => {
         console.log(response)
         recentArray = response
-        
         return recentArray
     })
     .catch((error)=> {

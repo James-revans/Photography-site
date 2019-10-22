@@ -2,22 +2,39 @@
 import Swiper from 'swiper';
 import "swiper/dist/css/swiper.min.css";
 import { onMount } from 'svelte';
-import bannerArray from '../../cmsdata/banner.js';
+import axios from 'axios'
+import API_GET_BANNERS from '../../cmsdata/homeBanner.js';
 
+
+let bannerArray = []
+
+onMount(async () => {
+
+})
   onMount(async () => {
-    var mySwiper = new Swiper ('.swiper-container', {
-      loop: true,
-      speed: 2000,
-      effect: 'fade',
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: true,
-      },
-      navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+    API_GET_BANNERS()
+    .then((response) => {
+        console.log(response)
+        bannerArray = response
+
+        var mySwiper = new Swiper ('.swiper-container', {
+          loop: true,
+          speed: 2000,
+          effect: 'fade',
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+    return bannerArray
+    })
+    .catch((error)=> {
+        console.log(error)
+    })
 });
 </script>
 
@@ -93,7 +110,7 @@ import bannerArray from '../../cmsdata/banner.js';
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each bannerArray as item}
-      <div class="swiper-slide"><div class="overlay"></div><img src="{item.img}" alt="{item.alt}"></div>
+      <div class="swiper-slide"><div class="overlay"></div><img src="{item}" alt="Home banner image from Savanna Grunzke Photography"></div>
     {/each}
     </div>
 

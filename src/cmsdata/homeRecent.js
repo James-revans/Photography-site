@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-let recentArray = []
-
-const API_GET_PHOTOS = () => {
+const API_GET_RECENT = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
@@ -19,7 +17,7 @@ const API_GET_PHOTOS = () => {
 
   
 
-// API_GET_PHOTOS.then(
+// API_GET_RECENT.then(
 //     response => {
 //         console.log(response)
 //         recentArray = response
@@ -28,5 +26,5 @@ const API_GET_PHOTOS = () => {
 //     err => console.log(err)
 // )
 
-export default API_GET_PHOTOS
+export default API_GET_RECENT
     

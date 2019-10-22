@@ -6,6 +6,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 
     &__wrapper{
         width: 100%;
@@ -16,6 +17,7 @@
             display: inline-block;
             h1 {
                 font-weight: 100;
+                font-size: 50px;
             }
         }
         &__form {
@@ -68,6 +70,7 @@
     }
     &__image {
         width: 100%;
+        max-height: 500px;
         margin: 80px auto;
         margin-bottom: 0;
 
@@ -96,7 +99,10 @@
 
 <div class="sg-form">
     <div class="sg-form__wrapper">
-        <div class="sg-form__wrapper__header sg-green vollkorn"><h1>Let's chat</h1></div>
+        <div class="sg-form__wrapper__header sg-green vollkorn">
+            <h1>Let's chat</h1>
+            <p class="montserrat" style="font-variant: small-caps; font-size: 20px;">I’m so glad that you’re interested in working with me. Fill out the form and let’s get planning! Talk to you soon!</p>
+        </div>
         <form class="sg-form__wrapper__form montserrat">
             <input name="name" type="text" placeholder="name">
             <input name="email" type="email" placeholder="email">
