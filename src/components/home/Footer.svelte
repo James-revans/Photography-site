@@ -23,6 +23,11 @@
         i {
             color: #F0DEB4;
             font-size: 50px;
+            transition: 0.3s;
+            &:hover {
+                color: rgb(206, 190, 154);
+                transition: 0.2s;
+            }
         }
     }
 
@@ -38,8 +43,8 @@
 <div class="footer">
     <div class="footer__divider row"></div>
     <div class="footer__icons row">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-instagram"></i>
+        <a href="https://www.facebook.com/savanna.grunzke" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/srgrunzke/" target="_blank"><i class="fab fa-instagram"></i></a>
         <!-- <i class="fab fa-linkedin-in"></i>   -->
     </div>
 

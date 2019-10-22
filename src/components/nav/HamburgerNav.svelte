@@ -5,6 +5,15 @@ import { fade } from 'svelte/transition';
 
 
 let showNav = false;
+function closeMobileNav() {
+    showNav = !showNav;
+    document.body.classList.remove('no-scroll');
+}
+
+function showMobileNav() {
+    showNav = !showNav;
+    document.body.classList.add('no-scroll');
+}
 
 </script>
 
@@ -14,7 +23,7 @@ let showNav = false;
     position: fixed;
     top: 0%;
     right: 0%;
-    z-index: 1000;
+    z-index: 1002;
     border-radius: 1px;
 
     i {
@@ -41,33 +50,45 @@ let showNav = false;
         padding-right: 5px;
         padding-left: 5px;
         padding-top: 60px;    
-        background: rgba(255, 255, 255, 0.753);
+        background: rgb(255, 255, 246);
+        opacity: 0.73;
         @media only screen and (min-width: 577px) {
             padding-right: 80px;
             padding-top: 0;
         }
     }
 }
+.overlay {
+    z-index: 999;
+    position: fixed;
+    opacity: 0.5;
+    overflow-y: hidden;
+    height: 120vh;
+}
+
 
 </style>
 
 
-<div class="ham-nav d-none d-md-flex flex-row">
+<div class="ham-nav d-none d-md-flex">
     {#if showNav}
         <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks on:click="{()=> showNav = false}"/>
+            <NavLinks showLinks={showNav}/>
         </div>
     {/if}
     <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i>
 </div>
 
 <div class="ham-nav d-flex d-md-none flex-column">
-    <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i>
+    <i on:click="{showMobileNav}" class="fas fa-bars"></i>
     {#if showNav}
         <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks on:click="{()=> showNav = false}"/>
-        </div>
+            <NavLinks on:close={closeMobileNav} showLinks={showNav}/>
+        </div> 
     {/if}
 </div>
+{#if showNav}
+    <div on:click={closeMobileNav} transition:fade class="d-block d-md-none overlay"></div>
+{/if}
 
 

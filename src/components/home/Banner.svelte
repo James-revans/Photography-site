@@ -2,22 +2,39 @@
 import Swiper from 'swiper';
 import "swiper/dist/css/swiper.min.css";
 import { onMount } from 'svelte';
-import bannerArray from '../../cmsdata/banner.js';
+import axios from 'axios'
+import API_GET_BANNERS from '../../cmsdata/homeBanner.js';
 
+
+let bannerArray = []
+
+onMount(async () => {
+
+})
   onMount(async () => {
-    var mySwiper = new Swiper ('.swiper-container', {
-      loop: true,
-      speed: 2000,
-      effect: 'fade',
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: true,
-      },
-      navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+    API_GET_BANNERS()
+    .then((response) => {
+        console.log(response)
+        bannerArray = response
+
+        var mySwiper = new Swiper ('.swiper-container', {
+          loop: true,
+          speed: 2000,
+          effect: 'fade',
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+    return bannerArray
+    })
+    .catch((error)=> {
+        console.log(error)
+    })
 });
 </script>
 
@@ -27,7 +44,7 @@ import bannerArray from '../../cmsdata/banner.js';
 .swiper-container {
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 1000;
     .swiper-button-next, .swiper-button-previous {
       color: white;
     }
@@ -40,15 +57,16 @@ import bannerArray from '../../cmsdata/banner.js';
     left: 50%;
     width: 80%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 1001;
     color: white;
     font-weight: 100;
-    text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);
     text-align: center;
     h1 {
-      font-size: calc(15px + 4.6vw);
+      font-size: calc(80px + 4.6vw);
       margin-bottom: 8px;
       font-weight: 100;
+      text-shadow: 0px 2px 2px rgba(70, 70, 70, 0.678);
+
     }
     h2 {
       font-size: calc(9px + 2.2vw);
@@ -81,13 +99,18 @@ import bannerArray from '../../cmsdata/banner.js';
   }
 }
 
+.swiper-button-next, .swiper-button-prev {
+  width: 26px;
+  height: 22px;
+}
+
 
 </style>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each bannerArray as item}
-      <div class="swiper-slide"><div class="overlay"></div><img src="{item.img}" alt="{item.alt}"></div>
+      <div class="swiper-slide"><div class="overlay"></div><img src="{item}" alt="Home banner image from Savanna Grunzke Photography"></div>
     {/each}
     </div>
 

@@ -1,8 +1,6 @@
-
-
 <style type="text/scss">
 .sg-video-blade {
-    width: 90%;
+    width: 98%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;

@@ -1,5 +1,6 @@
 <script>
 import sal from 'sal.js';
+let src = 'images/SavSig.png'
 
 import { onMount } from 'svelte';
 onMount(async () => {
@@ -9,51 +10,76 @@ onMount(async () => {
 
 <style type="text/scss">
 .about {
-    background: white;
+    background: #FBFBE7;
     width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     position: relative;
     padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
         &__photo {
             width: 100%;
             padding: 2.5%;
+            margin: 0 6%;
             img {
                 width: 100%;
             }
-            @media only screen and (min-width: 800px) {
-                width: 50%;
+            @media only screen and (min-width: 650px) {
+                width: 30%;
             }
         }
         &__bio {
             padding: 10px;
             width: 100%;
             text-align: left;
-            font-weight: 500;
+            // font-weight: 500;
             color: #445B47;
             
             &__header {
-                border-bottom: solid 1px #445B47;
-                padding-bottom: 15px;
-                display: inline-block;
+                padding-bottom: 20px;
                 text-align: center;
+
                 h2 {
                     display: inline;
-                    font-size: 40px;
+                    // font-size: 40px;
+                    font-size: calc(20px + 1.3vw);
                     margin: 5% 0;
-                    
+                    border-bottom: solid 1px #445B47;
+                    padding-bottom: 10px;
                     font-weight: 100;
                     color: #445B47;
+                    
                 }   
             }
             &__content {
                 padding-top: 10px;
+                padding-bottom: 50px;
+                font-variant: small-caps;
+
+
                 
                 p {
+                    // font-size: 15px;
                     font-size: 15px;
+                    // text-transform: lowercase;
+
+                    // &:first-letter {
+                    //     font-size: 18px;
+                    // }
+                }
+                &__signature {
+                    position: absolute;
+                    bottom: 10%;
+                    transform: translate(10%, 70%);
+
+                    text-align: center;
+                    display: block;
                 }
             }
-            @media only screen and (min-width: 800px) {
+
+            @media only screen and (min-width: 650px) {
                 width: 50%;
                 padding: 2.5%;
                 &__header {
@@ -62,14 +88,23 @@ onMount(async () => {
                 &__content {
                     padding-right: 100px;
                     p {
-                        font-size: 1.2vw;
+                        font-size: 1.3vw;
+                    }
+                    &__signature {
+                        transform: translate(10%, 0%);
                     }
                 }
+
             }
         }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 650px) {
         padding-top: 75px;
+        padding-bottom: 75px;
+
+        width: 80%;
+        margin: 10% auto;
+        margin-bottom: 5%;
     }
 
 }
@@ -83,18 +118,18 @@ onMount(async () => {
 <div class="about-nav" id="about"></div>
 <div class="about row">
     <div class="about__photo col">
-        <img src="https://lh3.googleusercontent.com/d2EiTY8hlnugFfKdBuR3OQzvz2h9o80rmYOYi_8VaIMAXKAbHlbXY3lkB-0kFDH7qRasDsNVlFIrZHQ7AlR6577yWn-UuxP8M1gtuKLboztxLoG_lIHIKC8xzDr-gcTXQl3rW5m7944KgwRmaoAYy2DEeuu_KCT6yIQtOlY4dgc-REZEJkbDs8a3aUYEVK9kRMRkROljo15_o7uKxd6BQ72lcRHbbLxDBZRSgjCCor3er1VlYlFZ45rAlahp6aWDtVHMIcuQ4H9PkH4hkce16IBkKs6fkhl2hf_DQtrvloL7wRcIvZWSeC3jKu0KPzAKNfXc3I_toUNPUAHkiByp8KNRU0XRRDDaqdAa3NyoyVSTSGlOwqGRxbbYNvG_rAhFwtKd7cDB186gUlw1P8_N69rfzKaJ9A9Rhpo1rnirrc5_dy0BnDTn6VFKvouBBsFIMNTPDAeE_NcyThxfPiwBPfwuYk64Mkjm4txUs9-qw9wVDGZ6TeG9EKcfklgwqZ7qyrqDPJfR215biujI9J1oSlYtHjj7_Zl29yDxT1oVOMBkmUXSsBjgKgxkQ2lQ3xrWJRlsNZyId5iZkXPua6ugSUAsMD_jkD9hLqFFxR3XJkLQJeJzuLDyylqTBl7-VBqaYyxRSWlh1zh2nOqThpFk6ToazHY3pDKoYn5SnppcUMyEwoMowOAzAn6fpOjcZ48nTC7lrsRtUGXRcthogX0jgCIA-qRW2B1rI7AD1ScWCgYIHyHr=w1485-h990-no" alt="Savanna Grunzke photography">
+        <img src="https://lh3.googleusercontent.com/4Z8kyArLToMoFv2iMMDsBAfqFwItCkD7pFCLwH809MzYku1DEb9zfMyjcrGkAYTxxAaD2XX3hllyWimolCapvGvT6ruaEPo5RM5TBqV6LzGmFp82lZYx-bHRg0t-bRP9HCMvEeO6Arl4hXTP3nHipNufmEUtK7PYxH8l7B2h9RQOVf_sOlHQ7yD_UVwBtilsC_QSDsY34g2rkL4Y8zQEfEmfPUM3Y-AJJ-5-qLFvxHVZTAgH6FNMF9frtuiGW0AVzJC4Bqz8lC2aE2G1JoX43sd97TpNLe4HAJa9s9VyhcGGUr3ygs-gnvMOPwm225zgYfqz6D6HxZOGpWfBUkYZG6dzNSEyyfI8jvHawMhJq55fZl5H2PWdwml4vEbd8BBv7veGBJLwkrYwY0eXdi9unKS8TvBTO8otPaEh5U28974S4reDb3fVRzG6p1SLMhtTY0uIWgPR3vHoFeH74IEGTVYgjXFH0gHg1ZWedjlU_abjCKGsWsQxTZ2iyf0MfF1Tz1tfKsScahAmxUkXDDuWYxmBUQB-LAjvRcQPbaykeg8eski7IN1Y6t5-aYHob3gAaxWKcg0VWaMMa2-ne90qVwiqITNEQY3tfRwc7A9eeS6yj2yBCCtuxXAkCCW-cVKGPHaYR4jCckmzgbruqS0sZfqAWqdEQV79uZpV23JYEK6-KduF5RvTCr9tlp20FkwZ2OWbL4nG6oQ_hp1qzjlYZw6mFhOLLxmkGPis9RkN4nPE6qi3IQ=w660-h992-no" alt="Savanna Grunzke photography">
     </div>
     <div class="about__bio col">
         <div class="about__bio__header vollkorn">
             <h2>Behind the lens</h2>
         </div>
-        <div class="about__bio__content raleway">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum. In tempora ratione voluptate perferendis aliquid! Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum. In tempora ratione voluptate perferendis aliquid!</p>
-            <p>In tempora ratione voluptate perferendis aliquid! Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum.</p>
-            <p>Consequatur pariatur eaque, est laborum voluptatum unde incidunt, laudantium alias deleniti ex fuga, officiis repudiandae rerum. In tempora ratione voluptate perferendis aliquid!</p>
+        <div class="about__bio__content montserrat">
+            <p>Hey! I’m Savanna Rose Grunzke (SRG). I’ve loved photography and media for as long as i can remember. Movies were my first love, and they still win my heart every time, but growing up in a small town in Southern MN didn’t give me many oportunities to learn more about film, so I took up photography and tought myself!</p>
+            <p>I envy the art of capturing a moment and keeping it forever. My job and passion is to help you capture your moments. For more information, go to my bio or contact me for questions.</p>
+            <p>XOXO,</p>
+            <div class="about__bio__content__signature"><img {src} alt="Savanna Grunzke signature" /></div>
         </div>
-        
     </div>
 </div>
 

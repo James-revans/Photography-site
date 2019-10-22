@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Prata&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Vollkorn+SC&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 [data-aos][data-aos][data-aos-duration="50"], body[data-aos-duration="50"] [data-aos] {
   transition-duration: 50ms; }
 
@@ -3327,12 +3328,18 @@ body, html {
 .vollkorn {
   font-family: 'Vollkorn SC', serif; }
 
+.montserrat {
+  font-family: 'Montserrat', sans-serif; }
+
 .overlay {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: absolute;
   background: #445b47;
   opacity: 0.34; }
+
+.no-scroll {
+  overflow-y: hidden; }
 
 /**
  * Swiper 4.5.1

@@ -68,14 +68,14 @@ onMount(async () => {
     <div class="col-6">
         {#each selectedArray as item, i}
             {#if i%2 !== 0}
-                <div on:click="{() => photo = {open: true, array: selectedArray, index: i}}" data-sal="slide-up" data-sal-delay="0" data-sal-duration="1000" data-sal-easing="ease-out-bounce" class="grid-item grid-item-1"><img src="{item.img}" alt="{item.alt}"></div>
+                <div on:click="{() => photo = {open: true, array: selectedArray, index: i}}" data-sal="slide-up" data-sal-delay="0" data-sal-duration="1000" data-sal-easing="ease-out-bounce" class="grid-item grid-item-1"><img src="{item}" alt="SRG photography image"></div>
             {/if}
         {/each}
     </div>
     <div class="col-6">
         {#each selectedArray as item, i}
             {#if i%2 == 0}
-                <div on:click="{() => photo = {open: true, array: selectedArray, index: i}}" data-sal="slide-up" data-sal-delay="0" data-sal-duration="1000" data-sal-easing="ease-out-bounce" class="grid-item grid-item-2"><img src="{item.img}" alt="{item.alt}"></div>
+                <div on:click="{() => photo = {open: true, array: selectedArray, index: i}}" data-sal="slide-up" data-sal-delay="0" data-sal-duration="1000" data-sal-easing="ease-out-bounce" class="grid-item grid-item-2"><img src="{item}" alt="SRG photography image"></div>
             {/if}
         {/each}
     </div>

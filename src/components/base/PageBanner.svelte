@@ -7,6 +7,7 @@ export let img;
     width: 100vw;
     height: 75vh;
     position: relative;
+    z-index: 1000;
 
     img {
         width: 100%;
@@ -18,6 +19,7 @@ export let img;
     &__header {
         color: white;
         position: absolute;
+        text-align: center;
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);

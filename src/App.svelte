@@ -4,10 +4,13 @@
 	import { Router, Route } from 'svero';
 	import Home from './components/home/Home.svelte';
 	import About from './components/home/About.svelte';
+	import Bio from './components/bio/Bio.svelte';
 	import Gallery from './components/gallery/Gallery.svelte';
 	import Videography from './components/videography/Videography.svelte';
 	import Contact from './components/contact/Contact.svelte';
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
+	import ScrollTop from './components/home/ScrollTop.svelte';
+
 
 	
 	//import specific lifecycle methods
@@ -21,27 +24,34 @@
 
 <style type="text/scss">
 :global(body) {
-	// min-height: 100%;
 	overflow-x: hidden;
 }
 :global(html) {
-	// height: 100%;
+	scroll-behavior: smooth;
 }
 
 </style>
 
 <div id="app">
 	<HamburgerNav/>
+	<ScrollTop/>
 	<div class="small">
 		<Router>
 			<Route fallback exact path="" component={Home}/>
-			<Route path="/about" component={Home}/>
+			<Route path="/bio" component={Bio}/>
 			<Route path="/gallery" component={Gallery}/>	
 			<Route path="/videography" component={Videography}/>	
 			<Route path="/contact" component={Contact}/>	
 		</Router>
 	</div>
+	
 
 </div> 
+<!-- 
+<Route fallback exact path="" component={Home}/>
+<Route path="/about" component={Home}/>
+<Route path="/gallery" component={Gallery}/>	
+<Route path="/videography" component={Videography}/>	
+<Route path="/contact" component={Contact}/>	 -->
 
 
