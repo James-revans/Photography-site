@@ -1,6 +1,7 @@
 <script>
     import { Link } from 'svero';
     import { createEventDispatcher } from 'svelte';
+    let src = './images/SavLogo.jpg';
     let navSelect;
     let windowSize = window.innerHeight;
     const dispatch = createEventDispatcher();
@@ -25,7 +26,7 @@
 
 :global(.link-styles) {
     transition: 0.2s;
-    padding: 0 20px;
+    padding: 0 14px;
     padding-bottom: 5px;
     font-size: 20px;
     -webkit-tap-highlight-color: transparent;
@@ -61,16 +62,29 @@
         border-bottom-width: 4px;
         transition: 0.2s;
     }
+    @media only screen and (min-width: 768px) {
+        padding: 0 20px;
+
+    }
+}
+
+.img {
+    width: 80px;
+    img {
+        width: 100%;
+        
+    }
 }
 
 </style>
 
 
-<div class="link-container d-flex flex-column flex-md-row montserrat">
-    <Link on:click="{() => tabSelect('home')}" href="/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
+<div class="link-container d-flex flex-column flex-md-row montserrat align-items-center">
+    <div class="img"><img {src}></div>
+    <Link on:click="{() => tabSelect('home')}" href="/#/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
     <Link on:click="{() => tabSelect('gallery')}" href="/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
     <Link on:click="{() => tabSelect('videos')}" href="/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
-    <Link on:click="{() => tabSelect('bio')}" href="/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
+    <Link on:click="{() => tabSelect('bio')}" href="/#/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
     <Link on:click="{() => tabSelect('contact')}" href="/contact" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'contact'}">contact</p></Link>
 </div>
 

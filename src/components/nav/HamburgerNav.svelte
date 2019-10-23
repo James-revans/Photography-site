@@ -1,48 +1,67 @@
 <script>
 import { Link } from 'svero';  
 import NavLinks from './NavLinks.svelte';  
-import { fade } from 'svelte/transition';
-
+import { fly, fade } from 'svelte/transition';
+import "hamburgers/dist/hamburgers.css";
 
 let showNav = false;
-function closeMobileNav() {
-    showNav = !showNav;
-    document.body.classList.remove('no-scroll');
-}
 
 function showMobileNav() {
     showNav = !showNav;
-    document.body.classList.add('no-scroll');
+    if(showNav === true) {
+        document.body.classList.add('no-scroll');
+    }
+    else {
+        document.body.classList.remove('no-scroll');
+    }
+    console.log('remove scroll')
 }
 
 </script>
 
 
 <style type="text/scss">
+.hamburger-inner, .hamburger-inner:before, .hamburger-inner:after{
+    background-color: #F0DEB4;
+}
+
+.is-active {
+    .hamburger-inner, .hamburger-inner:before, .hamburger-inner:after{
+        background-color: #445B47;
+    }
+}
+
 .ham-nav {
     position: fixed;
     top: 0%;
     right: 0%;
-    z-index: 1002;
+    z-index: 1005;
     border-radius: 1px;
 
-    i {
-        color: #F0DEB4;
+    button {
+        // color: #F0DEB4;
+        // background: #F0DEB4;
+        border-radius: 0;
+
         position: absolute;
         top: 0;
         right: 0;
-        text-align: right;
-        padding: 20px 44px;
-        font-size: 30px;
-        transition: 0.3s;
+        z-index: 1006;
+        // text-align: right;
+        padding: 20px 47px; 
+        // font-size: 30px;
+        // transition: 0.3s;
         @media only screen and (min-width: 577px) {
             padding: 20px 30px;
         }
         
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.1);
-            transition: 0.2s;
+        // &:hover {
+        //     cursor: pointer;
+        //     transform: scale(1.1);
+        //     transition: 0.2s;
+        // }
+        &:active {
+            background: none;
         }
     }
     &__menu {
@@ -72,23 +91,33 @@ function showMobileNav() {
 
 <div class="ham-nav d-none d-md-flex">
     {#if showNav}
-        <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks showLinks={showNav}/>
+        <div in:fly="{{ x: 200, duration: 300 }}" out:fly="{{ x: 200, duration: 300 }}" class="ham-nav__menu d-flex flex-column flex-md-row">
+            <NavLinks showLinks={showNav}/> 
         </div>
     {/if}
-    <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i>
+    <!-- <i on:click="{()=> showNav = !showNav}" class="fas fa-bars"></i> -->
+    <button on:click="{()=> showNav = !showNav}" class="hamburger hamburger--slider" class:is-active="{showNav == true}" type="button">
+        <span class="hamburger-box">    
+            <span class="hamburger-inner"></span>
+        </span>
+    </button> 
 </div>
 
 <div class="ham-nav d-flex d-md-none flex-column">
-    <i on:click="{showMobileNav}" class="fas fa-bars"></i>
+    <!-- <i on:click="{showMobileNav}" class="fas fa-bars"></i> -->
+    <button on:click="{showMobileNav}" class="hamburger hamburger--slider" class:is-active="{showNav == true}" type="button">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button> 
     {#if showNav}
-        <div transition:fade class="ham-nav__menu d-flex flex-column flex-md-row">
-            <NavLinks on:close={closeMobileNav} showLinks={showNav}/>
+        <div in:fly="{{ x: 200, duration: 300 }}" out:fly="{{ x: 200, duration: 300 }}" class="ham-nav__menu d-flex flex-column flex-md-row">
+            <NavLinks on:close={showMobileNav} showLinks={showNav}/>
         </div> 
     {/if}
 </div>
 {#if showNav}
-    <div on:click={closeMobileNav} transition:fade class="d-block d-md-none overlay"></div>
+    <div on:click={showMobileNav} transition:fade class="d-block d-md-none overlay"></div>
 {/if}
 
 

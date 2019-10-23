@@ -8,10 +8,8 @@ import API_GET_BANNERS from '../../cmsdata/homeBanner.js';
 
 let bannerArray = []
 
-onMount(async () => {
 
-})
-  onMount(async () => {
+onMount(async () => {
     API_GET_BANNERS()
     .then((response) => {
         console.log(response)

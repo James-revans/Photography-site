@@ -108,7 +108,7 @@
             <input name="email" type="email" placeholder="email">
             <input name="phone" type="phone" placeholder="phone">
             <select name="package"> 
-                <option value="" disabled selected>Select a package</option>
+                <option value="" disabled selected>Select a package ($100 minimum)</option>
                 <option value="portrait">portrait</option>
                 <option value="family">family</option>
                 <option value="event">event</option>
