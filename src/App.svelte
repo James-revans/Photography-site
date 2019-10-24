@@ -33,20 +33,18 @@
 </style>
 
 <div id="app">
-	<HamburgerNav/>
+	<HamburgerNav/> 
 	<ScrollTop/>
 	<div class="small">
-		<Router>
-			<Route fallback exact path="/#/" component={Home}/>
-				<Route path="/bio" component={Bio}/>
-				<Route path="/gallery" component={Gallery}/>	
-				<Route path="/videography" component={Videography}/>	
-				<Route path="/contact" component={Contact}/>
+		<Router>	
+			<Route fallback exact path="#/" component={Home}/>
+				<Route  path="#/bio" component={Bio}/>
+				<Route  path="#/gallery" component={Gallery}/>	
+				<Route  path="#/videography" component={Videography}/>	
+				<Route  path="#/contact" component={Contact}/>
 			<Route/>
 		</Router>
 	</div>
-	
-
 </div> 
 <!-- 
 <Route fallback exact path="" component={Home}/>
@@ -54,5 +52,3 @@
 <Route path="/gallery" component={Gallery}/>	
 <Route path="/videography" component={Videography}/>	
 <Route path="/contact" component={Contact}/>	 -->
-
-

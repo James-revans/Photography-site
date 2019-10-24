@@ -12,7 +12,6 @@ let bannerArray = []
 onMount(async () => {
     API_GET_BANNERS()
     .then((response) => {
-        console.log(response)
         bannerArray = response
 
         var mySwiper = new Swiper ('.swiper-container', {

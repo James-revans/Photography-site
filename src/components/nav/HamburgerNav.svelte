@@ -3,8 +3,25 @@ import { Link } from 'svero';
 import NavLinks from './NavLinks.svelte';  
 import { fly, fade } from 'svelte/transition';
 import "hamburgers/dist/hamburgers.css";
+import { onMount } from 'svelte';
 
-let showNav = false;
+onMount(async () => {
+    
+    window.addEventListener('scroll', function(e) {
+        let scrollClose = showNav;
+        if(window.scrollY < 800) {
+            if(showNav = false)  {
+                showNav = true;
+            }
+            else {
+                // if(showNav = false) {
+                    showNav = false;
+                // }
+            }
+        }
+    });
+});
+let showNav = true;
 
 function showMobileNav() {
     showNav = !showNav;
@@ -16,6 +33,8 @@ function showMobileNav() {
     }
     console.log('remove scroll')
 }
+
+
 
 </script>
 
@@ -37,6 +56,8 @@ function showMobileNav() {
     right: 0%;
     z-index: 1005;
     border-radius: 1px;
+    width: 100%;
+    height: 100%;
 
     button {
         // color: #F0DEB4;
@@ -48,11 +69,11 @@ function showMobileNav() {
         right: 0;
         z-index: 1006;
         // text-align: right;
-        padding: 20px 47px; 
+        padding: 25px 47px; 
         // font-size: 30px;
         // transition: 0.3s;
         @media only screen and (min-width: 577px) {
-            padding: 20px 30px;
+            padding: 25px 30px;
         }
         
         // &:hover {
@@ -70,11 +91,17 @@ function showMobileNav() {
         padding-left: 5px;
         padding-top: 60px;    
         background: rgb(255, 255, 246);
-        opacity: 0.73;
+        // opacity: 0.73;
+        height: 100%;
         @media only screen and (min-width: 577px) {
             padding-right: 80px;
             padding-top: 0;
+            height: auto;
         }
+    }
+    @media only screen and (min-width: 577px) {
+        width: auto;
+        height: auto;
     }
 }
 .overlay {
@@ -84,8 +111,6 @@ function showMobileNav() {
     overflow-y: hidden;
     height: 120vh;
 }
-
-
 </style>
 
 
