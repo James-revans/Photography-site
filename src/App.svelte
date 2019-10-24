@@ -11,13 +11,12 @@
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
 	import ScrollTop from './components/home/ScrollTop.svelte';
 
-
 	
 	//import specific lifecycle methods
 	import { onMount } from 'svelte';
 	onMount(async () => {
 		AOS.init();
-		let about = {id: about}
+		// let about = {id: about}
 	});
 	
 </script>
@@ -32,20 +31,19 @@
 
 </style>
 
-<div id="app">
-	<HamburgerNav/> 
-	<ScrollTop/>
-	<div class="small">
-		<Router>	
-			<Route fallback exact path="#/" component={Home}/>
-				<Route  path="#/bio" component={Bio}/>
-				<Route  path="#/gallery" component={Gallery}/>	
-				<Route  path="#/videography" component={Videography}/>	
-				<Route  path="#/contact" component={Contact}/>
-			<Route/>
-		</Router>
+<Router>
+	<div id="app">
+		<div class="small">
+			<HamburgerNav/> 	
+			<ScrollTop/>
+			<Route exact path="#/" fallback component={Home}/>
+			<Route exact path="#/bio" component={Bio}/>
+			<Route exact path="#/gallery" component={Gallery}/>	
+			<Route exact path="#/videography" component={Videography}/>	
+			<Route exact path="#/contact" component={Contact}/>
+		</div>		
 	</div>
-</div> 
+</Router>
 <!-- 
 <Route fallback exact path="" component={Home}/>
 <Route path="/about" component={Home}/>

@@ -10,7 +10,6 @@
     function tabSelect(tab) {
         scroll(0,0);
         navSelect = tab;
-        console.log(tab);
         // if(tab == 'bio') {
         //     scroll(0, windowSize);
         // }
@@ -82,14 +81,11 @@
     }
 }
 
-
-
 </style>
-
 
 <div class="link-container d-flex flex-column flex-md-row montserrat align-items-center">
     <div class="img"><img {src}></div>
-    <Link on:click="{() => tabSelect('home')}" href="/#/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
+    <Link on:click="{() => tabSelect('home')}" href="/#" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
     <Link on:click="{() => tabSelect('gallery')}" href="/#/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
     <Link on:click="{() => tabSelect('videos')}" href="/#/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
     <Link on:click="{() => tabSelect('bio')}" href="/#/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>

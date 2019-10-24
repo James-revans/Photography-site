@@ -12,7 +12,7 @@
         width: 100vw;
         height: 75vh;
         overflow: hidden;
-
+        z-index: 1000;
         iframe {
             position: absolute;
             top: 50%;
@@ -27,7 +27,7 @@
 
 </style>
 <div class="video-background">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZGn8UYaJrFk?controls=0&autoplay=1&muted=1&title=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=ZGn8UYaJrFk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZGn8UYaJrFk?controls=0&autoplay=1&mute=1&title=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=ZGn8UYaJrFk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
     <PageBanner>
         <h1>Videography</h1>
     </PageBanner> 

@@ -5,23 +5,30 @@ import { fly, fade } from 'svelte/transition';
 import "hamburgers/dist/hamburgers.css";
 import { onMount } from 'svelte';
 
+let showNav = false;
+let previousScroll = 0;
+
+
 onMount(async () => {
-    
+    showNav = true;
     window.addEventListener('scroll', function(e) {
-        let scrollClose = showNav;
-        if(window.scrollY < 800) {
-            if(showNav = false)  {
-                showNav = true;
-            }
-            else {
-                // if(showNav = false) {
-                    showNav = false;
-                // }
-            }
+        if(window.scrollY == 0) {
+            showNav = true;
+            previousScroll = window.scrollY;
+        }
+        if(window.scrollY > previousScroll) {
+            // if(showNav === true)  {
+                showNav = false;
+                previousScroll = window.scrollY;
+            // }
+        }
+        else {
+            showNav = true;
+            previousScroll = window.scrollY;
+
         }
     });
 });
-let showNav = true;
 
 function showMobileNav() {
     showNav = !showNav;
@@ -33,8 +40,6 @@ function showMobileNav() {
     }
     console.log('remove scroll')
 }
-
-
 
 </script>
 
