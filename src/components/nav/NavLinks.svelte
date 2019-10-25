@@ -26,7 +26,7 @@
 
 :global(.link-styles) {
     transition: 0.2s;
-    padding: 10% 14px;
+    padding: 8% 14px;
     padding-bottom: 5px;
     font-size: 20px;
     -webkit-tap-highlight-color: transparent;

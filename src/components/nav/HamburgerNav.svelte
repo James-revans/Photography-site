@@ -8,7 +8,6 @@ import { onMount } from 'svelte';
 let showNav = false;
 let previousScroll = 0;
 
-
 onMount(async () => {
     if(window.innerWidth > 768) {
         showNav = true;
@@ -120,6 +119,9 @@ function showMobileNav() {
     overflow-y: hidden;
     height: 120vh;
 }
+.hide-nav {
+    width: 0;
+}
 </style>
 
 
@@ -137,7 +139,7 @@ function showMobileNav() {
     </button> 
 </div>
 
-<div class="ham-nav d-flex d-md-none flex-column">
+<div class="ham-nav d-flex d-md-none flex-column" class:hide-nav="{showNav == false}">
     <!-- <i on:click="{showMobileNav}" class="fas fa-bars"></i> -->
     <button on:click="{showMobileNav}" class="hamburger hamburger--slider" class:is-active="{showNav == true}" type="button">
         <span class="hamburger-box">

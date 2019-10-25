@@ -7,7 +7,7 @@
 
 <style type="text/scss">
     .video-background {
-        pointer-events: none;
+        // pointer-events: none;
         position: relative;
         width: 100vw;
         height: 75vh;
