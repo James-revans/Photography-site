@@ -50,7 +50,7 @@
 <div class="footer">
     <div class="footer__divider row"></div>
     <div class="footer__icons row">
-        <a href="https://www.facebook.com/savanna.grunzke" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/srg.photo.video/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <div class="img"><img {src}></div>
         <a href="https://www.instagram.com/srgrunzke/" target="_blank"><i class="fab fa-instagram"></i></a>
         <!-- <i class="fab fa-linkedin-in"></i>   -->
