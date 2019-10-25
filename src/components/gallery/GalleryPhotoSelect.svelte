@@ -32,7 +32,7 @@ const dispatch = createEventDispatcher();
 .photo-select {
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1006;
     height: 100vh;
     width: 100vw;
     position: fixed;

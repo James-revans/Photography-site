@@ -1,6 +1,8 @@
 <script>
 export let img; 
-
+import { createEventDispatcher } from 'svelte';
+const imgDispatch = createEventDispatcher();
+ 
 </script>
 <style type="text/scss">
 .page-banner {
@@ -34,7 +36,7 @@ export let img;
 </style>
 
 <div class="page-banner">
-    <img src="{img}">
+    <img on:load='{() => imgDispatch("loaded")}' src="{img}">
     <div class="overlay"></div>
     <div class="page-banner__header p-marker">
         <slot></slot>

@@ -12,7 +12,6 @@ onMount(async () => {
     sal({threshold: 0.2});
     API_GET_RECENT()
     .then((response) => {
-        console.log(response)
         recentArray = response
         return recentArray
     })

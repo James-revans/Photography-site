@@ -1,5 +1,5 @@
 <script>
-
+    let src = './images/SavLogo.jpg';
 </script>
 
 
@@ -17,9 +17,16 @@
     }
 
     &__icons {
-            display: flex;
-            justify-content: space-evenly;
-            margin-top: 70px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 70px;
+        .img {
+            width: 80px;
+            img {
+                width: 100%;
+            }
+        }
         i {
             color: #F0DEB4;
             font-size: 50px;
@@ -44,6 +51,7 @@
     <div class="footer__divider row"></div>
     <div class="footer__icons row">
         <a href="https://www.facebook.com/savanna.grunzke" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <div class="img"><img {src}></div>
         <a href="https://www.instagram.com/srgrunzke/" target="_blank"><i class="fab fa-instagram"></i></a>
         <!-- <i class="fab fa-linkedin-in"></i>   -->
     </div>

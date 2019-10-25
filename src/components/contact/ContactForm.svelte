@@ -28,6 +28,7 @@
                 border-color: rgb(68, 91, 71);
                 color: rgb(68, 91, 71);
                 text-transform: uppercase;
+                font-size: 20px;
             }
             textarea {
                 height: 200px;
@@ -103,12 +104,12 @@
             <h1>Let's chat</h1>
             <p class="alegreya" style="font-size: 25px;">I’m so glad that you’re interested in working with me. Fill out the form and let’s get planning! Talk to you soon!</p>
         </div>
-        <form class="sg-form__wrapper__form montserrat">
+        <form class="sg-form__wrapper__form alegreya">
             <input name="name" type="text" placeholder="name">
             <input name="email" type="email" placeholder="email">
             <input name="phone" type="phone" placeholder="phone">
             <select name="package"> 
-                <option value="" disabled selected>Select a package</option>
+                <option value="" disabled selected>Select a package ($100 minimum)</option>
                 <option value="portrait">portrait</option>
                 <option value="family">family</option>
                 <option value="event">event</option>

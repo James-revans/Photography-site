@@ -4,19 +4,18 @@ import "swiper/dist/css/swiper.min.css";
 import { onMount } from 'svelte';
 import axios from 'axios'
 import API_GET_BANNERS from '../../cmsdata/homeBanner.js';
-
+import { createEventDispatcher } from 'svelte';
+const imgDispatch = createEventDispatcher();
 
 let bannerArray = []
 
 onMount(async () => {
-
-})
-  onMount(async () => {
     API_GET_BANNERS()
     .then((response) => {
-        console.log(response)
         bannerArray = response
-
+      return bannerArray
+    })
+    .then(response => {
         var mySwiper = new Swiper ('.swiper-container', {
           loop: true,
           speed: 2000,
@@ -30,7 +29,6 @@ onMount(async () => {
             prevEl: '.swiper-button-prev',
           },
         });
-    return bannerArray
     })
     .catch((error)=> {
         console.log(error)
@@ -110,19 +108,17 @@ onMount(async () => {
   <div class="swiper-container">
     <div class="swiper-wrapper">
     {#each bannerArray as item}
-      <div class="swiper-slide"><div class="overlay"></div><img src="{item}" alt="Home banner image from Savanna Grunzke Photography"></div>
+      <div class="swiper-slide"><div class="overlay"></div><img on:load='{() => imgDispatch("loaded")}' src="{item}" alt="Home banner image from Savanna Grunzke Photography"></div>
     {/each}
     </div>
 
     <!-- Add Arrows -->
     <div class="swiper-button-next swiper-button-white"></div>
     <div class="swiper-button-prev swiper-button-white"></div>
-    
-    
+  
   </div>
 
   <div class="caption">
       <h1 class="p-marker">SRG</h1>
       <h2 class="vollkorn">PHOTO & VIDEO</h2>
   </div>
-

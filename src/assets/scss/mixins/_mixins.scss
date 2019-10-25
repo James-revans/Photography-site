@@ -1,5 +1,6 @@
 @import '../variables/';
 
+
 @mixin break-up($name) {
   @if $name == xs {
       @content;

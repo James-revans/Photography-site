@@ -56,7 +56,6 @@ onMount(async () => {
             &__content {
                 padding-top: 10px;
                 padding-bottom: 50px;
-                // font-variant: small-caps;
 
 
                 
