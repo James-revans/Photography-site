@@ -10,22 +10,26 @@ let previousScroll = 0;
 
 
 onMount(async () => {
-    showNav = true;
-    window.addEventListener('scroll', function(e) {
-        if(window.scrollY == 0) {
-            showNav = true;
-            previousScroll = window.scrollY;
-        }
-        if(window.scrollY > previousScroll) {
-            // if(showNav === true)  {
-                showNav = false;
+    if(window.innerWidth > 768) {
+        showNav = true;
+    }
+    window.addEventListener('scroll', function(e) { 
+        if(window.innerWidth > 768) {
+            if(window.scrollY == 0) {
+                showNav = true;
                 previousScroll = window.scrollY;
-            // }
-        }
-        else {
-            showNav = true;
-            previousScroll = window.scrollY;
+            }
+            if(window.scrollY > previousScroll) {
+                // if(showNav === true)  {
+                    showNav = false;
+                    previousScroll = window.scrollY;
+                // }
+            }
+            else {
+                showNav = true;
+                previousScroll = window.scrollY;
 
+            }
         }
     });
 });
