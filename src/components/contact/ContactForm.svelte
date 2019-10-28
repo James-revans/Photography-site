@@ -1,6 +1,8 @@
 
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .sg-form{
     padding: 10px;
     position: relative;
@@ -12,23 +14,26 @@
         width: 100%;
         margin: 0 auto;
         &__header {
-            margin-bottom: 50px;
+            margin-bottom: 45px;
             border-bottom: solid thin;
             display: inline-block;
             h1 {
                 font-weight: 100;
                 font-size: 50px;
+                margin: 45px 0;
+            }
+            p {
+                margin-bottom: 5px;
             }
         }
         &__form {
             input, textarea, select {
                 width: 100%;
                 padding: 10px;
-                margin: 5px auto;  
+                margin: 8px auto;  
                 border-color: rgb(68, 91, 71);
                 color: rgb(68, 91, 71);
-                text-transform: uppercase;
-                font-size: 20px;
+                font-size: 18px;
             }
             textarea {
                 height: 200px;
@@ -62,11 +67,11 @@
                 }
             }
         }
-        
-        @media only screen and (min-width: 900px) {
+
+        @include break-up('xl') {
             width: 40%;
             float: left;
-            margin: 50px auto;
+            margin: 50px auto;            
         }
     }
     &__image {
@@ -80,16 +85,16 @@
             width: 100%;
             object-fit: cover;
         }
-        @media only screen and (min-width: 900px) {
+        @include break-up('xl') {
             width: 40%;
             float: right;
-            margin: 50px auto;
+            margin: 50px auto;            
         }
     }
-    @media only screen and (min-width: 520px) {
+    @include break-up('md') {
         padding: 120px;
     }
-    @media only screen and (min-width: 900px) {
+    @include break-up('xl') {
         padding: 60px;
     }
 }
