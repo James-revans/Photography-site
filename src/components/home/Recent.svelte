@@ -24,17 +24,19 @@ onMount(async () => {
 </script>
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
 
 .recent {
+    width: 100%;
+    margin: auto;
     &__header {
-        margin: 5%;
-        margin-left: 11%;
-        
-        display: inline-block;
+        margin: 8% auto;
+        width: 100%;
         text-align: center;
-        @media (max-width: 400px) {
-            margin: 8% auto;
-            width: 100%;
+        @include break-up('sm') {
+            margin: 5% 0;
+            display: inline-block;
+            text-align: left;
         }
         
         h2 {
@@ -54,16 +56,21 @@ onMount(async () => {
         align-items: center;
         max-width: 80vw;
         margin: 0 auto;
-        padding: 50px 0;
+        padding: 5% 0;
+        @include break-up('sm') {
+            justify-content: space-between;
+        }
         &__photo {
             padding: 15px 0px;
             img {
-                width: 200px;
-                height: 200px;
+                width: 250px;
+                height: 250px;
                 object-fit: cover;
             }
         }
-
+    }
+    @include break-up('sm') {
+        width: 80%;
     }
 }
 

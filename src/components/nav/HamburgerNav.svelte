@@ -48,6 +48,8 @@ function showMobileNav() {
 
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .hamburger-inner, .hamburger-inner:before, .hamburger-inner:after{
     background-color: #F0DEB4;
 }
@@ -80,7 +82,8 @@ function showMobileNav() {
         padding: 25px 47px; 
         // font-size: 30px;
         // transition: 0.3s;
-        @media only screen and (min-width: 577px) {
+
+        @include break-up('md') {
             padding: 25px 30px;
         }
         
@@ -101,13 +104,13 @@ function showMobileNav() {
         background: rgb(255, 255, 246);
         // opacity: 0.73;
         height: 100%;
-        @media only screen and (min-width: 577px) {
+        @include break-up('md') {
             padding-right: 80px;
             padding-top: 0;
-            height: auto;
+            height: auto;            
         }
     }
-    @media only screen and (min-width: 577px) {
+    @include break-up('md') {
         width: auto;
         height: auto;
     }

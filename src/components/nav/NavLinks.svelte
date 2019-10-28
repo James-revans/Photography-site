@@ -53,7 +53,8 @@
             transition: 0.2s;
             text-shadow: 0px 0px transparent;
             border-bottom-color: #F0DEB4;
-            @media only screen and (min-width: 1024px) {
+
+            @include break-up('lg') {
                 border-bottom-color: rgb(68, 91, 71);
             }
         }
@@ -63,7 +64,8 @@
         border-bottom-width: 4px;
         transition: 0.2s;
     }
-    @media only screen and (min-width: 768px) {
+
+    @include break-up('md') {
         padding: 0 20px;
     }
 }

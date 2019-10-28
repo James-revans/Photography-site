@@ -13,6 +13,7 @@ onMount(async () => {
     background: #FBFBE7;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 5%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
