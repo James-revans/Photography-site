@@ -20,7 +20,6 @@ onMount(async () => {
     })
 })
 
-
 </script>
 
 <style type="text/scss">

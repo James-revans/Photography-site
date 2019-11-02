@@ -9,6 +9,8 @@ onMount(async () => {
 </script>
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .about {
     background: #FBFBE7;
     width: 100%;
@@ -27,7 +29,7 @@ onMount(async () => {
             img {
                 width: 100%;
             }
-            @media only screen and (min-width: 650px) {
+            @include break-up('md') {
                 width: 30%;
             }
         }
@@ -78,8 +80,7 @@ onMount(async () => {
                     display: block;
                 }
             }
-
-            @media only screen and (min-width: 650px) {
+            @include break-up('md') {
                 width: 50%;
                 padding: 2.5%;
                 &__header {
@@ -94,19 +95,17 @@ onMount(async () => {
                         transform: translate(10%, 0%);
                     }
                 }
-
             }
         }
 
-    @media only screen and (min-width: 650px) {
+    @include break-up('md') {
         padding-top: 75px;
         padding-bottom: 75px;
 
         width: 80%;
         margin: 10% auto;
-        margin-bottom: 5%;
+        margin-bottom: 5%;        
     }
-
 }
 .about-nav {
     position: relative;

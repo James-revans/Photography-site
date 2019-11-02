@@ -1,4 +1,6 @@
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .sg-video-blade {
     width: 98%;
     margin: 0 auto;
@@ -21,8 +23,7 @@
         display: flex;
         align-items: center;
     }
-
-    @media only screen and (min-width: 800px) {
+    @include break-up('lg') {
         padding: 5% 0;
         width: 75%;
         &__video, &__description {
@@ -36,7 +37,8 @@
                 margin-right: 10%;
             }
         }
-    }   
+    }
+ 
 } 
 </style>
 

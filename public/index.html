@@ -17,5 +17,18 @@
 </head>
 
 <body>
+	<form name="contact" netlify data-netlify-honeypot="bot-field" hidden>
+		<input type="text" name="name">
+		<input type="email" name="email">
+		<input type="phone" name="phone">
+		<select name="package">
+			<option value="" disabled selected>Select a package ($100 minimum)</option>
+			<option value="portrait">portrait</option>
+			<option value="family">family</option>
+			<option value="event">event</option>
+			<option value="misc">misc</option>
+		</select>
+		<textarea name="message"></textarea>
+	</form>
 </body>
 </html>

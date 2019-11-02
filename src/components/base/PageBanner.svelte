@@ -5,6 +5,8 @@ const imgDispatch = createEventDispatcher();
  
 </script>
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .page-banner {
     width: 100vw;
     height: 75vh;
@@ -26,7 +28,7 @@ const imgDispatch = createEventDispatcher();
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 20px;
-        @media only screen and (min-width: 500px) {
+        @include break-up('sm') {
             font-size: 35px;
         }
     }

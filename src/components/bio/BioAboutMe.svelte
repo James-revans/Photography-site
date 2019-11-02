@@ -1,4 +1,6 @@
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .bio-content {
     &__text {
         h1 {
@@ -17,6 +19,9 @@
         width: 60%;
         margin: 0 auto;
         padding: 5% 10%;
+        // @include break-down('lg') {
+
+        // }
         @media only screen and (max-width: 800px) {
             width: 90%;
             padding: 2% 0;

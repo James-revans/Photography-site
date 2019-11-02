@@ -44,11 +44,14 @@ onMount(async () => {
 
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .gallery {
     position: relative;
     padding: 4%;
     h1 {
         font-weight: 100;
+        padding-bottom: 10px;
     }
     &__filter {
         button {
@@ -59,6 +62,8 @@ onMount(async () => {
             transition: 0.25s;
             margin-right: 40px;
             text-transform: uppercase;
+            padding: 0;
+            padding-bottom: 5px;
             @media only screen and (max-width: 800px) {
                 font-size: 10px;
                 margin-right: 20px;

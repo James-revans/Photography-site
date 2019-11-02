@@ -4,8 +4,10 @@ import VideoBlade from './VideoBlade.svelte';
 </script>
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .sg-video-list {
-    padding-top: 50px;
+    // padding-top: 50px;
     padding-bottom: 0;
     position: relative;
 
@@ -42,16 +44,15 @@ import VideoBlade from './VideoBlade.svelte';
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10%;
+    padding: 10% 0;
 
     h2 {
         text-align: center;
         font-weight: 100;
         font-size: 40px;
     }
-    @media only screen and (min-width: 800px) {
-        padding-top: 5%;
-        
+    @include break-up('lg') {
+        padding: 5% 0;
     }
 }
 

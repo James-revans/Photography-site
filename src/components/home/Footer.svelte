@@ -4,6 +4,8 @@
 
 
 <style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
+
 .footer {
     width: 100%;
     margin: 0 auto;
@@ -37,8 +39,7 @@
             }
         }
     }
-
-    @media only screen and (min-width: 800px) {
+    @include break-up('lg') {
         width: 50%;
         padding: 125px 0;
         padding-top: 75px;
