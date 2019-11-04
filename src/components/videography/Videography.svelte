@@ -7,7 +7,7 @@
 
 <style type="text/scss">
     .video-background {
-        // pointer-events: none;
+        pointer-events: none;
         position: relative;
         width: 100vw;
         height: 75vh;
@@ -20,15 +20,18 @@
             transform: translate(-50%, -50%);
             z-index: 0;
             width: 100vw;
-            height: 120vh;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
             object-fit: cover;
         }
     }
 
 </style>
 <div class="video-background">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZGn8UYaJrFk?controls=0&autoplay=1&mute=1&title=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=ZGn8UYaJrFk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
-    <PageBanner>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ZGn8UYaJrFk?controls=0&autoplay=1&mute=1&title=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=ZGn8UYaJrFk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    -->
+<iframe src="https://player.vimeo.com/video/370927333?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>    
+<PageBanner>
         <h1>Videography</h1>
     </PageBanner> 
 </div>
