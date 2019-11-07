@@ -62,8 +62,8 @@ onMount(async () => {
         &__photo {
             padding: 15px 0px;
             img {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
                 object-fit: cover;
             }
         }
