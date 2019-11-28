@@ -11,7 +11,7 @@
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
 	import ScrollTop from './components/home/ScrollTop.svelte';
 
-	
+	 
 	//import specific lifecycle methods
 	import { onMount } from 'svelte';
 	onMount(async () => {
@@ -19,7 +19,7 @@
 		// let about = {id: about}
 	});
 	
-</script>
+</script>  
 
 <style type="text/scss">
 :global(body) {
