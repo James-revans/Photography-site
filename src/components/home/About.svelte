@@ -1,7 +1,7 @@
 <script>
 import sal from 'sal.js';
 let src = 'images/SavSig.png'
-
+let about = './images/About.jpg';
 import { onMount } from 'svelte';
 onMount(async () => {
     sal();
@@ -117,7 +117,7 @@ onMount(async () => {
 <div class="about-nav" id="about"></div>
 <div class="about row">
     <div class="about__photo col">
-        <img src="https://lh3.googleusercontent.com/4Z8kyArLToMoFv2iMMDsBAfqFwItCkD7pFCLwH809MzYku1DEb9zfMyjcrGkAYTxxAaD2XX3hllyWimolCapvGvT6ruaEPo5RM5TBqV6LzGmFp82lZYx-bHRg0t-bRP9HCMvEeO6Arl4hXTP3nHipNufmEUtK7PYxH8l7B2h9RQOVf_sOlHQ7yD_UVwBtilsC_QSDsY34g2rkL4Y8zQEfEmfPUM3Y-AJJ-5-qLFvxHVZTAgH6FNMF9frtuiGW0AVzJC4Bqz8lC2aE2G1JoX43sd97TpNLe4HAJa9s9VyhcGGUr3ygs-gnvMOPwm225zgYfqz6D6HxZOGpWfBUkYZG6dzNSEyyfI8jvHawMhJq55fZl5H2PWdwml4vEbd8BBv7veGBJLwkrYwY0eXdi9unKS8TvBTO8otPaEh5U28974S4reDb3fVRzG6p1SLMhtTY0uIWgPR3vHoFeH74IEGTVYgjXFH0gHg1ZWedjlU_abjCKGsWsQxTZ2iyf0MfF1Tz1tfKsScahAmxUkXDDuWYxmBUQB-LAjvRcQPbaykeg8eski7IN1Y6t5-aYHob3gAaxWKcg0VWaMMa2-ne90qVwiqITNEQY3tfRwc7A9eeS6yj2yBCCtuxXAkCCW-cVKGPHaYR4jCckmzgbruqS0sZfqAWqdEQV79uZpV23JYEK6-KduF5RvTCr9tlp20FkwZ2OWbL4nG6oQ_hp1qzjlYZw6mFhOLLxmkGPis9RkN4nPE6qi3IQ=w660-h992-no" alt="Savanna Grunzke photography">
+        <img src={about} alt="Savanna Grunzke photography">
     </div>
     <div class="about__bio col">
         <div class="about__bio__header vollkorn">

@@ -1,6 +1,10 @@
+<script>
+let src = "./images/Bio-Sav.jpg";
+</script>
+
+
 <style type="text/scss">
 @import '../../assets/scss/mixins/mixins';
-
 .bio-content {
     &__text {
         h1 {
@@ -51,6 +55,6 @@
         <p>So that’s what I’m doing. Capturing and creating life’s most precious moments is what I beleive to be my current purpose. Allow me to accompany you in preserving these moments.</p>
     </div>
     <div class="bio-content__img">
-        <img src="https://lh3.googleusercontent.com/Ex-xnvIVWm06zjTxGqJq2a3kjYvmBA57V962Z9joUKIb3VbSrCKNIOElyeCvEbFJ_szqMm-qufE_Sw9QdQLs8gRGa9KYWPGqpKbunMqT0dwmOCw2Ov2sUU2Q5fFbydzRLY7ItlyHSfepkSLx0M_-BeYJVoA9L_uTG0hPtm39qRTgE6LWHladvTSwfdCsMvpFwX9XzkC45IJ1InrRCP8ZqQWj6kgxKmhKY5yen7_irwQelQHcYfnWFD0a3u7AP6wbnJQxtgbd3dvqk1GCSaofsSKKnfVUa1ynckyPBDHMRqs3CZGHoBujz7BGprhhbm01TWc1MfbH-dUVJPNAXT0L_L7wDArShATvqN6dF_A4lEBAuRLsLyfKihlntW9-vailL8iNSB9BmeWqCyJRsh4T_KQq4lQVeiUw4L5Kg2HDbfjlpgZi1ePHQTlJeQbK9Lfnwyd5T079B1v4h-xANnulHJCdTDRPtyecMXLivH4zlJsfqksmKJvUwG6WOK2nR_YSD5BxSGUCU9c_aE9oTLV6CZja8UzDT_7G9eNMexfTFFjgOsWInH_870qHzB0l2zJAE8r6Uycw-K0gEdMNV1vXl9OhbO_AGMyz633im9AfAJYBDmGTlVqxrxDGF2hTOYjpZ2rPPS_f64eNlZS7xK-sXIkJQqZJTOu3lL0rw2JWFJgQftgTX4VoB-UmQNzwIgVzaKiIAS1bYvWi80X5GaAAvLRHD1dSJrpvIEKqBXqxm0EDGtQrcg=w1043-h695-no">
+        <img src={src} alt="Savanna Grunzke">
     </div>
 </div>

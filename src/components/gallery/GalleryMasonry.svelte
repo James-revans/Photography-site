@@ -23,8 +23,6 @@ let showImages = false;
 
 function countImages() {
     imageCount += 1;
-    console.log(imageCount);
-    console.log(selectedArray.length);
     if(imageCount >= selectedArray.length) {showImages = true}
 }
 
