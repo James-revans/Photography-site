@@ -1,4 +1,6 @@
-
+<script>
+let src = "./images/Coffee.JPG"
+</script>
 
 <style type="text/scss">
 @import '../../assets/scss/mixins/mixins';
@@ -126,7 +128,7 @@
     </div>
 
     <div class="sg-form__image">
-        <img src="https://lh3.googleusercontent.com/5-rihuqXVZP7hbLYK9fx4O0sbl_dqzVMsgcv76e4cEoM4E4xgtP2A97GNHef1EkGvBWqPM2H0_WZLoBchiWNhoe-ENFAGpXRF46-6aG1uDOsZY5nK00XfxerGPZ5DN128sltFf-6qnrx3x3S-I2hrc7ohTz6KKOqCs608Ok4Sw1JGO-FPVMKWsB7cXtkEYZn7XlQmo3cOvFdLMmOiAHr1OnOpmgCSsKTOM0JQC8vSHn68d6io8bpiqSsy4R-_ahJgv6dWdD4c_dk5QQxtxYmYZ4lUL903S7EpF7y-ZohFTykgHXOiq2mrJBbeXlmCo2BolOUrtZLSlhS4kyuNhAcRJS4fbH_syjRiHCYycRnQ0kLCsEJFon_1MrZVCsvDKMe4_0KhlD96-t-zgedImVgGfS49xXkMUbvmtrus-JYiLirN2D9PLzmdHrifUvPSiFgcPJ4xX5bx4gK4Wy74pvUInudY-oN9Z7Zm-walEicJ1hw5fD0zi0sSwsZjUaqR4gumvgIHFnOfrMP1pZXOPcy04gbaFj8jliGi8ZirUsbmlD_DLEM25kY5KL_wPzVWG14lgOtncSs3TLZDcqUEmdl7YSAH9I8czF5sGKffJfzIE2zPE7EaNi8uR2xeUKTj0wmvy97H7gVdkCOF5gHr4g3ategTtj6K6oZ9rsmZ7rU6rb2bYsTVcmSGdBKLRIMiqQIxbB3JHMfcecYLDXdyzFbs4qfI8nyoaTctC3quhVQiL664kq8mw=w1334-h890-no">
+    <img src={src}/>
     </div>
 </div>
 
