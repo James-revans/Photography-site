@@ -9,7 +9,7 @@ const imgDispatch = createEventDispatcher();
 
 // let bannerArray = ["https://lh3.googleusercontent.com/84iWq5agZbwF_5k8wTeY6Iu0oa7caJEw349bQJl6PZ5_cj7neAzti2Mg0tGRSZtphKXoHo72nSqQL2-nIq2aDMG3hgbUhSnSvCbbHS45tKFy4jq_qIUjf3xARyMYT5I8WPvQjRLapLc8qsN5TwWRvCFpYWuCF-5o2CHmFUv6GgtTtZoYWr6RlEBEclLruKmI2hRqlQj5jkefoqov0CvHTIflS4c-FyFuG-8ee1cVCMRqqgJHZlkn9wV2uq7Vfndaqs0OfUnbsHlhlxOy0YJUZIGrD_DZbGpuzj4TW9z4EXsMllk5pWlPd4XzrpPn0W4AQY277R5VfIA10dCAOdoE-P348h3RZJOdRiVK7EGEkfk-Bi4R4ndO1GsDIfEOUpDADadhJUEyMpkSqXnkp8RKRvmJDCp1FTxlPEHVIIdXuoP7psCLQtHUI48rbNxKGJ0ClHSSCfjQ9MFOakn9aCjkNhbuRi-2dhXVs97pBz3lVS565dlEdkudjcT7qtY3dWghtaXQHUdTJ8UyJ5PmhmZOIbyPMoXtC_mIB4FJBMwSv8NOQlncXbLjmxZIm85vVSmPC-Tv8rFeLLikkTpUSqp03pP94CgvhbtpSdSBs180XyjOyuFHs6zb24uEJylJSPOzjQjxcXWTUo-eGwitH-VUH7oiC2bJQLgs9__SbCmQ7tiNZfXF0KWZltBmo9A2zrwX8TeRMeQF6pIaAu4DYs0YX3WcWr_mg-5fLrbqJ-jM9gnlFLr7xg=w1487-h990-no", "https://lh3.googleusercontent.com/-FFCM2EBfGIc3pMKmIclyuKfRaCTGMwULXruvd34zqO2r1k1VmHilvizSChbiXz1rtOvFbOLC7a-Ded58NxhgUWPeCTntyMQErr_C55HFYd3h3PHCiv11qHV9KnJhSai7Ju7vqdvb3on3lErIRpyOS_7IRnWy_ci_tF4ZAQpZT7h61H6en414CeqUslQBcGQKheT0JdH1JXcMZKQZBzVf8qzt8FpwZiFNiYzK3_Ia5m7jwvwUB4YVuJFEenkOCcESnJQZKdMLmsqaX_36r76n_npRjltLfbQ08dkywm4YoN-RzYTdM3NrjuBvZ6RzM3qGMuZRwSr1j6QYMHWfqbc4IYwnRZfdr6g3V9S_F_0q5fN16g3UbVYaUSZf9fm3XDGOADrEWsv2t0XXoOZuhrb7iPDKuopDL0eU9LC_qDioIxzNt_B-_pIiLUuuieB4Y6ohSBU-GbrMN35V_0nhwqShb-dZ9BH7Nqpk6Xbm7LXtWsyRSaDrdCyChIUiUzehoPjk8s-dvve2p6dEayP4z7zbaS4OY1tWzLlUiyts4ZDYoNKb-2Olmz18sHdZBuMSXLmFAT3I8w2evo4LvtZZJDd6yaXrsnl-T1eqxW20ppZ8KbeBmfy3Kl6BYzzee6i3DY1aJa2njkblowVnJn2AxMWm7aUrmgKML-cP8sjY-OKMV1uuGrDkmZjEk2LgUklrH1rdRmKLyxWbNU1rmCLCzGr50LXF97o1qzQbTToUqbsTqyCggRkbQ=w1487-h990-no"]
 let bannerArray = [];
-let placeholder = ["./images/Banner.jpg"];
+let placeholder = ["./images/Banner-min.jpg"];
 onMount(async () => {
     API_GET_BANNERS()
     .then((response) => {
@@ -109,7 +109,7 @@ onMount(async () => {
 </style>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-    <div class="swiper-slide"><div class="overlay"></div><img src="{placeholder}" alt="Hi banner image from Savanna Grunzke Photography"></div>
+    <div class="swiper-slide"><div class="overlay"></div><img src="{placeholder}" alt="Banner image from Savanna Grunzke Photography"></div>
     {#each bannerArray as item}
       <div class="swiper-slide"><div class="overlay"></div><img on:load='{() => imgDispatch("loaded")}' src="{item}" alt="Hi banner image from Savanna Grunzke Photography"></div>
     {/each}
