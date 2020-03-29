@@ -2,7 +2,7 @@
     import PageBanner from "../base/PageBanner.svelte";
     import BioAboutMe from "./BioAboutMe.svelte";
     import Footer from "../home/Footer.svelte";
-    const url = './images/Bio-Banner.jpg';
+    const url = './images/Bio-Banner-min.jpg';
     let showPage = false;
 </script>
     

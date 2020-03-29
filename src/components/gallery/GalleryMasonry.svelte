@@ -94,10 +94,12 @@ onMount(async () => {
 
 .lds-ring {
   display: inline-block;
-  position: relative;
+  position: absolute;
   width: 64px;
   height: 64px;
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .lds-ring div {
   box-sizing: border-box;

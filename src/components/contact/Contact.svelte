@@ -2,7 +2,7 @@
     import PageBanner from "../base/PageBanner.svelte";
     import ContactForm from "./ContactForm.svelte";
     import Footer from "../home/Footer.svelte";
-    const url = './images/Contact-Banner.jpg';
+    const url = './images/Contact-Banner-min.jpg';
 </script>
 
 
