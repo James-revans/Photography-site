@@ -15,10 +15,10 @@
 
 <div class="sg-home">
     <Banner on:loaded="{() => imgLoaded = true}"/>
-    {#if imgLoaded}
+    <!-- {#if imgLoaded} -->
         <About/>
         <Recent/>
         <Footer/>
-    {/if}
+    <!-- {/if} -->
 </div>
 
