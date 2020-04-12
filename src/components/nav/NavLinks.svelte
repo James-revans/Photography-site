@@ -91,6 +91,7 @@
     <Link on:click="{() => tabSelect('gallery')}" href="/#/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
     <Link on:click="{() => tabSelect('videos')}" href="/#/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
     <Link on:click="{() => tabSelect('bio')}" href="/#/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
+    <Link on:click="{() => tabSelect('store')}" href="/#/store" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'store'}">store</p></Link>
     <Link on:click="{() => tabSelect('contact')}" href="/#/contact" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'contact'}">contact</p></Link>
 </div>
 

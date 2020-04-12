@@ -7,6 +7,7 @@
 	import Bio from './components/bio/Bio.svelte';
 	import Gallery from './components/gallery/Gallery.svelte';
 	import Videography from './components/videography/Videography.svelte';
+	import Store from './components/store/Store.svelte'
 	import Contact from './components/contact/Contact.svelte';
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
 	import ScrollTop from './components/home/ScrollTop.svelte';
@@ -37,9 +38,10 @@
 			<HamburgerNav/> 	
 			<ScrollTop/>
 			<Route exact path="#/" fallback component={Home}/>
-			<Route exact path="#/bio" component={Bio}/>
 			<Route exact path="#/gallery" component={Gallery}/>	
 			<Route exact path="#/videography" component={Videography}/>	
+			<Route exact path="#/bio" component={Bio}/>
+			<Route exact path="#/store" component={Store}/>
 			<Route exact path="#/contact" component={Contact}/>
 		</div>		
 	</div>
