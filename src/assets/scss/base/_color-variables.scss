@@ -1,7 +1,12 @@
 $black: black;
 $white: white;
 
+$sg-green: #445b47;
+$sg-cream: #fbfbe7;
+$sg-tan: #f0deb4;
 
-$sg-green: #445B47;
-$sg-cream: #FBFBE7;
-$sg-tan: #F0DEB4;
+:root {
+    --sg-green: #445b47;
+    --sg-cream: #fbfbe7;
+    --sg-tan: #f0deb4;
+}

@@ -1,4 +1,5 @@
 <script>
+import Preset from './preset/preset.svelte';
     import { onMount } from 'svelte';
     import PageBanner from "../base/PageBanner.svelte";
     import { loadStripe } from '@stripe/stripe-js';
@@ -9,8 +10,8 @@
         stripe = await loadStripe('pk_test_LnSZ7UkQkfmtKtBr2Hdjtbtm00MLu5KDIl');
     })
     let sessionInfo = {
-        success_url: 'http://localhost:57549/#/store',
-        cancel_url: 'http://localhost:57549/#/store',
+        success_url: 'http://localhost:49712/#/store',
+        cancel_url: 'http://localhost:49712/#/store',
         payment_method_types: ['card'],
             line_items: [
             {
@@ -54,7 +55,9 @@
 <PageBanner on:loaded='{() => showPage = true}' img={url}>
     <h1>Store</h1>
 </PageBanner>
-<h1>
-This is the store
-</h1>
+
+<Preset/>
+
+
+
 <button on:click={proceedToCheckout}>Proceed to checkout</button>

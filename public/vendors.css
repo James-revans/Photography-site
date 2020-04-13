@@ -3300,6 +3300,11 @@ template {
 body, html {
   font-size: 16px; }
 
+:root {
+  --sg-green: #445b47;
+  --sg-cream: #fbfbe7;
+  --sg-tan: #f0deb4; }
+
 .bg-white {
   background: white;
   color: black; }
@@ -3309,13 +3314,13 @@ body, html {
   color: white; }
 
 .sg-green {
-  color: #445B47; }
+  color: #445b47; }
 
 .sg-cream {
-  color: #FBFBE7; }
+  color: #fbfbe7; }
 
 .sg-tan {
-  color: #F0DEB4; }
+  color: #f0deb4; }
 
 .raleway {
   font-family: 'Raleway', sans-serif; }
