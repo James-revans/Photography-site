@@ -11,19 +11,29 @@ const addToCart = (item) => {
 }
 </script>
 
-<style>
+<style type="text/scss">
+@import '../../../assets/scss/mixins/mixins';
+
 .preset {
     display: flex;
     max-width: 1500px;
     margin: 0 auto;
-    padding: 100px 10px;
+    padding: 0px 10px 50px 10px;
     flex-wrap: wrap;
     justify-content: center;
+    @include break-up('xl') {
+        padding: 0px 10px 100px 10px;
+    }
 }
 .title {
     text-align: center;    
-    padding-top: 100px;
-    font-size: 60px;
+    padding: 20px 0 20px;
+    font-size: 20px;
+    margin: 0;
+    @include break-up('xl') {
+        font-size: 60px;
+        padding: 100px 0 100px;
+    }
 }
 h1 {
     font-weight: 100;

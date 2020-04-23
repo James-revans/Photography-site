@@ -1,5 +1,12 @@
 <script>
 export let title, description, price, bullets, addToCart;
+let isInCart = false;
+$: addToCart = isInCart ? 'Remove from cart' : 'Add to cart'
+
+const toggleAdd = () => {
+    isInCart = !isInCart;
+    addToCart(title, isInCart);
+} 
 
 </script>
 
@@ -34,20 +41,30 @@ export let title, description, price, bullets, addToCart;
         padding: 0 50px;     
     }
 }
+
 .button {
-    background-color: var(--sg-cream);
-    color: var(--sg-green);
     border: none;
     border-radius: 0;
     width: 100%;
     padding: 20px 0;
     transition: 0.2s;
+    cursor: pointer;
+}
+.add {
+    background-color: var(--sg-cream);
+    color: var(--sg-green);
 
     &:hover {
         background-color: rgb(216, 216, 167);
         transition: 0.3s;
-        cursor: pointer;
+        box-shadow: 0 0 20px 1px rgba(187, 187, 187, 0.521);
     }
+}
+
+.remove {
+    background-color: rgb(216, 216, 167);
+    transition: 0.3s;
+    box-shadow: 0 0 20px 1px rgba(187, 187, 187, 0.521);
 }
 
 </style>
@@ -60,5 +77,5 @@ export let title, description, price, bullets, addToCart;
             <li>{bullet}</li>
         {/each}
     </ul>
-    <button class="button alegreya" on:click={() =>{addToCart(title)}}>Add to cart</button>
+    <button class="{isInCart ? "remove" : "add"} button alegreya" on:click={toggleAdd}>{addToCart}</button>
 </div>
