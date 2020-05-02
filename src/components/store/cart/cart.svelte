@@ -1,30 +1,81 @@
 <script>
 import { onMount } from 'svelte';
 import { fly, fade } from 'svelte/transition';
+import cart from "shared/stores/cart.store.js";
+import { loadStripe } from '@stripe/stripe-js';
 
-let items = [1, 2, 3];
 let showItems = false;
-
+let stripe;
+onMount(async() => {
+    stripe = await loadStripe('pk_test_LnSZ7UkQkfmtKtBr2Hdjtbtm00MLu5KDIl');
+})
 const togglCart = () => {
     showItems = !showItems;
 };
 
+$: sessionInfo = {
+    success_url: 'http://localhost:49712/#/store',
+    cancel_url: 'http://localhost:49712/#/store',
+    payment_method_types: ['card'],
+        line_items: $cart,
+}
+
+//     line_items: [
+//     {
+//         name: 'T-shirt',
+//         description: 'SRG Preset',
+//         amount: 6,
+//         currency: 'usd',
+//         quantity: 1,
+//     },
+// ],
+
+const proceedToCheckout = () => {
+    if(sessionInfo.line_items.length > 0) {
+        console.log(sessionInfo);
+
+        // async function createSession(cartInfo) {
+        //     const response = await fetch(
+        //         'http://localhost:3000/api/store',
+        //         {
+        //             method: 'POST',
+        //             mode: 'cors',
+        //             headers: {
+        //                 'Content-Type': 'application/x-www-form-urlencoded'
+        //             },
+        //             body: JSON.stringify(cartInfo)
+        //         }
+        //     )
+        //     return response.json();
+        // }
+        // createSession(sessionInfo).then((data) => {
+        //     (async() => {
+        //         const {error} = await stripe.redirectToCheckout({
+        //             // Make the id field from the Checkout Session creation API response
+        //             // available to this file, so you can provide it as parameter here
+        //             // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+        //             sessionId: data.id
+        //         })
+        //     })()
+        // })
+    }
+}
 </script>
 
-<div class="cart alegreya">
+<div class="cart montserrat">
     <div class="cart-icon">
-        <h2 on:click={togglCart}><i class="fas fa-shopping-cart sg-green"></i> {items.length > 0 ? `(${items.length})` : ''} <i class="{showItems ? "arrow-up" : "arrow-down"} fas fa-caret-down"></i></h2>
+        <h2 on:click={togglCart}><i class="fas fa-shopping-cart sg-green"></i> {$cart.length > 0 ? `(${$cart.length})` : ''} <i class="{showItems ? "arrow-up" : "arrow-down"} fas fa-caret-down"></i></h2>
     </div>
     {#if showItems}
         <div class="{showItems ? "items-show" : "items-hide"} items" in:fly="{{ x: 200, duration: 300 }}" out:fly="{{ x: 200, duration: 300 }}">
-            <h2>Cart</h2>
-
-        {#each items as item}
-            <div>
-                
+            <p class="cart-title">CART</p>
+            <div class="cart-title_border"></div>
+        {#each $cart as item}
+            <div class="cart-item">
+                <p>{item.name} - ${item.amount}</p>
             </div>
         {/each}
-            <button class="button alegreya">Proceed to checkout</button>
+            <button class="button alegreya" on:click={proceedToCheckout}>Proceed to checkout</button>
         </div>
     {/if}
 </div>
@@ -89,21 +140,36 @@ const togglCart = () => {
     font-size: 25px;
     padding: 10px 30px;
     margin: 5px;
+    transition: 0.2s;
     &:hover {
         cursor: pointer;
+        background-color: rgb(51, 66, 51);
+        transition: 0.2s;
     }
 }
 .items {
     background-color: var(--sg-cream);
-    h2 {
+    .cart-title {
         margin: 0;
-        padding: 20px;
+        padding: 22px;
         font-size: 20px;
+        
+        &__border {
+            height: 1px;
+            width: 100%;
+            background-color: var(--sg-green);
+        }
     }
     @include break-up('lg') {
-        font-size: 25px;
-        h2 {font-size: 25px;}
+        .cart-title {font-size: 25px;}
+    }
+    .cart-item {
+        text-align: center;
+        font-size: 18px;
+        padding: 2px 20px;
+        p {
+            margin-top: 0px;
+        }
     }
 }
-
 </style>

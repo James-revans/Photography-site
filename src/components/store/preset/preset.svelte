@@ -2,13 +2,6 @@
 import PresetDescription from './preset-description.svelte';
 import PresetCarousel from './preset-carousel.svelte';
 import presets from '../data.js';
-let cart = [];
-const addToCart = (item) => {
-    const isAlreadyInCart = cart.filter(selection => selection === item);
-    if(isAlreadyInCart.length === 0) {
-        cart.push(item);
-    }
-}
 </script>
 
 <style type="text/scss">
@@ -45,7 +38,7 @@ h1 {
 {#each presets as preset, i}
     <div class="preset">
         <PresetCarousel photos={preset.examples} index={i}/>
-        <PresetDescription {...preset} addToCart={addToCart}/>
+        <PresetDescription {...preset}/>
     </div>
 {/each}
 </div>

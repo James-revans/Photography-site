@@ -1,11 +1,20 @@
 <script>
-export let title, description, price, bullets, addToCart;
+import cart from "shared/stores/cart.store.js";
+export let name, description, amount, bullets;
+
 let isInCart = false;
-$: addToCart = isInCart ? 'Remove from cart' : 'Add to cart'
+$: buttonText = isInCart ? 'Remove from cart' : 'Add to cart'
 
 const toggleAdd = () => {
+    let cartItem = {
+            name, amount, description, currency: 'usd', quantity: 1
+        }
     isInCart = !isInCart;
-    addToCart(title, isInCart);
+    if(isInCart) {
+        cart.update(cart => ([...cart, cartItem]))
+    } else {
+        cart.update(cart => cart.filter(item => item.name !== cartItem.name));
+    }
 } 
 
 </script>
@@ -69,13 +78,13 @@ const toggleAdd = () => {
 
 </style>
 <div class="container sg-green">
-    <h1 class="title p-marker">{title}</h1>
-    <h2 class="price alegreya">${price}</h2>
+    <h1 class="title p-marker">{name}</h1>
+    <h2 class="price alegreya">${amount}</h2>
     <p class="description alegreya">{description}</p>
     <ul class="bullets alegreya">
         {#each bullets as bullet}
             <li>{bullet}</li>
         {/each}
     </ul>
-    <button class="{isInCart ? "remove" : "add"} button alegreya" on:click={toggleAdd}>{addToCart}</button>
+    <button class="{isInCart ? "remove" : "add"} button alegreya" on:click={toggleAdd}>{buttonText}</button>
 </div>
