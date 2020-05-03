@@ -14,8 +14,8 @@ const togglCart = () => {
 };
 
 $: sessionInfo = {
-    success_url: 'http://localhost:49712/#/store',
-    cancel_url: 'http://localhost:49712/#/store',
+    success_url: 'http://localhost:3000/#/store',
+    cancel_url: 'http://localhost:3000/#/store',
     payment_method_types: ['card'],
         line_items: $cart,
 }
@@ -34,30 +34,30 @@ const proceedToCheckout = () => {
     if(sessionInfo.line_items.length > 0) {
         console.log(sessionInfo);
 
-        // async function createSession(cartInfo) {
-        //     const response = await fetch(
-        //         'http://localhost:3000/api/store',
-        //         {
-        //             method: 'POST',
-        //             mode: 'cors',
-        //             headers: {
-        //                 'Content-Type': 'application/x-www-form-urlencoded'
-        //             },
-        //             body: JSON.stringify(cartInfo)
-        //         }
-        //     )
-        //     return response.json();
-        // }
-        // createSession(sessionInfo).then((data) => {
-        //     (async() => {
-        //         const {error} = await stripe.redirectToCheckout({
-        //             // Make the id field from the Checkout Session creation API response
-        //             // available to this file, so you can provide it as parameter here
-        //             // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-        //             sessionId: data.id
-        //         })
-        //     })()
-        // })
+        async function createSession(cartInfo) {
+            const response = await fetch(
+                'http://localhost:3000/api/store',
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: JSON.stringify(cartInfo)
+                }
+            )
+            return response.json();
+        }
+        createSession(sessionInfo).then((data) => {
+            (async() => {
+                const {error} = await stripe.redirectToCheckout({
+                    // Make the id field from the Checkout Session creation API response
+                    // available to this file, so you can provide it as parameter here
+                    // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                    sessionId: data.id
+                })
+            })()
+        })
     }
 }
 </script>

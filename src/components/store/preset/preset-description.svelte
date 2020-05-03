@@ -1,13 +1,18 @@
 <script>
 import cart from "shared/stores/cart.store.js";
-export let name, description, amount, bullets;
+export let name, description, amount, bullets, examples;
 
 let isInCart = false;
 $: buttonText = isInCart ? 'Remove from cart' : 'Add to cart'
 
 const toggleAdd = () => {
     let cartItem = {
-            name, amount, description, currency: 'usd', quantity: 1
+            name, 
+            amount, 
+            description, 
+            currency: 'usd', 
+            quantity: 1, 
+            images: [examples[0].before, examples[1].after]
         }
     isInCart = !isInCart;
     if(isInCart) {

@@ -1,63 +1,77 @@
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import babel from "rollup-plugin-babel";
 import livereload from "rollup-plugin-livereload";
-import { terser } from "rollup-plugin-terser";
+import html from "./plugins/rollup-plugin-html";
+import json from "@rollup/plugin-json";
 import autoPreprocess from "svelte-preprocess";
 import scss from "rollup-plugin-scss";
-import json from "@rollup/plugin-json";
 import alias from "@rollup/plugin-alias";
+
+const INPUT_DIR = "src";
+const OUTPUT_DIR = "build";
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "src/main.js",
+    inlineDynamicImports: true,
+
+    input: `${INPUT_DIR}/main.js`,
     output: {
-        sourcemap: true,
         format: "iife",
+        file: `${OUTPUT_DIR}/bundle.js`,
         name: "app",
-        file: "public/bundle.js",
     },
     plugins: [
         svelte({
-            // enable run-time checks when not in production
-            dev: !production,
-            // we'll extract any component CSS out into
-            // a separate file  better for performance
-            css: (css) => {
-                css.write("public/bundle.css");
-            },
             preprocess: autoPreprocess(),
+            // we'll extract any component CSS out into
+            // a separate file — better for performance
+            dev: !production,
+
+            css: (css) => {
+                css.write(`${OUTPUT_DIR}/bundle.js.css`);
+            },
         }),
-        alias({
+        alis({
             entries: [{ find: "shared", replacement: "./src/shared" }],
         }),
-        scss({
-            output: "public/vendors.css",
-        }),
-
-        // If you have external dependencies installed from
-        // npm, you'll most likely need these plugins. In
-        // some cases you'll need additional configuration 
-        // consult the documentation for details:
-        // https://github.com/rollup/rollup-plugin-commonjs
         resolve({
             browser: true,
-            dedupe: (importee) =>
-                importee === "svelte" || importee.startsWith("svelte/"),
+            dedupe: ["svelte"],
+        }),
+        babel({
+            exclude: "node_modules/**",
+            runtimeHelpers: true,
         }),
         commonjs(),
-
+        scss({ renderSync: true }),
+        html({
+            name: `${OUTPUT_DIR}/index.html`,
+        }),
         json(),
-
-        // Watch the `public` directory and refresh the
-        // browser on changes when not in production
-        !production && livereload("public"),
-
-        // If we're building for production (npm run build
-        // instead of npm run dev), minify
-        production && terser(),
+        !production && livereload(`${OUTPUT_DIR}`),
+        !production && serve(),
     ],
-    watch: {
-        clearScreen: false,
-    },
 };
+
+function serve() {
+    let started = false;
+
+    return {
+        writeBundle() {
+            if (!started) {
+                started = true;
+                require("child_process").spawn(
+                    "npm",
+                    ["run", "serve", "--", "--dev"],
+                    {
+                        stdio: ["ignore", "inherit", "inherit"],
+                        shell: true,
+                    }
+                );
+            }
+        },
+    };
+}
