@@ -1,5 +1,5 @@
 <script>
-import { Link } from 'svero';  
+import { Link } from 'yrv';  
 import NavLinks from './NavLinks.svelte';  
 import { fly, fade } from 'svelte/transition';
 import "hamburgers/dist/hamburgers.css";

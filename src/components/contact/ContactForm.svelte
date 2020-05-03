@@ -1,5 +1,5 @@
 <script>
-let src = "./images/Coffee.JPG"
+let src = "images/Coffee.JPG"
 </script>
 
 <style type="text/scss">

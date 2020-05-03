@@ -3,11 +3,11 @@ import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import babel from "rollup-plugin-babel";
 import livereload from "rollup-plugin-livereload";
-import html from "./plugins/rollup-plugin-html";
 import json from "@rollup/plugin-json";
 import autoPreprocess from "svelte-preprocess";
-import scss from "rollup-plugin-scss";
 import alias from "@rollup/plugin-alias";
+import scss from "rollup-plugin-scss";
+import copy from "rollup-plugin-copy";
 
 const INPUT_DIR = "src";
 const OUTPUT_DIR = "build";
@@ -15,7 +15,7 @@ const OUTPUT_DIR = "build";
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    inlineDynamicImports: true,
+    // inlineDynamicImports: true,
 
     input: `${INPUT_DIR}/main.js`,
     output: {
@@ -34,8 +34,15 @@ export default {
                 css.write(`${OUTPUT_DIR}/bundle.js.css`);
             },
         }),
-        alis({
-            entries: [{ find: "shared", replacement: "./src/shared" }],
+        scss({}),
+        copy({
+            targets: [{ src: `${INPUT_DIR}/public/*`, dest: `${OUTPUT_DIR}` }],
+        }),
+        alias({
+            entries: [
+                { find: "shared", replacement: "./src/shared" },
+                { find: "images", replacement: `./src/public/images` },
+            ],
         }),
         resolve({
             browser: true,
@@ -46,10 +53,6 @@ export default {
             runtimeHelpers: true,
         }),
         commonjs(),
-        scss({ renderSync: true }),
-        html({
-            name: `${OUTPUT_DIR}/index.html`,
-        }),
         json(),
         !production && livereload(`${OUTPUT_DIR}`),
         !production && serve(),

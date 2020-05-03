@@ -1,5 +1,5 @@
 <script>
-    import { Link } from 'svero';
+    import { Link } from 'yrv';
     import { createEventDispatcher } from 'svelte';
     let src = './images/SavLogo.jpg';
     let navSelect;
@@ -23,18 +23,13 @@
 
 <style type="text/scss">
 @import '../../assets/scss/mixins/mixins';
-
-:global(.link-styles) {
+:global(a) {
     transition: 0.2s;
     padding: 8% 14px;
     padding-bottom: 5px;
-    font-size: 20px;
+    font-size: 18px;
     -webkit-tap-highlight-color: transparent;
-    
-
-    &:hover {
-        text-decoration: none;
-    }
+    text-decoration: none;
     
     &:visited {
         color: rgb(68, 91, 71);
@@ -42,7 +37,7 @@
     p {
         display: block;
         border-bottom: solid thin transparent;
-        padding-bottom: 5px;
+        padding: 5px 0;
         text-transform: uppercase;
         &:active {
             border-bottom-color: rgb(68, 91, 71);
@@ -53,7 +48,6 @@
             transition: 0.2s;
             text-shadow: 0px 0px transparent;
             border-bottom-color: #F0DEB4;
-
             @include break-up('lg') {
                 border-bottom-color: rgb(68, 91, 71);
             }
@@ -64,14 +58,13 @@
         border-bottom-width: 4px;
         transition: 0.2s;
     }
-
     @include break-up('md') {
         padding: 0 20px;
     }
 }
 
 .img {
-    width: 80px;
+    width: 70px;
 
     img {
         width: 100%;
@@ -82,17 +75,17 @@
         left: 7%;
     }
 }
-
 </style>
 
 <div class="link-container d-flex flex-column flex-md-row montserrat align-items-center">
     <div class="img"><img {src}></div>
-    <Link on:click="{() => tabSelect('home')}" href="/#" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>
-    <Link on:click="{() => tabSelect('gallery')}" href="/#/gallery" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'gallery'}">gallery</p></Link>
-    <Link on:click="{() => tabSelect('videos')}" href="/#/videography" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'videos'}">cinema</p></Link>
-    <Link on:click="{() => tabSelect('bio')}" href="/#/bio" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'bio'}">bio</p></Link>
-    <Link on:click="{() => tabSelect('store')}" href="/#/store" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'store'}">store</p></Link>
-    <Link on:click="{() => tabSelect('contact')}" href="/#/contact" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'contact'}">contact</p></Link>
+    <Link on:click="{() => tabSelect('home')}" href="/" class="link-styles sg-green"><p class:active="{navSelect === 'home'}">home</p></Link>
+    <Link on:click="{() => tabSelect('gallery')}" href="/gallery" class="link-styles sg-green"><p class:active="{navSelect === 'gallery'}">gallery</p></Link>
+    <Link on:click="{() => tabSelect('videography')}" href="/videography" class="link-styles sg-green"><p class:active="{navSelect === 'videos'}">cinema</p></Link>
+    <Link on:click="{() => tabSelect('bio')}" href="/bio" class="link-styles sg-green"><p class:active="{navSelect === 'bio'}">bio</p></Link>
+    <Link on:click="{() => tabSelect('store')}" href="/store" class="link-styles sg-green"><p class:active="{navSelect === 'store'}">store</p></Link>
+    <Link on:click="{() => tabSelect('contact')}" href="/contact" class="link-styles sg-green"><p class:active="{navSelect === 'contact'}">contact</p></Link>
+
 </div>
 
     <!-- <Link on:click="{() => tabSelect('home')}" href="/" className="link-styles sg-green"><p class="p-link" class:active="{navSelect === 'home'}">home</p></Link>

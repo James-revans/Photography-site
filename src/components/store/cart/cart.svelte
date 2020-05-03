@@ -32,18 +32,17 @@ $: sessionInfo = {
 
 const proceedToCheckout = () => {
     if(sessionInfo.line_items.length > 0) {
-        console.log(sessionInfo);
 
-        async function createSession(cartInfo) {
+        async function createSession() {
             const response = await fetch(
                 'http://localhost:3000/api/store',
                 {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(cartInfo)
+                    body: JSON.stringify(sessionInfo)
                 }
             )
             return response.json();
@@ -63,8 +62,8 @@ const proceedToCheckout = () => {
 </script>
 
 <div class="cart montserrat">
-    <div class="cart-icon">
-        <h2 on:click={togglCart}><i class="fas fa-shopping-cart sg-green"></i> {$cart.length > 0 ? `(${$cart.length})` : ''} <i class="{showItems ? "arrow-up" : "arrow-down"} fas fa-caret-down"></i></h2>
+    <div on:click={togglCart} class="cart-icon">
+        <h2 ><i class="fas fa-shopping-cart sg-green"></i> {$cart.length > 0 ? `(${$cart.length})` : ''} <i class="{showItems ? "arrow-up" : "arrow-down"} fas fa-caret-down"></i></h2>
     </div>
     {#if showItems}
         <div class="{showItems ? "items-show" : "items-hide"} items" in:fly="{{ x: 200, duration: 300 }}" out:fly="{{ x: 200, duration: 300 }}">

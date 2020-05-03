@@ -3,7 +3,7 @@ import { onMount } from 'svelte';
 import PageBanner from "../base/PageBanner.svelte";
 import Preset from './preset/preset.svelte';
 import Cart from './cart/cart.svelte';
-const url = "./images/Store-Banner-min.jpg";
+const url = "images/Store-Banner-min.jpg";
 let showPage = false;
 
 </script>

@@ -1,5 +1,5 @@
 <script>
-let src = "./images/Bio-Sav.jpg";
+let src = "images/Bio-Sav.jpg";
 </script>
 
 

@@ -3,6 +3,7 @@
 const stripe = require("stripe")("sk_test_vO0AEr9FkLr94SVOSykpNz5M00KeRkAg2y");
 
 module.exports = async (req, res) => {
+    console.log(req.body);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
         "Access-Control-Allow-Methods",
@@ -12,9 +13,8 @@ module.exports = async (req, res) => {
         "Access-Control-Allow-Headers",
         "Origin, Content-Type, X-Auth-Token"
     );
-    let body = JSON.parse(JSON.stringify(req.body));
-    body = JSON.parse(Object.keys(body)[0]);
-    const response = await stripe.checkout.sessions.create(body);
-    console.log(response);
-    res.json(response);
+    // let body = JSON.parse(JSON.stringify(req.body));
+    // body = JSON.parse(Object.keys(body)[0]);
+    const response = await stripe.checkout.sessions.create(req.body);
+    res.send(response);
 };

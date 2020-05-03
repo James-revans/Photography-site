@@ -4,7 +4,7 @@ export const presets = [
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
         bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
-        amount: "6",
+        amount: 600,
         examples: [
             {
                 before:
@@ -43,7 +43,7 @@ export const presets = [
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
         bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
-        amount: "6",
+        amount: 600,
         examples: [
             {
                 before:
@@ -82,7 +82,7 @@ export const presets = [
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
         bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
-        amount: "6",
+        amount: 600,
         examples: [
             {
                 before:
