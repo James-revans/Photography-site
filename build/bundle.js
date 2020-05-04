@@ -21414,13 +21414,13 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "Proceed to checkout";
-    			attr_dev(p, "class", "cart-title svelte-17xs7vc");
+    			attr_dev(p, "class", "cart-title svelte-or1rb6");
     			add_location(p, file$k, 69, 12, 2249);
     			attr_dev(div0, "class", "cart-title_border");
     			add_location(div0, file$k, 70, 12, 2292);
-    			attr_dev(button, "class", "button alegreya svelte-17xs7vc");
+    			attr_dev(button, "class", "button alegreya svelte-or1rb6");
     			add_location(button, file$k, 76, 12, 2499);
-    			attr_dev(div1, "class", div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-17xs7vc"));
+    			attr_dev(div1, "class", div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-or1rb6"));
     			add_location(div1, file$k, 68, 8, 2100);
     		},
     		m: function mount(target, anchor, remount) {
@@ -21465,7 +21465,7 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (!current || dirty & /*showItems*/ 1 && div1_class_value !== (div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-17xs7vc"))) {
+    			if (!current || dirty & /*showItems*/ 1 && div1_class_value !== (div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-or1rb6"))) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -21521,9 +21521,9 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = text(" - $");
     			t2 = text(t2_value);
-    			attr_dev(p, "class", "svelte-17xs7vc");
+    			attr_dev(p, "class", "svelte-or1rb6");
     			add_location(p, file$k, 73, 16, 2412);
-    			attr_dev(div, "class", "cart-item svelte-17xs7vc");
+    			attr_dev(div, "class", "cart-item svelte-or1rb6");
     			add_location(div, file$k, 72, 12, 2372);
     		},
     		m: function mount(target, anchor) {
@@ -21585,15 +21585,15 @@ var app = (function () {
     			i1 = element("i");
     			t3 = space();
     			if (if_block) if_block.c();
-    			attr_dev(i0, "class", "fas fa-shopping-cart sg-green");
+    			attr_dev(i0, "class", "fas fa-shopping-cart sg-green svelte-or1rb6");
     			add_location(i0, file$k, 65, 13, 1890);
-    			attr_dev(i1, "class", i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-17xs7vc"));
+    			attr_dev(i1, "class", i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-or1rb6"));
     			add_location(i1, file$k, 65, 105, 1982);
-    			attr_dev(h2, "class", "svelte-17xs7vc");
+    			attr_dev(h2, "class", "svelte-or1rb6");
     			add_location(h2, file$k, 65, 8, 1885);
-    			attr_dev(div0, "class", "cart-icon svelte-17xs7vc");
+    			attr_dev(div0, "class", "cart-icon svelte-or1rb6");
     			add_location(div0, file$k, 64, 4, 1832);
-    			attr_dev(div1, "class", "cart montserrat svelte-17xs7vc");
+    			attr_dev(div1, "class", "cart montserrat svelte-or1rb6");
     			add_location(div1, file$k, 63, 0, 1798);
     		},
     		l: function claim(nodes) {
@@ -21619,7 +21619,7 @@ var app = (function () {
     			? `(${/*$cart*/ ctx[1].length})`
     			: "") + "")) set_data_dev(t1, t1_value);
 
-    			if (!current || dirty & /*showItems*/ 1 && i1_class_value !== (i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-17xs7vc"))) {
+    			if (!current || dirty & /*showItems*/ 1 && i1_class_value !== (i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-or1rb6"))) {
     				attr_dev(i1, "class", i1_class_value);
     			}
 

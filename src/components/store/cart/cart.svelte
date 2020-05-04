@@ -85,26 +85,30 @@ const proceedToCheckout = () => {
 .cart {
     position: fixed;
     display: inline-block;
-    top: 0;
-    left: 0;
-    right: auto;
-    z-index: 1005;
+    top: 90px;
+    right: 0;
+    left: auto;
+    z-index: 1003;
     color: var(--sg-green);
-    font-size: 20px;
+    font-size: 15px;
     .cart-icon {
         position: absolute;
         top: 0;
         right: 0;
         cursor: pointer;
         background-color: var(--sg-cream);
-        padding: 20px;
+        padding: 10px;
         white-space: nowrap;
         z-index: 1007;
         h2 {
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 100;
             text-align: right;
             margin: 0;
+            i {font-size: 15px;}
+        }
+        button, p, i {
+            font-size: 15px;
         }
     }
 
@@ -116,7 +120,11 @@ const proceedToCheckout = () => {
         font-size: 25px;
         .cart-icon h2, button {font-size: 25px;}
         .cart-icon {
-            h2 {text-align: left}; 
+            padding: 20px;
+            h2 {
+                text-align: left; 
+                i {font-size: 25px;}
+            }; 
         }
     }
 }
@@ -136,7 +144,7 @@ const proceedToCheckout = () => {
     background-color: var(--sg-green);
     color: var(--sg-cream);
     border: none;
-    font-size: 25px;
+    font-size: 15px;
     padding: 10px 30px;
     margin: 5px;
     transition: 0.2s;
@@ -145,13 +153,16 @@ const proceedToCheckout = () => {
         background-color: rgb(51, 66, 51);
         transition: 0.2s;
     }
+    @include break-up('lg') {
+        font-size: 25px;
+    }
 }
 .items {
     background-color: var(--sg-cream);
     .cart-title {
         margin: 0;
-        padding: 22px;
-        font-size: 20px;
+        padding: 12px;
+        font-size: 15px;
         
         &__border {
             height: 1px;
@@ -159,16 +170,18 @@ const proceedToCheckout = () => {
             background-color: var(--sg-green);
         }
     }
-    @include break-up('lg') {
-        .cart-title {font-size: 25px;}
-    }
+
     .cart-item {
         text-align: center;
-        font-size: 18px;
+        font-size: 15px;
         padding: 2px 20px;
         p {
             margin-top: 0px;
         }
+    }
+    @include break-up('lg') {
+        .cart-title {font-size: 25px; padding: 22px;}
+        .cart-item {font-size: 20px;}
     }
 }
 </style>
