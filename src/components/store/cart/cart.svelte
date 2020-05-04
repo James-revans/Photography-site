@@ -71,7 +71,7 @@ const proceedToCheckout = () => {
             <div class="cart-title_border"></div>
         {#each $cart as item}
             <div class="cart-item">
-                <p>{item.name} - ${item.amount}</p>
+                <p>{item.name} - ${item.amount/100}</p>
             </div>
         {/each}
             <button class="button alegreya" on:click={proceedToCheckout}>Proceed to checkout</button>

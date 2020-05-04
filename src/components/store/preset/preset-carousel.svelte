@@ -31,7 +31,7 @@ onMount(async () => {
 <style type="text/scss">
 @import '../../../assets/scss/mixins/mixins';
 .wrapper {
-    max-width: 700px;
+    max-width: 600px;
     padding-bottom: 30px;
     width: 100%;
 }
@@ -42,8 +42,14 @@ onMount(async () => {
     height: 100%;
     img {
         object-fit: cover;
+        height: 100%;
         width: 50%;
         margin: 0 2px;
+    }
+    &__main {
+        img {
+            width: 100%;
+        }
     }
 }
 .gallery-thumbs {
@@ -71,7 +77,10 @@ onMount(async () => {
 <div class="wrapper">
     <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
-        {#each photos as item}
+            <div class="swiper-slide swiper-slide__main">
+                <img src="{photos.main}" alt="SRG photography image">
+            </div>
+        {#each photos.examples as item}
             <div class="swiper-slide">
                 <img src="{item.before}" alt="SRG photography image">
                 <img src="{item.after}" alt="SRG photography image">
@@ -84,8 +93,11 @@ onMount(async () => {
     </div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
-        {#each photos as item, i}
-            <div class="swiper-slide" on:click={() => {galleryTop[index].slideTo(i)}}>
+            <div class="swiper-slide swiper-slide__main" on:click={() => {galleryTop[index].slideTo(0)}}>
+                <img src="{photos.main}" alt="SRG photography image">
+            </div>
+        {#each photos.examples as item, i}
+            <div class="swiper-slide" on:click={() => {galleryTop[index].slideTo(i+1)}}>
                 <img src="{item.before}" alt="SRG photography image">
                 <img src="{item.after}" alt="SRG photography image">
             </div>

@@ -1,6 +1,6 @@
 <script>
 import cart from "shared/stores/cart.store.js";
-export let name, description, amount, bullets, examples;
+export let name, description, amount, bullets, images;
 
 let isInCart = false;
 $: buttonText = isInCart ? 'Remove from cart' : 'Add to cart'
@@ -12,7 +12,7 @@ const toggleAdd = () => {
             description, 
             currency: 'usd', 
             quantity: 1, 
-            images: [examples[0].before, examples[1].after]
+            images: [images.main]
         }
     isInCart = !isInCart;
     if(isInCart) {
@@ -84,7 +84,7 @@ const toggleAdd = () => {
 </style>
 <div class="container sg-green">
     <h1 class="title p-marker">{name}</h1>
-    <h2 class="price alegreya">${amount}</h2>
+    <h2 class="price alegreya">${amount/100}</h2>
     <p class="description alegreya">{description}</p>
     <ul class="bullets alegreya">
         {#each bullets as bullet}

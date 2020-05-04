@@ -37,7 +37,7 @@ h1 {
 <div class="presets">
 {#each presets as preset, i}
     <div class="preset">
-        <PresetCarousel photos={preset.examples} index={i}/>
+        <PresetCarousel photos={preset.images} index={i}/>
         <PresetDescription {...preset}/>
     </div>
 {/each}

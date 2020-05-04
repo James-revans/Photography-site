@@ -20162,7 +20162,7 @@ var app = (function () {
     		c: function create() {
     			li = element("li");
     			t = text(t_value);
-    			add_location(li, file$h, 82, 12, 1958);
+    			add_location(li, file$h, 82, 12, 1934);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -20194,6 +20194,7 @@ var app = (function () {
     	let t1;
     	let h2;
     	let t2;
+    	let t3_value = /*amount*/ ctx[2] / 100 + "";
     	let t3;
     	let t4;
     	let p;
@@ -20221,7 +20222,7 @@ var app = (function () {
     			t1 = space();
     			h2 = element("h2");
     			t2 = text("$");
-    			t3 = text(/*amount*/ ctx[2]);
+    			t3 = text(t3_value);
     			t4 = space();
     			p = element("p");
     			t5 = text(/*description*/ ctx[1]);
@@ -20236,17 +20237,17 @@ var app = (function () {
     			button = element("button");
     			t8 = text(/*buttonText*/ ctx[5]);
     			attr_dev(h1, "class", "title p-marker svelte-1xqkg3j");
-    			add_location(h1, file$h, 77, 4, 1739);
+    			add_location(h1, file$h, 77, 4, 1711);
     			attr_dev(h2, "class", "price alegreya svelte-1xqkg3j");
-    			add_location(h2, file$h, 78, 4, 1782);
+    			add_location(h2, file$h, 78, 4, 1754);
     			attr_dev(p, "class", "description alegreya svelte-1xqkg3j");
-    			add_location(p, file$h, 79, 4, 1828);
+    			add_location(p, file$h, 79, 4, 1804);
     			attr_dev(ul, "class", "bullets alegreya svelte-1xqkg3j");
-    			add_location(ul, file$h, 80, 4, 1882);
+    			add_location(ul, file$h, 80, 4, 1858);
     			attr_dev(button, "class", button_class_value = "" + ((/*isInCart*/ ctx[4] ? "remove" : "add") + " button alegreya" + " svelte-1xqkg3j"));
-    			add_location(button, file$h, 85, 4, 2006);
+    			add_location(button, file$h, 85, 4, 1982);
     			attr_dev(div, "class", "container sg-green svelte-1xqkg3j");
-    			add_location(div, file$h, 76, 0, 1702);
+    			add_location(div, file$h, 76, 0, 1674);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -20277,7 +20278,7 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
-    			if (dirty & /*amount*/ 4) set_data_dev(t3, /*amount*/ ctx[2]);
+    			if (dirty & /*amount*/ 4 && t3_value !== (t3_value = /*amount*/ ctx[2] / 100 + "")) set_data_dev(t3, t3_value);
     			if (dirty & /*description*/ 2) set_data_dev(t5, /*description*/ ctx[1]);
 
     			if (dirty & /*bullets*/ 8) {
@@ -20335,7 +20336,7 @@ var app = (function () {
     		{ description } = $$props,
     		{ amount } = $$props,
     		{ bullets } = $$props,
-    		{ examples } = $$props;
+    		{ images } = $$props;
 
     	let isInCart = false;
 
@@ -20346,7 +20347,7 @@ var app = (function () {
     			description,
     			currency: "usd",
     			quantity: 1,
-    			images: [examples[0].before, examples[1].after]
+    			images: [images.main]
     		};
 
     		$$invalidate(4, isInCart = !isInCart);
@@ -20358,7 +20359,7 @@ var app = (function () {
     		}
     	};
 
-    	const writable_props = ["name", "description", "amount", "bullets", "examples"];
+    	const writable_props = ["name", "description", "amount", "bullets", "images"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Preset_description> was created with unknown prop '${key}'`);
@@ -20372,7 +20373,7 @@ var app = (function () {
     		if ("description" in $$props) $$invalidate(1, description = $$props.description);
     		if ("amount" in $$props) $$invalidate(2, amount = $$props.amount);
     		if ("bullets" in $$props) $$invalidate(3, bullets = $$props.bullets);
-    		if ("examples" in $$props) $$invalidate(7, examples = $$props.examples);
+    		if ("images" in $$props) $$invalidate(7, images = $$props.images);
     	};
 
     	$$self.$capture_state = () => ({
@@ -20381,7 +20382,7 @@ var app = (function () {
     		description,
     		amount,
     		bullets,
-    		examples,
+    		images,
     		isInCart,
     		toggleAdd,
     		buttonText
@@ -20392,7 +20393,7 @@ var app = (function () {
     		if ("description" in $$props) $$invalidate(1, description = $$props.description);
     		if ("amount" in $$props) $$invalidate(2, amount = $$props.amount);
     		if ("bullets" in $$props) $$invalidate(3, bullets = $$props.bullets);
-    		if ("examples" in $$props) $$invalidate(7, examples = $$props.examples);
+    		if ("images" in $$props) $$invalidate(7, images = $$props.images);
     		if ("isInCart" in $$props) $$invalidate(4, isInCart = $$props.isInCart);
     		if ("buttonText" in $$props) $$invalidate(5, buttonText = $$props.buttonText);
     	};
@@ -20409,7 +20410,7 @@ var app = (function () {
     		}
     	};
 
-    	return [name, description, amount, bullets, isInCart, buttonText, toggleAdd, examples];
+    	return [name, description, amount, bullets, isInCart, buttonText, toggleAdd, images];
     }
 
     class Preset_description extends SvelteComponentDev {
@@ -20421,7 +20422,7 @@ var app = (function () {
     			description: 1,
     			amount: 2,
     			bullets: 3,
-    			examples: 7
+    			images: 7
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -20450,8 +20451,8 @@ var app = (function () {
     			console.warn("<Preset_description> was created without expected prop 'bullets'");
     		}
 
-    		if (/*examples*/ ctx[7] === undefined && !("examples" in props)) {
-    			console.warn("<Preset_description> was created without expected prop 'examples'");
+    		if (/*images*/ ctx[7] === undefined && !("images" in props)) {
+    			console.warn("<Preset_description> was created without expected prop 'images'");
     		}
     	}
 
@@ -20487,11 +20488,11 @@ var app = (function () {
     		throw new Error("<Preset_description>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get examples() {
+    	get images() {
     		throw new Error("<Preset_description>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set examples(value) {
+    	set images(value) {
     		throw new Error("<Preset_description>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -20501,18 +20502,18 @@ var app = (function () {
 
     function get_each_context$5(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
-    	child_ctx[7] = i;
+    	child_ctx[6] = list[i];
+    	child_ctx[8] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
+    	child_ctx[6] = list[i];
     	return child_ctx;
     }
 
-    // (68:8) {#each photos as item}
+    // (74:8) {#each photos.examples as item}
     function create_each_block_1(ctx) {
     	let div;
     	let img0;
@@ -20529,16 +20530,16 @@ var app = (function () {
     			t0 = space();
     			img1 = element("img");
     			t1 = space();
-    			if (img0.src !== (img0_src_value = /*item*/ ctx[5].before)) attr_dev(img0, "src", img0_src_value);
+    			if (img0.src !== (img0_src_value = /*item*/ ctx[6].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-kto58h");
-    			add_location(img0, file$i, 69, 16, 2081);
-    			if (img1.src !== (img1_src_value = /*item*/ ctx[5].after)) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img0, "class", "svelte-1stfvid");
+    			add_location(img0, file$i, 75, 16, 2302);
+    			if (img1.src !== (img1_src_value = /*item*/ ctx[6].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-kto58h");
-    			add_location(img1, file$i, 70, 16, 2151);
-    			attr_dev(div, "class", "swiper-slide svelte-kto58h");
-    			add_location(div, file$i, 68, 12, 2038);
+    			attr_dev(img1, "class", "svelte-1stfvid");
+    			add_location(img1, file$i, 76, 16, 2372);
+    			attr_dev(div, "class", "swiper-slide svelte-1stfvid");
+    			add_location(div, file$i, 74, 12, 2259);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20548,11 +20549,11 @@ var app = (function () {
     			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*item*/ ctx[5].before)) {
+    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*item*/ ctx[6].before)) {
     				attr_dev(img0, "src", img0_src_value);
     			}
 
-    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*item*/ ctx[5].after)) {
+    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*item*/ ctx[6].after)) {
     				attr_dev(img1, "src", img1_src_value);
     			}
     		},
@@ -20565,14 +20566,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(68:8) {#each photos as item}",
+    		source: "(74:8) {#each photos.examples as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:8) {#each photos as item, i}
+    // (90:8) {#each photos.examples as item, i}
     function create_each_block$5(ctx) {
     	let div;
     	let img0;
@@ -20583,8 +20584,8 @@ var app = (function () {
     	let t1;
     	let dispose;
 
-    	function click_handler(...args) {
-    		return /*click_handler*/ ctx[4](/*i*/ ctx[7], ...args);
+    	function click_handler_1(...args) {
+    		return /*click_handler_1*/ ctx[5](/*i*/ ctx[8], ...args);
     	}
 
     	const block = {
@@ -20594,16 +20595,16 @@ var app = (function () {
     			t0 = space();
     			img1 = element("img");
     			t1 = space();
-    			if (img0.src !== (img0_src_value = /*item*/ ctx[5].before)) attr_dev(img0, "src", img0_src_value);
+    			if (img0.src !== (img0_src_value = /*item*/ ctx[6].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-kto58h");
-    			add_location(img0, file$i, 82, 16, 2615);
-    			if (img1.src !== (img1_src_value = /*item*/ ctx[5].after)) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img0, "class", "svelte-1stfvid");
+    			add_location(img0, file$i, 91, 16, 3042);
+    			if (img1.src !== (img1_src_value = /*item*/ ctx[6].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-kto58h");
-    			add_location(img1, file$i, 83, 16, 2685);
-    			attr_dev(div, "class", "swiper-slide svelte-kto58h");
-    			add_location(div, file$i, 81, 12, 2524);
+    			attr_dev(img1, "class", "svelte-1stfvid");
+    			add_location(img1, file$i, 92, 16, 3112);
+    			attr_dev(div, "class", "swiper-slide svelte-1stfvid");
+    			add_location(div, file$i, 90, 12, 2949);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20612,16 +20613,16 @@ var app = (function () {
     			append_dev(div, img1);
     			append_dev(div, t1);
     			if (remount) dispose();
-    			dispose = listen_dev(div, "click", click_handler, false, false, false);
+    			dispose = listen_dev(div, "click", click_handler_1, false, false, false);
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*item*/ ctx[5].before)) {
+    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*item*/ ctx[6].before)) {
     				attr_dev(img0, "src", img0_src_value);
     			}
 
-    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*item*/ ctx[5].after)) {
+    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*item*/ ctx[6].after)) {
     				attr_dev(img1, "src", img1_src_value);
     			}
     		},
@@ -20635,7 +20636,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(81:8) {#each photos as item, i}",
+    		source: "(90:8) {#each photos.examples as item, i}",
     		ctx
     	});
 
@@ -20643,17 +20644,26 @@ var app = (function () {
     }
 
     function create_fragment$j(ctx) {
-    	let div6;
-    	let div3;
-    	let div0;
-    	let t0;
+    	let div8;
+    	let div4;
     	let div1;
+    	let div0;
+    	let img0;
+    	let img0_src_value;
+    	let t0;
     	let t1;
     	let div2;
     	let t2;
+    	let div3;
+    	let t3;
+    	let div7;
+    	let div6;
     	let div5;
-    	let div4;
-    	let each_value_1 = /*photos*/ ctx[0];
+    	let img1;
+    	let img1_src_value;
+    	let t4;
+    	let dispose;
+    	let each_value_1 = /*photos*/ ctx[0].examples;
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -20661,7 +20671,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = /*photos*/ ctx[0];
+    	let each_value = /*photos*/ ctx[0].examples;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -20671,68 +20681,99 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div6 = element("div");
-    			div3 = element("div");
+    			div8 = element("div");
+    			div4 = element("div");
+    			div1 = element("div");
     			div0 = element("div");
+    			img0 = element("img");
+    			t0 = space();
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t0 = space();
-    			div1 = element("div");
     			t1 = space();
     			div2 = element("div");
     			t2 = space();
+    			div3 = element("div");
+    			t3 = space();
+    			div7 = element("div");
+    			div6 = element("div");
     			div5 = element("div");
-    			div4 = element("div");
+    			img1 = element("img");
+    			t4 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "swiper-wrapper");
-    			add_location(div0, file$i, 66, 8, 1966);
-    			attr_dev(div1, "class", "swiper-button-next svelte-kto58h");
-    			add_location(div1, file$i, 75, 8, 2294);
-    			attr_dev(div2, "class", "swiper-button-prev svelte-kto58h");
-    			add_location(div2, file$i, 76, 8, 2341);
-    			attr_dev(div3, "class", "swiper-container gallery-top");
-    			add_location(div3, file$i, 65, 4, 1915);
-    			attr_dev(div4, "class", "swiper-wrapper");
-    			add_location(div4, file$i, 79, 8, 2449);
-    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-kto58h");
-    			add_location(div5, file$i, 78, 4, 2395);
-    			attr_dev(div6, "class", "wrapper svelte-kto58h");
-    			add_location(div6, file$i, 64, 0, 1889);
+    			if (img0.src !== (img0_src_value = /*photos*/ ctx[0].main)) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "SRG photography image");
+    			attr_dev(img0, "class", "svelte-1stfvid");
+    			add_location(img0, file$i, 71, 16, 2134);
+    			attr_dev(div0, "class", "swiper-slide swiper-slide__main svelte-1stfvid");
+    			add_location(div0, file$i, 70, 12, 2072);
+    			attr_dev(div1, "class", "swiper-wrapper");
+    			add_location(div1, file$i, 69, 8, 2031);
+    			attr_dev(div2, "class", "swiper-button-next svelte-1stfvid");
+    			add_location(div2, file$i, 81, 8, 2515);
+    			attr_dev(div3, "class", "swiper-button-prev svelte-1stfvid");
+    			add_location(div3, file$i, 82, 8, 2562);
+    			attr_dev(div4, "class", "swiper-container gallery-top");
+    			add_location(div4, file$i, 68, 4, 1980);
+    			if (img1.src !== (img1_src_value = /*photos*/ ctx[0].main)) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "SRG photography image");
+    			attr_dev(img1, "class", "svelte-1stfvid");
+    			add_location(img1, file$i, 87, 16, 2821);
+    			attr_dev(div5, "class", "swiper-slide swiper-slide__main svelte-1stfvid");
+    			add_location(div5, file$i, 86, 12, 2711);
+    			attr_dev(div6, "class", "swiper-wrapper");
+    			add_location(div6, file$i, 85, 8, 2670);
+    			attr_dev(div7, "class", "swiper-container gallery-thumbs svelte-1stfvid");
+    			add_location(div7, file$i, 84, 4, 2616);
+    			attr_dev(div8, "class", "wrapper svelte-1stfvid");
+    			add_location(div8, file$i, 67, 0, 1954);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div6, anchor);
-    			append_dev(div6, div3);
-    			append_dev(div3, div0);
+    		m: function mount(target, anchor, remount) {
+    			insert_dev(target, div8, anchor);
+    			append_dev(div8, div4);
+    			append_dev(div4, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, img0);
+    			append_dev(div1, t0);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(div0, null);
+    				each_blocks_1[i].m(div1, null);
     			}
 
-    			append_dev(div3, t0);
-    			append_dev(div3, div1);
-    			append_dev(div3, t1);
-    			append_dev(div3, div2);
-    			append_dev(div6, t2);
+    			append_dev(div4, t1);
+    			append_dev(div4, div2);
+    			append_dev(div4, t2);
+    			append_dev(div4, div3);
+    			append_dev(div8, t3);
+    			append_dev(div8, div7);
+    			append_dev(div7, div6);
     			append_dev(div6, div5);
-    			append_dev(div5, div4);
+    			append_dev(div5, img1);
+    			append_dev(div6, t4);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div4, null);
+    				each_blocks[i].m(div6, null);
     			}
+
+    			if (remount) dispose();
+    			dispose = listen_dev(div5, "click", /*click_handler*/ ctx[4], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*photos*/ ctx[0].main)) {
+    				attr_dev(img0, "src", img0_src_value);
+    			}
+
     			if (dirty & /*photos*/ 1) {
-    				each_value_1 = /*photos*/ ctx[0];
+    				each_value_1 = /*photos*/ ctx[0].examples;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -20744,7 +20785,7 @@ var app = (function () {
     					} else {
     						each_blocks_1[i] = create_each_block_1(child_ctx);
     						each_blocks_1[i].c();
-    						each_blocks_1[i].m(div0, null);
+    						each_blocks_1[i].m(div1, null);
     					}
     				}
 
@@ -20755,8 +20796,12 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
+    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*photos*/ ctx[0].main)) {
+    				attr_dev(img1, "src", img1_src_value);
+    			}
+
     			if (dirty & /*galleryTop, index, photos*/ 7) {
-    				each_value = /*photos*/ ctx[0];
+    				each_value = /*photos*/ ctx[0].examples;
     				validate_each_argument(each_value);
     				let i;
 
@@ -20768,7 +20813,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$5(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div4, null);
+    						each_blocks[i].m(div6, null);
     					}
     				}
 
@@ -20782,9 +20827,10 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div6);
+    			if (detaching) detach_dev(div8);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
+    			dispose();
     		}
     	};
 
@@ -20835,8 +20881,12 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("Preset_carousel", $$slots, []);
 
-    	const click_handler = i => {
-    		galleryTop[index].slideTo(i);
+    	const click_handler = () => {
+    		galleryTop[index].slideTo(0);
+    	};
+
+    	const click_handler_1 = i => {
+    		galleryTop[index].slideTo(i + 1);
     	};
 
     	$$self.$set = $$props => {
@@ -20864,7 +20914,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [photos, index, galleryTop, galleryThumbs, click_handler];
+    	return [photos, index, galleryTop, galleryThumbs, click_handler, click_handler_1];
     }
 
     class Preset_carousel extends SvelteComponentDev {
@@ -20909,68 +20959,101 @@ var app = (function () {
     }
 
     var presets = [{
-      name: "Preset A",
+      name: "rosy",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
       bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
       amount: 600,
-      examples: [{
-        before: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80",
-        after: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80",
-        after: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }]
+      images: {
+        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
+        examples: [{
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/IMG_9686_Original-min_yjnt8d.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/IMG_9686_Original_HEIC-min_cy11wc.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566995/media/3068273985258910952_IMG_4809-min_k1mtdc.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/3068273985258910952_IMG_4809_Original-min_t27tir.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566995/media/7699311479317259579_IMG_4132-min_zs8ydw.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/7699311479317259579_IMG_4132_Original-min_ua3dwp.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567064/media/IMG_4991-min_onq0x1.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567064/media/9587107D-A8E9-475D-833B-79B215B6E356-min_fnhhpp.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567354/media/IMG_8926-min_fmquds.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567354/media/IMG_8926_Original-min_nazg8b.jpg"
+        }]
+      }
     }, {
-      name: "Preset B",
+      name: "rare",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
       bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
       amount: 600,
-      examples: [{
-        before: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80",
-        after: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80",
-        after: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }]
+      images: {
+        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
+        examples: [{
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_2638123-min_ggrrhv.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_2638-min_d8tmfd.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_9337-min_hl70mj.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_9337_Original-min_qzug7j.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/IMG_1870-min_yllajx.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/IMG_1870_Original-min_gisncr.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/6632221868625984017_IMG_6048-min_cztsmk.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/6632221868625984017_IMG_6048_Original-min_utuipa.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/8FDE033F-7092-4F92-AA57-77E52E946C24-min_l7m4tk.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588569085/media/8FDE033F-7092-4F92-AA57-77E52E946C24_Original-min_eky9sb.jpg"
+        }]
+      }
     }, {
-      name: "Preset C",
+      name: "rust",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
       bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
       amount: 600,
-      examples: [{
-        before: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80",
-        after: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80",
-        after: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1264&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }, {
-        before: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        after: "https://images.unsplash.com/photo-1519895609939-d2a6491c1196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      }]
+      images: {
+        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
+        examples: [{
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_8218-min_pr21ax.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_8218_Original-min_emlxb9.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568282/media/IMG_4806-min_abgz7q.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_4806_Original-min_kmkxjr.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_6623-min_cujx6z.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_6623_Original-min_vjzi6a.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567763/media/-550672943976337328_IMG_3997-min_dxr8rl.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567763/media/-550672943976337328_IMG_3997_Original-min_sh2ruh.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568282/media/IMG_5301__1_-min_hfcvx2.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_5300_Original-min_ot6hlp.jpg"
+        }]
+      }
+    }, {
+      name: "rays",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
+      bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
+      amount: 600,
+      images: {
+        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
+        examples: [{
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_7975_ajnwdi.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2734_s2mekc.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566517/media/IMG_9238-min_edxdax.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2732_eaoibx.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566146/media/IMG_4381_z7hxjw.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/675CF83B-E996-4767-A037-4E7731D46F3A_r6pywj.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_7882_ypnxzo.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2731_vqeq66.jpg"
+        }, {
+          before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_5418_q4klel.jpg",
+          after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2735_ixmy7p.jpg"
+        }]
+      }
     }];
 
     /* src/components/store/preset/preset.svelte generated by Svelte v3.21.0 */
@@ -20992,7 +21075,7 @@ var app = (function () {
 
     	const presetcarousel = new Preset_carousel({
     			props: {
-    				photos: /*preset*/ ctx[0].examples,
+    				photos: /*preset*/ ctx[0].images,
     				index: /*i*/ ctx[2]
     			},
     			$$inline: true
@@ -21336,7 +21419,7 @@ var app = (function () {
     			attr_dev(div0, "class", "cart-title_border");
     			add_location(div0, file$k, 70, 12, 2292);
     			attr_dev(button, "class", "button alegreya svelte-17xs7vc");
-    			add_location(button, file$k, 76, 12, 2495);
+    			add_location(button, file$k, 76, 12, 2499);
     			attr_dev(div1, "class", div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-17xs7vc"));
     			add_location(div1, file$k, 68, 8, 2100);
     		},
@@ -21428,7 +21511,7 @@ var app = (function () {
     	let t0_value = /*item*/ ctx[6].name + "";
     	let t0;
     	let t1;
-    	let t2_value = /*item*/ ctx[6].amount + "";
+    	let t2_value = /*item*/ ctx[6].amount / 100 + "";
     	let t2;
 
     	const block = {
@@ -21452,7 +21535,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*$cart*/ 2 && t0_value !== (t0_value = /*item*/ ctx[6].name + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*$cart*/ 2 && t2_value !== (t2_value = /*item*/ ctx[6].amount + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*$cart*/ 2 && t2_value !== (t2_value = /*item*/ ctx[6].amount / 100 + "")) set_data_dev(t2, t2_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
