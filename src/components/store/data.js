@@ -1,9 +1,11 @@
 export const presets = [
     {
         name: "rosy",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
-        bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
+        description: "SRG photography custom preset",
+        bullets: [
+            "works best with yellows and reds or pinks",
+            "great for a warm skin tone",
+        ],
         amount: 600,
         images: {
             main:
@@ -44,9 +46,11 @@ export const presets = [
     },
     {
         name: "rare",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
-        bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
+        description: "SRG photography custom preset",
+        bullets: [
+            "works best with oranges and greens",
+            "enhances blue to appear teal",
+        ],
         amount: 600,
         images: {
             main:
@@ -87,9 +91,11 @@ export const presets = [
     },
     {
         name: "rust",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
-        bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
+        description: "SRG photography custom preset",
+        bullets: [
+            "works best with blues and orange or browns",
+            "lower saturation of color",
+        ],
         amount: 600,
         images: {
             main:
@@ -132,9 +138,11 @@ export const presets = [
     },
     {
         name: "rays",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi enim nunc faucibus a pellentesque sit amet.",
-        bullets: ["Cool colors", "Sweet shadows", "Looks dope"],
+        description: "SRG photography custom preset",
+        bullets: [
+            "works best with bright colors and deep shadows",
+            "brighter look",
+        ],
         amount: 600,
         images: {
             main:

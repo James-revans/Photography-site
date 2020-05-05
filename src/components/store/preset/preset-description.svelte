@@ -27,11 +27,17 @@ const toggleAdd = () => {
 <style type='text/scss'>
 @import '../../../assets/scss/mixins/mixins';
 
-.container {    
+.container { 
     max-width: 500px;
-    padding: 0;
+    padding: 0 5px;
+    width: 100%;
+    text-align: center;
     @include break-up('xl') {
-        padding: 0 50px;     
+        padding: 0 50px;
+        padding-top: 60px;     
+    }
+    @include break-up('md') {
+        text-align: left;
     }
 }
 .title, .price {
@@ -48,6 +54,9 @@ const toggleAdd = () => {
     @include break-up('xl') {
         font-size: 25px;     
     }
+}
+.description {
+    margin-bottom: 0;
 }
 .bullets {
     margin: 40px 0;
@@ -86,10 +95,10 @@ const toggleAdd = () => {
     <h1 class="title p-marker">{name}</h1>
     <h2 class="price alegreya">${amount/100}</h2>
     <p class="description alegreya">{description}</p>
-    <ul class="bullets alegreya">
+    <div class="bullets alegreya">
         {#each bullets as bullet}
-            <li>{bullet}</li>
+            <p>~ {bullet}</p>
         {/each}
-    </ul>
+    </div>
     <button class="{isInCart ? "remove" : "add"} button alegreya" on:click={toggleAdd}>{buttonText}</button>
 </div>

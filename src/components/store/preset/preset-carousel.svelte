@@ -32,7 +32,6 @@ onMount(async () => {
 @import '../../../assets/scss/mixins/mixins';
 .wrapper {
     max-width: 600px;
-    padding-bottom: 30px;
     width: 100%;
 }
 .swiper-slide {

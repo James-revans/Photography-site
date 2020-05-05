@@ -23,11 +23,21 @@
 
 <style type="text/scss">
 @import '../../assets/scss/mixins/mixins';
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+    @include break-up('sm') {
+        flex-direction: row;
+        height: auto;
+    }
+}
+
 :global(a) {
     transition: 0.2s;
-    padding: 8% 14px;
-    padding-bottom: 5px;
-    font-size: 18px;
+    font-size: 16px;
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
     
@@ -61,6 +71,9 @@
     @include break-up('md') {
         padding: 0 20px;
     }
+    @include break-up('sm') {
+
+    }
 }
 
 .img {
@@ -77,7 +90,7 @@
 }
 </style>
 
-<div class="link-container d-flex flex-column flex-md-row montserrat align-items-center">
+<div class="link-container montserrat">
     <div class="img"><img {src}></div>
     <Link on:click="{() => tabSelect('home')}" href="/" class="link-styles sg-green"><p class:active="{navSelect === 'home'}">home</p></Link>
     <Link on:click="{() => tabSelect('gallery')}" href="/gallery" class="link-styles sg-green"><p class:active="{navSelect === 'gallery'}">gallery</p></Link>

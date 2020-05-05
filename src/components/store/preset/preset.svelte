@@ -10,17 +10,19 @@ import presets from '../data.js';
 .preset {
     display: flex;
     max-width: 1500px;
-    margin: 0 auto;
-    padding: 0px 10px 50px 10px;
+    margin: 0px auto;
+    padding: 30px 5px 30px 5px;
     flex-wrap: wrap;
     justify-content: center;
+    border-bottom: solid thin var(--sg-green);
     @include break-up('xl') {
         padding: 0px 10px 100px 10px;
+        border-bottom: none;
     }
 }
 .title {
     text-align: center;    
-    padding: 20px 0 20px;
+    padding: 50px 0 20px;
     font-size: 20px;
     margin: 0;
     @include break-up('xl') {
