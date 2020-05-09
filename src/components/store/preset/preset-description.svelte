@@ -12,7 +12,7 @@ const toggleAdd = () => {
             description, 
             currency: 'usd', 
             quantity: 1, 
-            images: [images.main]
+            images: images.main
         }
     isInCart = !isInCart;
     if(isInCart) {

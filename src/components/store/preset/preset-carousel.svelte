@@ -76,9 +76,11 @@ onMount(async () => {
 <div class="wrapper">
     <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
+        {#each photos.main as item}
             <div class="swiper-slide swiper-slide__main">
-                <img src="{photos.main}" alt="SRG photography image">
+                <img src="{item}" alt="SRG photography image">
             </div>
+        {/each}
         {#each photos.examples as item}
             <div class="swiper-slide">
                 <img src="{item.before}" alt="SRG photography image">
@@ -92,9 +94,11 @@ onMount(async () => {
     </div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide__main" on:click={() => {galleryTop[index].slideTo(0)}}>
-                <img src="{photos.main}" alt="SRG photography image">
+        {#each photos.main as item, i}
+            <div class="swiper-slide swiper-slide__main" on:click={() => {galleryTop[index].slideTo(i)}}>
+                <img src="{item}" alt="SRG photography image">
             </div>
+        {/each}
         {#each photos.examples as item, i}
             <div class="swiper-slide" on:click={() => {galleryTop[index].slideTo(i+1)}}>
                 <img src="{item.before}" alt="SRG photography image">

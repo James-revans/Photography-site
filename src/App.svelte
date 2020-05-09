@@ -11,8 +11,8 @@
 	import Contact from './components/contact/Contact.svelte';
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
 	import ScrollTop from './components/home/ScrollTop.svelte';
-
-	 
+	import Success from './components/store/Success.svelte';
+ 
 	//import specific lifecycle methods
 	import { onMount } from 'svelte';
 	onMount(async () => {
@@ -42,6 +42,7 @@
 				<Route exact path="/bio" component={Bio}/>
 				<Route exact path="/store" component={Store}/>
 				<Route exact path="/contact" component={Contact}/>
+				<Route exact path="/success" component={Success}/>
 				<Route fallback component={Home}/>
 
 			</Router>

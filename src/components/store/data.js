@@ -8,8 +8,9 @@ export const presets = [
         ],
         amount: 600,
         images: {
-            main:
+            main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
+            ],
             examples: [
                 {
                     before:
@@ -53,8 +54,9 @@ export const presets = [
         ],
         amount: 600,
         images: {
-            main:
+            main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
+            ],
             examples: [
                 {
                     before:
@@ -98,8 +100,9 @@ export const presets = [
         ],
         amount: 600,
         images: {
-            main:
+            main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
+            ],
             examples: [
                 {
                     before:
@@ -145,8 +148,9 @@ export const presets = [
         ],
         amount: 600,
         images: {
-            main:
+            main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
+            ],
             examples: [
                 {
                     before:
@@ -179,6 +183,21 @@ export const presets = [
                         "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2735_ixmy7p.jpg",
                 },
             ],
+        },
+    },
+    {
+        name: "preset package",
+        description: "All 4 SRG photography presets",
+        bullets: ["rosy", "rare", "rust", "rays"],
+        amount: 2000,
+        images: {
+            main: [
+                "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
+                "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
+                "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
+                "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
+            ],
+            examples: [],
         },
     },
 ];

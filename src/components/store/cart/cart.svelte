@@ -11,10 +11,10 @@ onMount(async() => {
 })
 const togglCart = () => {
     showItems = !showItems;
-};
-
+}; 
+ 
 $: sessionInfo = {
-    success_url: 'http://localhost:3000/#/store',
+    success_url: 'http://localhost:3000/#/success',
     cancel_url: 'http://localhost:3000/#/store',
     payment_method_types: ['card'],
         line_items: $cart,
@@ -100,7 +100,7 @@ const proceedToCheckout = () => {
         padding: 10px;
         white-space: nowrap;
         z-index: 1007;
-        h2 {
+        h2 {  
             font-size: 15px;
             font-weight: 100;
             text-align: right;

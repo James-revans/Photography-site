@@ -790,7 +790,7 @@ var app = (function () {
     }
 
     function dispatch_dev(type, detail) {
-        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.21.0' }, detail)));
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.22.2' }, detail)));
     }
     function append_dev(target, node) {
         dispatch_dev("SvelteDOMInsert", { target, node });
@@ -11908,18 +11908,6 @@ var app = (function () {
       };
     };
 
-    /*!
-     * Determine if an object is a Buffer
-     *
-     * @author   Feross Aboukhadijeh <https://feross.org>
-     * @license  MIT
-     */
-
-    var isBuffer = function isBuffer (obj) {
-      return obj != null && obj.constructor != null &&
-        typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-    };
-
     /*global toString:true*/
 
     // utils is a library of generic helper functions non-specific to axios
@@ -11934,6 +11922,27 @@ var app = (function () {
      */
     function isArray(val) {
       return toString.call(val) === '[object Array]';
+    }
+
+    /**
+     * Determine if a value is undefined
+     *
+     * @param {Object} val The value to test
+     * @returns {boolean} True if the value is undefined, otherwise false
+     */
+    function isUndefined(val) {
+      return typeof val === 'undefined';
+    }
+
+    /**
+     * Determine if a value is a Buffer
+     *
+     * @param {Object} val The value to test
+     * @returns {boolean} True if value is a Buffer, otherwise false
+     */
+    function isBuffer(val) {
+      return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor)
+        && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
     }
 
     /**
@@ -11990,16 +11999,6 @@ var app = (function () {
      */
     function isNumber(val) {
       return typeof val === 'number';
-    }
-
-    /**
-     * Determine if a value is undefined
-     *
-     * @param {Object} val The value to test
-     * @returns {boolean} True if the value is undefined, otherwise false
-     */
-    function isUndefined(val) {
-      return typeof val === 'undefined';
     }
 
     /**
@@ -12475,6 +12474,48 @@ var app = (function () {
       }
     };
 
+    /**
+     * Determines whether the specified URL is absolute
+     *
+     * @param {string} url The URL to test
+     * @returns {boolean} True if the specified URL is absolute, otherwise false
+     */
+    var isAbsoluteURL = function isAbsoluteURL(url) {
+      // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+      // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+      // by any combination of letters, digits, plus, period, or hyphen.
+      return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+    };
+
+    /**
+     * Creates a new URL by combining the specified URLs
+     *
+     * @param {string} baseURL The base URL
+     * @param {string} relativeURL The relative URL
+     * @returns {string} The combined URL
+     */
+    var combineURLs = function combineURLs(baseURL, relativeURL) {
+      return relativeURL
+        ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+        : baseURL;
+    };
+
+    /**
+     * Creates a new URL by combining the baseURL with the requestedURL,
+     * only when the requestedURL is not already an absolute URL.
+     * If the requestURL is absolute, this function returns the requestedURL untouched.
+     *
+     * @param {string} baseURL The base URL
+     * @param {string} requestedURL Absolute or relative URL to combine
+     * @returns {string} The combined full path
+     */
+    var buildFullPath = function buildFullPath(baseURL, requestedURL) {
+      if (baseURL && !isAbsoluteURL(requestedURL)) {
+        return combineURLs(baseURL, requestedURL);
+      }
+      return requestedURL;
+    };
+
     // Headers whose duplicates are ignored by node
     // c.f. https://nodejs.org/api/http.html#http_message_headers
     var ignoreDuplicateOf = [
@@ -12658,7 +12699,8 @@ var app = (function () {
           requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
         }
 
-        request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+        var fullPath = buildFullPath(config.baseURL, config.url);
+        request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
 
         // Set the request timeout in MS
         request.timeout = config.timeout;
@@ -12719,7 +12761,11 @@ var app = (function () {
 
         // Handle timeout
         request.ontimeout = function handleTimeout() {
-          reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
+          var timeoutErrorMessage = 'timeout of ' + config.timeout + 'ms exceeded';
+          if (config.timeoutErrorMessage) {
+            timeoutErrorMessage = config.timeoutErrorMessage;
+          }
+          reject(createError(timeoutErrorMessage, config, 'ECONNABORTED',
             request));
 
           // Clean up request
@@ -12733,7 +12779,7 @@ var app = (function () {
           var cookies$1 = cookies;
 
           // Add xsrf header
-          var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+          var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
             cookies$1.read(config.xsrfCookieName) :
             undefined;
 
@@ -12756,8 +12802,8 @@ var app = (function () {
         }
 
         // Add withCredentials to request if needed
-        if (config.withCredentials) {
-          request.withCredentials = true;
+        if (!utils.isUndefined(config.withCredentials)) {
+          request.withCredentials = !!config.withCredentials;
         }
 
         // Add responseType to request if needed
@@ -12818,12 +12864,11 @@ var app = (function () {
 
     function getDefaultAdapter() {
       var adapter;
-      // Only Node.JS has a process variable that is of [[Class]] process
-      if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
-        // For node use HTTP adapter
-        adapter = xhr;
-      } else if (typeof XMLHttpRequest !== 'undefined') {
+      if (typeof XMLHttpRequest !== 'undefined') {
         // For browsers use XHR adapter
+        adapter = xhr;
+      } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
+        // For node use HTTP adapter
         adapter = xhr;
       }
       return adapter;
@@ -12901,32 +12946,6 @@ var app = (function () {
     var defaults_1 = defaults$1;
 
     /**
-     * Determines whether the specified URL is absolute
-     *
-     * @param {string} url The URL to test
-     * @returns {boolean} True if the specified URL is absolute, otherwise false
-     */
-    var isAbsoluteURL = function isAbsoluteURL(url) {
-      // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-      // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-      // by any combination of letters, digits, plus, period, or hyphen.
-      return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-    };
-
-    /**
-     * Creates a new URL by combining the specified URLs
-     *
-     * @param {string} baseURL The base URL
-     * @param {string} relativeURL The relative URL
-     * @returns {string} The combined URL
-     */
-    var combineURLs = function combineURLs(baseURL, relativeURL) {
-      return relativeURL
-        ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-        : baseURL;
-    };
-
-    /**
      * Throws a `Cancel` if cancellation has been requested.
      */
     function throwIfCancellationRequested(config) {
@@ -12944,11 +12963,6 @@ var app = (function () {
     var dispatchRequest = function dispatchRequest(config) {
       throwIfCancellationRequested(config);
 
-      // Support baseURL config
-      if (config.baseURL && !isAbsoluteURL(config.url)) {
-        config.url = combineURLs(config.baseURL, config.url);
-      }
-
       // Ensure headers exist
       config.headers = config.headers || {};
 
@@ -12963,7 +12977,7 @@ var app = (function () {
       config.headers = utils.merge(
         config.headers.common || {},
         config.headers[config.method] || {},
-        config.headers || {}
+        config.headers
       );
 
       utils.forEach(
@@ -13017,13 +13031,23 @@ var app = (function () {
       config2 = config2 || {};
       var config = {};
 
-      utils.forEach(['url', 'method', 'params', 'data'], function valueFromConfig2(prop) {
+      var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
+      var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
+      var defaultToConfig2Keys = [
+        'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
+        'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+        'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
+        'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
+        'httpsAgent', 'cancelToken', 'socketPath'
+      ];
+
+      utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
         if (typeof config2[prop] !== 'undefined') {
           config[prop] = config2[prop];
         }
       });
 
-      utils.forEach(['headers', 'auth', 'proxy'], function mergeDeepProperties(prop) {
+      utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
         if (utils.isObject(config2[prop])) {
           config[prop] = utils.deepMerge(config1[prop], config2[prop]);
         } else if (typeof config2[prop] !== 'undefined') {
@@ -13035,13 +13059,25 @@ var app = (function () {
         }
       });
 
-      utils.forEach([
-        'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
-        'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-        'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength',
-        'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken',
-        'socketPath'
-      ], function defaultToConfig2(prop) {
+      utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
+        if (typeof config2[prop] !== 'undefined') {
+          config[prop] = config2[prop];
+        } else if (typeof config1[prop] !== 'undefined') {
+          config[prop] = config1[prop];
+        }
+      });
+
+      var axiosKeys = valueFromConfig2Keys
+        .concat(mergeDeepPropertiesKeys)
+        .concat(defaultToConfig2Keys);
+
+      var otherKeys = Object
+        .keys(config2)
+        .filter(function filterAxiosKeys(key) {
+          return axiosKeys.indexOf(key) === -1;
+        });
+
+      utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
         if (typeof config2[prop] !== 'undefined') {
           config[prop] = config2[prop];
         } else if (typeof config1[prop] !== 'undefined') {
@@ -13081,7 +13117,15 @@ var app = (function () {
       }
 
       config = mergeConfig(this.defaults, config);
-      config.method = config.method ? config.method.toLowerCase() : 'get';
+
+      // Set config.method
+      if (config.method) {
+        config.method = config.method.toLowerCase();
+      } else if (this.defaults.method) {
+        config.method = this.defaults.method.toLowerCase();
+      } else {
+        config.method = 'get';
+      }
 
       // Hook up interceptors middleware
       var chain = [dispatchRequest, undefined];
@@ -13573,7 +13617,7 @@ var app = (function () {
     }
 
     var sal = createCommonjsModule(function (module, exports) {
-    !function(e,t){module.exports=t();}(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r});},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0});},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="dist/",n(n.s=0)}([function(e,t,n){n.r(t);n(1);function r(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r);}return n}function o(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?r(n,!0).forEach((function(t){i(e,t,n[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):r(n).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t));}));}return e}function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var a={rootMargin:"0% 50%",threshold:.5,animateClassName:"sal-animate",disabledClassName:"sal-disabled",enterEventName:"sal:in",exitEventName:"sal:out",selector:"[data-sal]",once:!0,disabled:!1},s=[],l=null,c=function(e,t){var n=new CustomEvent(e,{bubbles:!0,detail:t});t.target.dispatchEvent(n);},u=function(){document.body.classList.add(a.disabledClassName);},f=function(){return a.disabled||"function"==typeof a.disabled&&a.disabled()},d=function(e,t){e.forEach((function(e){e.intersectionRatio>=a.threshold?(!function(e){e.target.classList.add(a.animateClassName),c(a.enterEventName,e);}(e),a.once&&t.unobserve(e.target)):a.once||function(e){e.target.classList.remove(a.animateClassName),c(a.exitEventName,e);}(e);}));},b=function(){u(),l.disconnect(),l=null;},p=function(){document.body.classList.remove(a.disabledClassName),l=new IntersectionObserver(d,{rootMargin:a.rootMargin,threshold:a.threshold}),(s=[].filter.call(document.querySelectorAll(a.selector),(function(e){return !function(e){return e.classList.contains(a.animateClassName)}(e,a.animateClassName)}))).forEach((function(e){return l.observe(e)}));};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a;if(e!==a&&(a=o({},a,{},e)),!window.IntersectionObserver)throw u(),Error("\n      Your browser does not support IntersectionObserver!\n      Get a polyfill from here:\n      https://github.com/w3c/IntersectionObserver/tree/master/polyfill\n    ");return f()?u():p(),{elements:s,disable:b,enable:p}};},function(e,t,n){}]).default}));
+    !function(e,t){module.exports=t();}(commonjsGlobal,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r});},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0});},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="dist/",n(n.s=0)}([function(e,t,n){n.r(t);n(1);function r(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r);}return n}function o(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?r(n,!0).forEach((function(t){i(e,t,n[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):r(n).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t));}));}return e}function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var a="Sal was not initialised! Probably it is used in SSR.",s="Your browser does not support IntersectionObserver!\nGet a polyfill from here:\nhttps://github.com/w3c/IntersectionObserver/tree/master/polyfill",l={rootMargin:"0% 50%",threshold:.5,animateClassName:"sal-animate",disabledClassName:"sal-disabled",enterEventName:"sal:in",exitEventName:"sal:out",selector:"[data-sal]",once:!0,disabled:!1},u=[],c=null,f=function(e,t){var n=new CustomEvent(e,{bubbles:!0,detail:t});t.target.dispatchEvent(n);},d=function(){document.body.classList.add(l.disabledClassName);},b=function(){return l.disabled||"function"==typeof l.disabled&&l.disabled()},p=function(e,t){e.forEach((function(e){e.intersectionRatio>=l.threshold?(!function(e){e.target.classList.add(l.animateClassName),f(l.enterEventName,e);}(e),l.once&&t.unobserve(e.target)):l.once||function(e){e.target.classList.remove(l.animateClassName),f(l.exitEventName,e);}(e);}));},m=function(){d(),c.disconnect(),c=null;},y=function(){document.body.classList.remove(l.disabledClassName),c=new IntersectionObserver(p,{rootMargin:l.rootMargin,threshold:l.threshold}),(u=[].filter.call(document.querySelectorAll(l.selector),(function(e){return !function(e){return e.classList.contains(l.animateClassName)}(e,l.animateClassName)}))).forEach((function(e){return c.observe(e)}));};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:l;if(e!==l&&(l=o({},l,{},e)),"undefined"==typeof window)return console.warn(a),{elements:u,disable:m,enable:y};if(!window.IntersectionObserver)throw d(),Error(s);return b()?d():y(),{elements:u,disable:m,enable:y}};},function(e,t,n){}]).default}));
 
     });
 
@@ -20164,7 +20208,7 @@ var app = (function () {
     			p = element("p");
     			t0 = text("~ ");
     			t1 = text(t1_value);
-    			add_location(p, file$h, 91, 12, 2114);
+    			add_location(p, file$h, 91, 12, 2112);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -20240,17 +20284,17 @@ var app = (function () {
     			button = element("button");
     			t8 = text(/*buttonText*/ ctx[5]);
     			attr_dev(h1, "class", "title p-marker svelte-s4kz8s");
-    			add_location(h1, file$h, 86, 4, 1890);
+    			add_location(h1, file$h, 86, 4, 1888);
     			attr_dev(h2, "class", "price alegreya svelte-s4kz8s");
-    			add_location(h2, file$h, 87, 4, 1933);
+    			add_location(h2, file$h, 87, 4, 1931);
     			attr_dev(p, "class", "description alegreya svelte-s4kz8s");
-    			add_location(p, file$h, 88, 4, 1983);
+    			add_location(p, file$h, 88, 4, 1981);
     			attr_dev(div0, "class", "bullets alegreya svelte-s4kz8s");
-    			add_location(div0, file$h, 89, 4, 2037);
+    			add_location(div0, file$h, 89, 4, 2035);
     			attr_dev(button, "class", button_class_value = "" + ((/*isInCart*/ ctx[4] ? "remove" : "add") + " button alegreya" + " svelte-s4kz8s"));
-    			add_location(button, file$h, 94, 4, 2163);
+    			add_location(button, file$h, 94, 4, 2161);
     			attr_dev(div1, "class", "container sg-green svelte-s4kz8s");
-    			add_location(div1, file$h, 85, 0, 1853);
+    			add_location(div1, file$h, 85, 0, 1851);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -20350,7 +20394,7 @@ var app = (function () {
     			description,
     			currency: "usd",
     			quantity: 1,
-    			images: [images.main]
+    			images: images.main
     		};
 
     		$$invalidate(4, isInCart = !isInCart);
@@ -20513,11 +20557,66 @@ var app = (function () {
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[6] = list[i];
+    	child_ctx[8] = i;
     	return child_ctx;
     }
 
-    // (73:8) {#each photos.examples as item}
-    function create_each_block_1(ctx) {
+    function get_each_context_2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[6] = list[i];
+    	return child_ctx;
+    }
+
+    function get_each_context_3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[6] = list[i];
+    	return child_ctx;
+    }
+
+    // (70:8) {#each photos.main as item}
+    function create_each_block_3(ctx) {
+    	let div;
+    	let img;
+    	let img_src_value;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img = element("img");
+    			if (img.src !== (img_src_value = /*item*/ ctx[6])) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "SRG photography image");
+    			attr_dev(img, "class", "svelte-pp3cxg");
+    			add_location(img, file$i, 71, 16, 2146);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-pp3cxg");
+    			add_location(div, file$i, 70, 12, 2084);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*photos*/ 1 && img.src !== (img_src_value = /*item*/ ctx[6])) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_3.name,
+    		type: "each",
+    		source: "(70:8) {#each photos.main as item}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (75:8) {#each photos.examples as item}
+    function create_each_block_2(ctx) {
     	let div;
     	let img0;
     	let img0_src_value;
@@ -20536,13 +20635,13 @@ var app = (function () {
     			if (img0.src !== (img0_src_value = /*item*/ ctx[6].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
     			attr_dev(img0, "class", "svelte-pp3cxg");
-    			add_location(img0, file$i, 74, 16, 2278);
+    			add_location(img0, file$i, 76, 16, 2323);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[6].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
     			attr_dev(img1, "class", "svelte-pp3cxg");
-    			add_location(img1, file$i, 75, 16, 2348);
+    			add_location(img1, file$i, 77, 16, 2393);
     			attr_dev(div, "class", "swiper-slide svelte-pp3cxg");
-    			add_location(div, file$i, 73, 12, 2235);
+    			add_location(div, file$i, 75, 12, 2280);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20567,16 +20666,68 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1.name,
+    		id: create_each_block_2.name,
     		type: "each",
-    		source: "(73:8) {#each photos.examples as item}",
+    		source: "(75:8) {#each photos.examples as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (89:8) {#each photos.examples as item, i}
+    // (88:8) {#each photos.main as item, i}
+    function create_each_block_1(ctx) {
+    	let div;
+    	let img;
+    	let img_src_value;
+    	let dispose;
+
+    	function click_handler(...args) {
+    		return /*click_handler*/ ctx[4](/*i*/ ctx[8], ...args);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img = element("img");
+    			if (img.src !== (img_src_value = /*item*/ ctx[6])) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "SRG photography image");
+    			attr_dev(img, "class", "svelte-pp3cxg");
+    			add_location(img, file$i, 89, 16, 2881);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-pp3cxg");
+    			add_location(div, file$i, 88, 12, 2771);
+    		},
+    		m: function mount(target, anchor, remount) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
+    			if (remount) dispose();
+    			dispose = listen_dev(div, "click", click_handler, false, false, false);
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*photos*/ 1 && img.src !== (img_src_value = /*item*/ ctx[6])) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(88:8) {#each photos.main as item, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (93:8) {#each photos.examples as item, i}
     function create_each_block$5(ctx) {
     	let div;
     	let img0;
@@ -20601,13 +20752,13 @@ var app = (function () {
     			if (img0.src !== (img0_src_value = /*item*/ ctx[6].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
     			attr_dev(img0, "class", "svelte-pp3cxg");
-    			add_location(img0, file$i, 90, 16, 3018);
+    			add_location(img0, file$i, 94, 16, 3111);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[6].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
     			attr_dev(img1, "class", "svelte-pp3cxg");
-    			add_location(img1, file$i, 91, 16, 3088);
+    			add_location(img1, file$i, 95, 16, 3181);
     			attr_dev(div, "class", "swiper-slide svelte-pp3cxg");
-    			add_location(div, file$i, 89, 12, 2925);
+    			add_location(div, file$i, 93, 12, 3018);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20639,7 +20790,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(89:8) {#each photos.examples as item, i}",
+    		source: "(93:8) {#each photos.examples as item, i}",
     		ctx
     	});
 
@@ -20647,26 +20798,35 @@ var app = (function () {
     }
 
     function create_fragment$j(ctx) {
-    	let div8;
-    	let div4;
-    	let div1;
+    	let div6;
+    	let div3;
     	let div0;
-    	let img0;
-    	let img0_src_value;
     	let t0;
     	let t1;
-    	let div2;
+    	let div1;
     	let t2;
-    	let div3;
+    	let div2;
     	let t3;
-    	let div7;
-    	let div6;
     	let div5;
-    	let img1;
-    	let img1_src_value;
+    	let div4;
     	let t4;
-    	let dispose;
-    	let each_value_1 = /*photos*/ ctx[0].examples;
+    	let each_value_3 = /*photos*/ ctx[0].main;
+    	validate_each_argument(each_value_3);
+    	let each_blocks_3 = [];
+
+    	for (let i = 0; i < each_value_3.length; i += 1) {
+    		each_blocks_3[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+    	}
+
+    	let each_value_2 = /*photos*/ ctx[0].examples;
+    	validate_each_argument(each_value_2);
+    	let each_blocks_2 = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks_2[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    	}
+
+    	let each_value_1 = /*photos*/ ctx[0].main;
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -20684,99 +20844,140 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div8 = element("div");
-    			div4 = element("div");
-    			div1 = element("div");
+    			div6 = element("div");
+    			div3 = element("div");
     			div0 = element("div");
-    			img0 = element("img");
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				each_blocks_3[i].c();
+    			}
+
     			t0 = space();
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].c();
+    			}
+
+    			t1 = space();
+    			div1 = element("div");
+    			t2 = space();
+    			div2 = element("div");
+    			t3 = space();
+    			div5 = element("div");
+    			div4 = element("div");
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t1 = space();
-    			div2 = element("div");
-    			t2 = space();
-    			div3 = element("div");
-    			t3 = space();
-    			div7 = element("div");
-    			div6 = element("div");
-    			div5 = element("div");
-    			img1 = element("img");
     			t4 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			if (img0.src !== (img0_src_value = /*photos*/ ctx[0].main)) attr_dev(img0, "src", img0_src_value);
-    			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-pp3cxg");
-    			add_location(img0, file$i, 70, 16, 2110);
-    			attr_dev(div0, "class", "swiper-slide swiper-slide__main svelte-pp3cxg");
-    			add_location(div0, file$i, 69, 12, 2048);
-    			attr_dev(div1, "class", "swiper-wrapper");
-    			add_location(div1, file$i, 68, 8, 2007);
-    			attr_dev(div2, "class", "swiper-button-next svelte-pp3cxg");
-    			add_location(div2, file$i, 80, 8, 2491);
-    			attr_dev(div3, "class", "swiper-button-prev svelte-pp3cxg");
-    			add_location(div3, file$i, 81, 8, 2538);
-    			attr_dev(div4, "class", "swiper-container gallery-top");
-    			add_location(div4, file$i, 67, 4, 1956);
-    			if (img1.src !== (img1_src_value = /*photos*/ ctx[0].main)) attr_dev(img1, "src", img1_src_value);
-    			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-pp3cxg");
-    			add_location(img1, file$i, 86, 16, 2797);
-    			attr_dev(div5, "class", "swiper-slide swiper-slide__main svelte-pp3cxg");
-    			add_location(div5, file$i, 85, 12, 2687);
-    			attr_dev(div6, "class", "swiper-wrapper");
-    			add_location(div6, file$i, 84, 8, 2646);
-    			attr_dev(div7, "class", "swiper-container gallery-thumbs svelte-pp3cxg");
-    			add_location(div7, file$i, 83, 4, 2592);
-    			attr_dev(div8, "class", "wrapper svelte-pp3cxg");
-    			add_location(div8, file$i, 66, 0, 1930);
+    			attr_dev(div0, "class", "swiper-wrapper");
+    			add_location(div0, file$i, 68, 8, 2007);
+    			attr_dev(div1, "class", "swiper-button-next svelte-pp3cxg");
+    			add_location(div1, file$i, 82, 8, 2536);
+    			attr_dev(div2, "class", "swiper-button-prev svelte-pp3cxg");
+    			add_location(div2, file$i, 83, 8, 2583);
+    			attr_dev(div3, "class", "swiper-container gallery-top");
+    			add_location(div3, file$i, 67, 4, 1956);
+    			attr_dev(div4, "class", "swiper-wrapper");
+    			add_location(div4, file$i, 86, 8, 2691);
+    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-pp3cxg");
+    			add_location(div5, file$i, 85, 4, 2637);
+    			attr_dev(div6, "class", "wrapper svelte-pp3cxg");
+    			add_location(div6, file$i, 66, 0, 1930);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
-    		m: function mount(target, anchor, remount) {
-    			insert_dev(target, div8, anchor);
-    			append_dev(div8, div4);
-    			append_dev(div4, div1);
-    			append_dev(div1, div0);
-    			append_dev(div0, img0);
-    			append_dev(div1, t0);
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, div3);
+    			append_dev(div3, div0);
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				each_blocks_3[i].m(div0, null);
+    			}
+
+    			append_dev(div0, t0);
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].m(div0, null);
+    			}
+
+    			append_dev(div3, t1);
+    			append_dev(div3, div1);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div6, t3);
+    			append_dev(div6, div5);
+    			append_dev(div5, div4);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(div1, null);
+    				each_blocks_1[i].m(div4, null);
     			}
 
-    			append_dev(div4, t1);
-    			append_dev(div4, div2);
-    			append_dev(div4, t2);
-    			append_dev(div4, div3);
-    			append_dev(div8, t3);
-    			append_dev(div8, div7);
-    			append_dev(div7, div6);
-    			append_dev(div6, div5);
-    			append_dev(div5, img1);
-    			append_dev(div6, t4);
+    			append_dev(div4, t4);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div6, null);
+    				each_blocks[i].m(div4, null);
     			}
-
-    			if (remount) dispose();
-    			dispose = listen_dev(div5, "click", /*click_handler*/ ctx[4], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*photos*/ 1 && img0.src !== (img0_src_value = /*photos*/ ctx[0].main)) {
-    				attr_dev(img0, "src", img0_src_value);
+    			if (dirty & /*photos*/ 1) {
+    				each_value_3 = /*photos*/ ctx[0].main;
+    				validate_each_argument(each_value_3);
+    				let i;
+
+    				for (i = 0; i < each_value_3.length; i += 1) {
+    					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+    					if (each_blocks_3[i]) {
+    						each_blocks_3[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_3[i] = create_each_block_3(child_ctx);
+    						each_blocks_3[i].c();
+    						each_blocks_3[i].m(div0, t0);
+    					}
+    				}
+
+    				for (; i < each_blocks_3.length; i += 1) {
+    					each_blocks_3[i].d(1);
+    				}
+
+    				each_blocks_3.length = each_value_3.length;
     			}
 
     			if (dirty & /*photos*/ 1) {
-    				each_value_1 = /*photos*/ ctx[0].examples;
+    				each_value_2 = /*photos*/ ctx[0].examples;
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks_2[i]) {
+    						each_blocks_2[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_2[i] = create_each_block_2(child_ctx);
+    						each_blocks_2[i].c();
+    						each_blocks_2[i].m(div0, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_2.length; i += 1) {
+    					each_blocks_2[i].d(1);
+    				}
+
+    				each_blocks_2.length = each_value_2.length;
+    			}
+
+    			if (dirty & /*galleryTop, index, photos*/ 7) {
+    				each_value_1 = /*photos*/ ctx[0].main;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -20788,7 +20989,7 @@ var app = (function () {
     					} else {
     						each_blocks_1[i] = create_each_block_1(child_ctx);
     						each_blocks_1[i].c();
-    						each_blocks_1[i].m(div1, null);
+    						each_blocks_1[i].m(div4, t4);
     					}
     				}
 
@@ -20797,10 +20998,6 @@ var app = (function () {
     				}
 
     				each_blocks_1.length = each_value_1.length;
-    			}
-
-    			if (dirty & /*photos*/ 1 && img1.src !== (img1_src_value = /*photos*/ ctx[0].main)) {
-    				attr_dev(img1, "src", img1_src_value);
     			}
 
     			if (dirty & /*galleryTop, index, photos*/ 7) {
@@ -20816,7 +21013,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$5(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div6, null);
+    						each_blocks[i].m(div4, null);
     					}
     				}
 
@@ -20830,10 +21027,11 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div8);
+    			if (detaching) detach_dev(div6);
+    			destroy_each(each_blocks_3, detaching);
+    			destroy_each(each_blocks_2, detaching);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
-    			dispose();
     		}
     	};
 
@@ -20884,8 +21082,8 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("Preset_carousel", $$slots, []);
 
-    	const click_handler = () => {
-    		galleryTop[index].slideTo(0);
+    	const click_handler = i => {
+    		galleryTop[index].slideTo(i);
     	};
 
     	const click_handler_1 = i => {
@@ -20967,7 +21165,7 @@ var app = (function () {
       bullets: ["works best with yellows and reds or pinks", "great for a warm skin tone"],
       amount: 600,
       images: {
-        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
+        main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg"],
         examples: [{
           before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/IMG_9686_Original-min_yjnt8d.jpg",
           after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588566994/media/IMG_9686_Original_HEIC-min_cy11wc.jpg"
@@ -20991,7 +21189,7 @@ var app = (function () {
       bullets: ["works best with oranges and greens", "enhances blue to appear teal"],
       amount: 600,
       images: {
-        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
+        main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg"],
         examples: [{
           before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_2638123-min_ggrrhv.jpg",
           after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588568913/media/IMG_2638-min_d8tmfd.jpg"
@@ -21015,7 +21213,7 @@ var app = (function () {
       bullets: ["works best with blues and orange or browns", "lower saturation of color"],
       amount: 600,
       images: {
-        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
+        main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg"],
         examples: [{
           before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_8218-min_pr21ax.jpg",
           after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588567762/media/IMG_8218_Original-min_emlxb9.jpg"
@@ -21039,7 +21237,7 @@ var app = (function () {
       bullets: ["works best with bright colors and deep shadows", "brighter look"],
       amount: 600,
       images: {
-        main: "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
+        main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg"],
         examples: [{
           before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_7975_ajnwdi.jpg",
           after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2734_s2mekc.jpg"
@@ -21056,6 +21254,15 @@ var app = (function () {
           before: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_5418_q4klel.jpg",
           after: "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2735_ixmy7p.jpg"
         }]
+      }
+    }, {
+      name: "preset package",
+      description: "All 4 SRG photography presets",
+      bullets: ["rosy", "rare", "rust", "rays"],
+      amount: 2000,
+      images: {
+        main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg"],
+        examples: []
       }
     }];
 
@@ -21296,11 +21503,49 @@ var app = (function () {
     	}
     }
 
-    var V3_URL = 'https://js.stripe.com/v3';
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    }
 
-    var injectScript = function injectScript() {
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+        return arr2;
+      }
+    }
+
+    function _iterableToArray(iter) {
+      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+    }
+
+    function _nonIterableSpread() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
+
+    var V3_URL = 'https://js.stripe.com/v3';
+    var V3_URL_REGEX = /^https:\/\/js\.stripe\.com\/v3\/?(\?.*)?$/;
+    var EXISTING_SCRIPT_MESSAGE = 'loadStripe.setLoadParameters was called but an existing Stripe.js script already exists in the document; existing script parameters will be used';
+    var findScript = function findScript() {
+      var scripts = document.querySelectorAll("script[src^=\"".concat(V3_URL, "\"]"));
+
+      for (var i = 0; i < scripts.length; i++) {
+        var script = scripts[i];
+
+        if (!V3_URL_REGEX.test(script.src)) {
+          continue;
+        }
+
+        return script;
+      }
+
+      return null;
+    };
+
+    var injectScript = function injectScript(params) {
+      var queryString = params && !params.advancedFraudSignals ? '?advancedFraudSignals=false' : '';
       var script = document.createElement('script');
-      script.src = V3_URL;
+      script.src = "".concat(V3_URL).concat(queryString);
       var headOrBody = document.head || document.body;
 
       if (!headOrBody) {
@@ -21318,40 +21563,80 @@ var app = (function () {
 
       stripe._registerWrapper({
         name: 'stripe-js',
-        version: "1.3.2"
+        version: "1.5.0"
       });
-    }; // Execute our own script injection after a tick to give users time to
-    // do their own script injection.
+    };
 
+    var stripePromise = null;
+    var loadScript = function loadScript(params) {
+      // Ensure that we only attempt to load Stripe.js at most once
+      if (stripePromise !== null) {
+        return stripePromise;
+      }
 
-    var stripePromise = Promise.resolve().then(function () {
-      if (typeof window === 'undefined') {
-        // Resolve to null when imported server side. This makes the module
-        // safe to import in an isomorphic code base.
+      stripePromise = new Promise(function (resolve, reject) {
+        if (typeof window === 'undefined') {
+          // Resolve to null when imported server side. This makes the module
+          // safe to import in an isomorphic code base.
+          resolve(null);
+          return;
+        }
+
+        if (window.Stripe && params) {
+          console.warn(EXISTING_SCRIPT_MESSAGE);
+        }
+
+        if (window.Stripe) {
+          resolve(window.Stripe);
+          return;
+        }
+
+        try {
+          var script = findScript();
+
+          if (script && params) {
+            console.warn(EXISTING_SCRIPT_MESSAGE);
+          } else if (!script) {
+            script = injectScript(params);
+          }
+
+          script.addEventListener('load', function () {
+            if (window.Stripe) {
+              resolve(window.Stripe);
+            } else {
+              reject(new Error('Stripe.js not available'));
+            }
+          });
+          script.addEventListener('error', function () {
+            reject(new Error('Failed to load Stripe.js'));
+          });
+        } catch (error) {
+          reject(error);
+          return;
+        }
+      });
+      return stripePromise;
+    };
+    var initStripe = function initStripe(maybeStripe, args) {
+      if (maybeStripe === null) {
         return null;
       }
 
-      if (window.Stripe) {
-        return window.Stripe;
-      }
+      var stripe = maybeStripe.apply(void 0, _toConsumableArray(args));
+      registerWrapper(stripe);
+      return stripe;
+    };
 
-      var script = document.querySelector("script[src=\"".concat(V3_URL, "\"], script[src=\"").concat(V3_URL, "/\"]")) || injectScript();
-      return new Promise(function (resolve, reject) {
-        script.addEventListener('load', function () {
-          if (window.Stripe) {
-            resolve(window.Stripe);
-          } else {
-            reject(new Error('Stripe.js not available'));
-          }
-        });
-        script.addEventListener('error', function () {
-          reject(new Error('Failed to load Stripe.js'));
-        });
-      });
+    // own script injection.
+
+    var stripePromise$1 = Promise.resolve().then(function () {
+      return loadScript(null);
     });
     var loadCalled = false;
-    stripePromise["catch"](function (err) {
-      if (!loadCalled) console.warn(err);
+    stripePromise$1["catch"](function (err) {
+      if (!loadCalled) {
+        console.warn(err);
+      }
     });
     var loadStripe = function loadStripe() {
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -21359,14 +21644,8 @@ var app = (function () {
       }
 
       loadCalled = true;
-      return stripePromise.then(function (maybeStripe) {
-        if (maybeStripe === null) {
-          return null;
-        }
-
-        var stripe = maybeStripe.apply(void 0, args);
-        registerWrapper(stripe);
-        return stripe;
+      return stripePromise$1.then(function (maybeStripe) {
+        return initStripe(maybeStripe, args);
       });
     };
 
@@ -21418,13 +21697,13 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Proceed to checkout";
     			attr_dev(p, "class", "cart-title svelte-or1rb6");
-    			add_location(p, file$k, 69, 12, 2249);
+    			add_location(p, file$k, 69, 12, 2253);
     			attr_dev(div0, "class", "cart-title_border");
-    			add_location(div0, file$k, 70, 12, 2292);
+    			add_location(div0, file$k, 70, 12, 2296);
     			attr_dev(button, "class", "button alegreya svelte-or1rb6");
-    			add_location(button, file$k, 76, 12, 2499);
+    			add_location(button, file$k, 76, 12, 2503);
     			attr_dev(div1, "class", div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-or1rb6"));
-    			add_location(div1, file$k, 68, 8, 2100);
+    			add_location(div1, file$k, 68, 8, 2104);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div1, anchor);
@@ -21525,9 +21804,9 @@ var app = (function () {
     			t1 = text(" - $");
     			t2 = text(t2_value);
     			attr_dev(p, "class", "svelte-or1rb6");
-    			add_location(p, file$k, 73, 16, 2412);
+    			add_location(p, file$k, 73, 16, 2416);
     			attr_dev(div, "class", "cart-item svelte-or1rb6");
-    			add_location(div, file$k, 72, 12, 2372);
+    			add_location(div, file$k, 72, 12, 2376);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21589,15 +21868,15 @@ var app = (function () {
     			t3 = space();
     			if (if_block) if_block.c();
     			attr_dev(i0, "class", "fas fa-shopping-cart sg-green svelte-or1rb6");
-    			add_location(i0, file$k, 65, 13, 1890);
+    			add_location(i0, file$k, 65, 13, 1894);
     			attr_dev(i1, "class", i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-or1rb6"));
-    			add_location(i1, file$k, 65, 105, 1982);
+    			add_location(i1, file$k, 65, 105, 1986);
     			attr_dev(h2, "class", "svelte-or1rb6");
-    			add_location(h2, file$k, 65, 8, 1885);
+    			add_location(h2, file$k, 65, 8, 1889);
     			attr_dev(div0, "class", "cart-icon svelte-or1rb6");
-    			add_location(div0, file$k, 64, 4, 1832);
+    			add_location(div0, file$k, 64, 4, 1836);
     			attr_dev(div1, "class", "cart montserrat svelte-or1rb6");
-    			add_location(div1, file$k, 63, 0, 1798);
+    			add_location(div1, file$k, 63, 0, 1802);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21764,7 +22043,7 @@ var app = (function () {
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*$cart*/ 2) {
     			 sessionInfo = {
-    				success_url: "http://localhost:3000/#/store",
+    				success_url: "http://localhost:3000/#/success",
     				cancel_url: "http://localhost:3000/#/store",
     				payment_method_types: ["card"],
     				line_items: $cart
@@ -23428,9 +23707,90 @@ var app = (function () {
     	}
     }
 
+    /* src/components/store/Success.svelte generated by Svelte v3.21.0 */
+    const file$r = "src/components/store/Success.svelte";
+
+    function create_fragment$s(ctx) {
+    	let div1;
+    	let div0;
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "Thank you for shopping with SRG Photography! You should receive an email shortly with your items and confirmation of your purchase.";
+    			attr_dev(div0, "class", "success__msg svelte-rml2vu");
+    			add_location(div0, file$r, 34, 4, 770);
+    			attr_dev(div1, "class", "success alegreya svelte-rml2vu");
+    			add_location(div1, file$r, 33, 0, 735);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$s.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$s($$self, $$props, $$invalidate) {
+    	onMount(async () => {
+    		const response = await fetch("http://localhost:3000/api/sale", {
+    			method: "POST",
+    			mode: "cors",
+    			headers: { "Content-Type": "application/json" },
+    			body: JSON.stringify()
+    		});
+
+    		const data = response.json();
+    	});
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Success> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("Success", $$slots, []);
+    	$$self.$capture_state = () => ({ onMount });
+    	return [];
+    }
+
+    class Success extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$s, create_fragment$s, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Success",
+    			options,
+    			id: create_fragment$s.name
+    		});
+    	}
+    }
+
     /* src/App.svelte generated by Svelte v3.21.0 */
 
-    const file$r = "src/App.svelte";
+    const file$s = "src/App.svelte";
 
     // (36:3) <Router>
     function create_default_slot$6(ctx) {
@@ -23440,6 +23800,7 @@ var app = (function () {
     	let t3;
     	let t4;
     	let t5;
+    	let t6;
     	let current;
 
     	const route0 = new Route({
@@ -23493,6 +23854,15 @@ var app = (function () {
     		});
 
     	const route6 = new Route({
+    			props: {
+    				exact: true,
+    				path: "/success",
+    				component: Success
+    			},
+    			$$inline: true
+    		});
+
+    	const route7 = new Route({
     			props: { fallback: true, component: Home },
     			$$inline: true
     		});
@@ -23512,6 +23882,8 @@ var app = (function () {
     			create_component(route5.$$.fragment);
     			t5 = space();
     			create_component(route6.$$.fragment);
+    			t6 = space();
+    			create_component(route7.$$.fragment);
     		},
     		m: function mount(target, anchor) {
     			mount_component(route0, target, anchor);
@@ -23527,6 +23899,8 @@ var app = (function () {
     			mount_component(route5, target, anchor);
     			insert_dev(target, t5, anchor);
     			mount_component(route6, target, anchor);
+    			insert_dev(target, t6, anchor);
+    			mount_component(route7, target, anchor);
     			current = true;
     		},
     		p: noop,
@@ -23539,6 +23913,7 @@ var app = (function () {
     			transition_in(route4.$$.fragment, local);
     			transition_in(route5.$$.fragment, local);
     			transition_in(route6.$$.fragment, local);
+    			transition_in(route7.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -23549,6 +23924,7 @@ var app = (function () {
     			transition_out(route4.$$.fragment, local);
     			transition_out(route5.$$.fragment, local);
     			transition_out(route6.$$.fragment, local);
+    			transition_out(route7.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -23565,6 +23941,8 @@ var app = (function () {
     			destroy_component(route5, detaching);
     			if (detaching) detach_dev(t5);
     			destroy_component(route6, detaching);
+    			if (detaching) detach_dev(t6);
+    			destroy_component(route7, detaching);
     		}
     	};
 
@@ -23579,7 +23957,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$s(ctx) {
+    function create_fragment$t(ctx) {
     	let div1;
     	let div0;
     	let t0;
@@ -23606,9 +23984,9 @@ var app = (function () {
     			t1 = space();
     			create_component(router.$$.fragment);
     			attr_dev(div0, "class", "small");
-    			add_location(div0, file$r, 32, 2, 1000);
+    			add_location(div0, file$s, 32, 2, 1056);
     			attr_dev(div1, "id", "app");
-    			add_location(div1, file$r, 31, 1, 983);
+    			add_location(div1, file$s, 31, 1, 1039);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -23655,7 +24033,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$s.name,
+    		id: create_fragment$t.name,
     		type: "component",
     		source: "",
     		ctx
@@ -23664,7 +24042,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$s($$self, $$props, $$invalidate) {
+    function instance$t($$self, $$props, $$invalidate) {
     	onMount(async () => {
     		aos.init();
 
@@ -23694,6 +24072,7 @@ var app = (function () {
     		Contact,
     		HamburgerNav,
     		ScrollTop,
+    		Success,
     		onMount
     	});
 
@@ -23703,13 +24082,13 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$s, create_fragment$s, safe_not_equal, {});
+    		init(this, options, instance$t, create_fragment$t, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "App",
     			options,
-    			id: create_fragment$s.name
+    			id: create_fragment$t.name
     		});
     	}
     }

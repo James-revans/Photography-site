@@ -4732,9 +4732,14 @@ button.swiper-pagination-bullet {
   transform: rotate(-90deg); }
 
 [data-sal] {
-  transition-delay: 0s; }
+  transition-duration: .2s;
+  transition-duration: var(--sal-duration, 0.2s);
+  transition-delay: 0s;
+  transition-delay: var(--sal-delay, 0s);
+  transition-timing-function: ease;
+  transition-timing-function: var(--sal-easing, ease); }
 
-[data-sal], [data-sal][data-sal-duration="200"] {
+[data-sal][data-sal-duration="200"] {
   transition-duration: .2s; }
 
 [data-sal][data-sal-duration="250"] {

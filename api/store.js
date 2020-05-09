@@ -3,7 +3,6 @@
 const stripe = require("stripe")("sk_test_vO0AEr9FkLr94SVOSykpNz5M00KeRkAg2y");
 
 module.exports = async (req, res) => {
-    console.log(req.body);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
         "Access-Control-Allow-Methods",

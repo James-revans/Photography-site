@@ -61,20 +61,12 @@ export default {
 
 function serve() {
     let started = false;
-
-    return {
-        writeBundle() {
-            if (!started) {
-                started = true;
-                require("child_process").spawn(
-                    "npm",
-                    ["run", "serve", "--", "--dev"],
-                    {
-                        stdio: ["ignore", "inherit", "inherit"],
-                        shell: true,
-                    }
-                );
-            }
-        },
-    };
+    // return {writeBundle() {}}
+    if (!started) {
+        started = true;
+        require("child_process").spawn("npm", ["run", "serve", "--", "--dev"], {
+            stdio: ["ignore", "inherit", "inherit"],
+            shell: true,
+        });
+    }
 }
