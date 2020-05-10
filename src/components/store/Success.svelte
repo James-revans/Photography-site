@@ -1,15 +1,7 @@
 <script>
 import { onMount } from 'svelte';
+import cart from "shared/stores/cart.store.js";
 onMount(async() => {
-    const response = await fetch('http://localhost:3000/api/sale', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        }, 
-        body: JSON.stringify()
-    }); 
-    const data = response.json();
  
 })
 </script>
