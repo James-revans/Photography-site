@@ -16,11 +16,7 @@ const toggleAdd = () => {
         }
     isInCart = !isInCart;
     if(isInCart) {
-        if(cartItem.name === "preset package") {
-            cart.update(cart => ([cartItem]));
-        } else {
-            cart.update(cart => ([...cart, cartItem]));
-        }
+        cart.update(cart => ([...cart, cartItem]));
     } else {
         cart.update(cart => cart.filter(item => item.name !== cartItem.name));
     }

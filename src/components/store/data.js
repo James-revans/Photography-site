@@ -172,7 +172,7 @@ export const presets = [
                 },
                 {
                     before:
-                        "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_7882_ypnxzo.jpg",
+                        "https://res.cloudinary.com/savanna-photos/image/upload/v1589159949/media/IMG_7881-min_kktetu.jpg",
                     after:
                         "https://res.cloudinary.com/savanna-photos/image/upload/v1588565939/media/IMG_2731_vqeq66.jpg",
                 },
@@ -192,6 +192,7 @@ export const presets = [
         amount: 2000,
         images: {
             main: [
+                "https://res.cloudinary.com/savanna-photos/image/upload/v1589160645/media/1-COLLAGE-min_krcol9.jpg",
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",

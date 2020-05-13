@@ -1,30 +1,13 @@
 const nodemailer = require("nodemailer");
-const stripe = require("stripe")("sk_test_vO0AEr9FkLr94SVOSykpNz5M00KeRkAg2y");
-const endpointSecret = "whsec_3QBUvIDUSuOYH0cB89ubxgbVLVBshkw2";
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const endpointSecret = process.env.WEBHOOK_SECRET;
+const emailPass = process.env.EMAIL_PASS;
 
 const presets = {
     rust: "https://f002.backblazeb2.com/file/srg-presets/1.dng",
     rays: "https://f002.backblazeb2.com/file/srg-presets/2.dng",
     rosy: "https://f002.backblazeb2.com/file/srg-presets/3.dng",
     rare: "https://f002.backblazeb2.com/file/srg-presets/4.dng",
-    "preset package": [
-        {
-            name: "rust",
-            url: "https://f002.backblazeb2.com/file/srg-presets/1.dng",
-        },
-        {
-            name: "rays",
-            url: "https://f002.backblazeb2.com/file/srg-presets/2.dng",
-        },
-        {
-            name: "rosy",
-            url: "https://f002.backblazeb2.com/file/srg-presets/3.dng",
-        },
-        {
-            name: "rare",
-            url: "https://f002.backblazeb2.com/file/srg-presets/4.dng",
-        },
-    ],
 };
 
 module.exports = async (req, res) => {
@@ -40,33 +23,29 @@ module.exports = async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "evans.james00@gmail.com",
-            pass: "!Qudojames1$",
+            user: "donotreply.srgphoto@gmail.com",
+            pass: emailPass,
         },
     });
 
     const mailOptions = () => {
         return {
-            from: "evans.james00@gmail.com",
-            to: customerEmail,
+            from: "donotreply.srgphoto@gmail.com",
+            to: [customerEmail, "savannargrunzke@gmail.com"],
             subject: "SRG Photo Presets",
             text: "That was easy!",
             html: (() => {
-                return (
-                    `
+                return `
                     <h2>Thank you for shopping with SRG Photography!</h2>
-                    <h4>All download links are one-time-downloads. If you have any issues, please contact <a href="mailto:savannagrunzke@gmail.com">savannagrunzke@gmail.com</a> </h4>
-                    <p>Download your preset(s) here: 
-                    ` + `${items}`
-                );
+                    <h4>All download links are one-time-downloads. If you have any issues, please contact <a href="mailto:savannargrunzke@gmail.com">savannargrunzke@gmail.com</a> </h4>
+                    <p>Download your preset(s) here: ${items}</p>
+                    <p>See how to use the presets <a href="https://srgphoto.video/#/instructions">here</a></p>
+                    `;
             })(),
         };
-
-        // <a href="${rosy}">Rosy</a> <a href="${rays}">Rays</a> <a href="${rust}">Rust</a> <a href="${rare}">Rare</a></p>
     };
 
     const sendMail = () => {
-        console.log(items);
         transporter.sendMail(mailOptions(), function (error, info) {
             if (error) {
                 console.log(error);
@@ -78,7 +57,7 @@ module.exports = async (req, res) => {
         });
     };
 
-    const getCustomerInfo = (session) => {
+    const getCustomerInfo = session => {
         try {
             stripe.customers.retrieve(session.customer, function (
                 err,
@@ -93,7 +72,7 @@ module.exports = async (req, res) => {
         }
     };
 
-    req.on("data", (chunk) => bodyChunks.push(chunk)).on("end", async () => {
+    req.on("data", chunk => bodyChunks.push(chunk)).on("end", async () => {
         const rawBody = Buffer.concat(bodyChunks).toString("utf8");
 
         try {
@@ -107,18 +86,17 @@ module.exports = async (req, res) => {
         }
         if (event.type === "checkout.session.completed") {
             const session = event.data.object;
-            session.display_items.forEach((item) => {
+            console.log(session);
+            session.display_items.forEach(item => {
                 if (item.custom.name === "preset package") {
-                    presets[item.custom.name].forEach((preset) => {
-                        items.push(
-                            `<a href="${preset.url}">${preset.name}</a>`
-                        );
-                    });
+                    for (let [key, val] of Object.entries(presets)) {
+                        items.push(`<a href="${val}">${key}</a>`);
+                    }
                 } else {
                     return items.push(
                         `<a href="${presets[item.custom.name]}">${
                             item.custom.name
-                        }</a>`
+                        }</a> `
                     );
                 }
             });

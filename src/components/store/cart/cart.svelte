@@ -7,15 +7,15 @@ import { loadStripe } from '@stripe/stripe-js';
 let showItems = false;
 let stripe;
 onMount(async() => {
-    stripe = await loadStripe('pk_test_LnSZ7UkQkfmtKtBr2Hdjtbtm00MLu5KDIl');
+    stripe = await loadStripe("pk_live_CRJIbnlYX9tOLYZPRZkg37Fs00X3CwXgxb");
 })
 const togglCart = () => {
     showItems = !showItems;
 }; 
  
 $: sessionInfo = {
-    success_url: 'http://localhost:3000/#/success',
-    cancel_url: 'http://localhost:3000/#/store',
+    success_url: 'https://srgphoto.video/#/success',
+    cancel_url: 'https://srgphoto.video/#/store',
     payment_method_types: ['card'],
         line_items: $cart,
 }
@@ -35,7 +35,7 @@ const proceedToCheckout = () => {
 
         async function createSession() {
             const response = await fetch(
-                'http://localhost:3000/api/store',
+                'https://srgphoto.video/api/store',
                 {
                     method: 'POST',
                     mode: 'cors',
@@ -48,6 +48,7 @@ const proceedToCheckout = () => {
             return response.json();
         }
         createSession(sessionInfo).then((data) => {
+            console.log(data);
             (async() => {
                 const {error} = await stripe.redirectToCheckout({
                     // Make the id field from the Checkout Session creation API response

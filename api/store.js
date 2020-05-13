@@ -1,6 +1,7 @@
 // Set your secret key. Remember to switch to your live secret key in production!
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-const stripe = require("stripe")("sk_test_vO0AEr9FkLr94SVOSykpNz5M00KeRkAg2y");
+// const stripe = require('stripe')('sk_test_vO0AEr9FkLr94SVOSykpNz5M00KeRkAg2y');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

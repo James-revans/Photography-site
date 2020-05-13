@@ -5,10 +5,11 @@ import Swiper from 'swiper';
 import "swiper/dist/css/swiper.min.css";
 
 export let index;
-let galleryTop;
+let galleryTop = [];
 let galleryThumbs;
-
-onMount(async () => {
+let currentIndex = 0;
+$: console.log(currentIndex);
+onMount(async () => { 
     galleryTop = new Swiper ('.gallery-top', {
         spaceBetween: 10,
         thumbs: {
@@ -33,15 +34,23 @@ onMount(async () => {
 .wrapper {
     max-width: 600px;
     width: 100%;
+} 
+.gallery-top {
+
+}
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
 }
 .swiper-slide {
     font-size: 18px;
     display: flex;
-    max-height: 500px;
-    height: 100%;
+    max-height: 600px;
+    // height: 100%;
     img {
         object-fit: cover;
-        height: 100%;
+        object-position: left bottom;
+        // height: 100%;
         width: 50%;
         margin: 0 2px;
     }
@@ -51,15 +60,16 @@ onMount(async () => {
         }
     }
 }
+
 .gallery-thumbs {
     box-sizing: border-box;
     padding: 10px 0;
-}
-.gallery-thumbs .swiper-slide {
-    opacity: 0.4;
-}
-.gallery-thumbs .swiper-slide-thumb-active {
-    opacity: 1;
+    .swiper-slide {
+        opacity: 0.4;
+    }
+    .active {
+        opacity: 1;
+    }
 }
 
 .swiper-button-prev, .swiper-button-next {
@@ -92,15 +102,16 @@ onMount(async () => {
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
+
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
         {#each photos.main as item, i}
-            <div class="swiper-slide swiper-slide__main" on:click={() => {galleryTop[index].slideTo(i)}}>
+            <div class="swiper-slide swiper-slide__main" class:active="{currentIndex === i}" on:click={() => {galleryTop[index].slideTo(i); currentIndex = i}}>
                 <img src="{item}" alt="SRG photography image">
             </div>
         {/each}
         {#each photos.examples as item, i}
-            <div class="swiper-slide" on:click={() => {galleryTop[index].slideTo(i+1)}}>
+            <div class="swiper-slide" class:active="{currentIndex === i+1}"  on:click={() => {galleryTop[index].slideTo(i+1); currentIndex = i+1}}>
                 <img src="{item.before}" alt="SRG photography image">
                 <img src="{item.after}" alt="SRG photography image">
             </div>
