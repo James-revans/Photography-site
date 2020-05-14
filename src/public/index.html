@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bundle.css"></link>
+
+    <link rel="stylesheet" href="bundle.js.css"></link>
+    <link rel="icon" type="image/jpg" href="/images/SavLogo.jpg" />
+    <script src="https://kit.fontawesome.com/1d402ad3cf.js"></script>
+    <title>SRG | Photo & Video</title>
+</head>
+<body>
+    <form name="contact" netlify data-netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="phone" name="phone" />
+        <select name="package">
+        <option value="" disabled selected
+            >Select a package ($100 minimum)</option
+        >
+        <option value="portrait">portrait</option>
+        <option value="family">family</option>
+        <option value="event">event</option>
+        <option value="misc">misc</option>
+        </select>
+        <textarea name="message"></textarea>
+    </form>
+    <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+    <script src="bundle.js"></script>
+</body>
+</html>

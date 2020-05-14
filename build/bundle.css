@@ -3300,6 +3300,11 @@ template {
 body, html {
   font-size: 16px; }
 
+:root {
+  --sg-green: #445b47;
+  --sg-cream: #fbfbe7;
+  --sg-tan: #f0deb4; }
+
 .bg-white {
   background: white;
   color: black; }
@@ -3309,13 +3314,13 @@ body, html {
   color: white; }
 
 .sg-green {
-  color: #445B47; }
+  color: #445b47; }
 
 .sg-cream {
-  color: #FBFBE7; }
+  color: #fbfbe7; }
 
 .sg-tan {
-  color: #F0DEB4; }
+  color: #f0deb4; }
 
 .raleway {
   font-family: 'Raleway', sans-serif; }
@@ -4727,9 +4732,14 @@ button.swiper-pagination-bullet {
   transform: rotate(-90deg); }
 
 [data-sal] {
-  transition-delay: 0s; }
+  transition-duration: .2s;
+  transition-duration: var(--sal-duration, 0.2s);
+  transition-delay: 0s;
+  transition-delay: var(--sal-delay, 0s);
+  transition-timing-function: ease;
+  transition-timing-function: var(--sal-easing, ease); }
 
-[data-sal], [data-sal][data-sal-duration="200"] {
+[data-sal][data-sal-duration="200"] {
   transition-duration: .2s; }
 
 [data-sal][data-sal-duration="250"] {

@@ -1,5 +1,5 @@
 <script>
-import { Link } from 'svero';  
+import { Link } from 'yrv';  
 import NavLinks from './NavLinks.svelte';  
 import { fly, fade } from 'svelte/transition';
 import "hamburgers/dist/hamburgers.css";
@@ -51,7 +51,7 @@ function showMobileNav() {
 @import '../../assets/scss/mixins/mixins';
 
 .hamburger-inner, .hamburger-inner:before, .hamburger-inner:after{
-    background-color: #F0DEB4;
+    background-color: var(--sg-tan);
 }
 
 .is-active {
@@ -101,7 +101,7 @@ function showMobileNav() {
         padding-right: 5px;
         padding-left: 5px;
         padding-top: 60px;    
-        background: rgb(255, 255, 246);
+        background-color: var(--sg-cream);
         // opacity: 0.73;
         height: 100%;
         @include break-up('md') {
