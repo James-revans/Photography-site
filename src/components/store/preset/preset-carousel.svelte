@@ -48,24 +48,29 @@ onMount(async () => {
     max-height: 600px;
     // height: 100%;
     img {
-        object-fit: cover;
-        object-position: left bottom;
+        object-fit: contain;
         // height: 100%;
         width: 50%;
         margin: 0 2px;
+        image-orientation: 0deg;
     }
     &__main {
         img {
             width: 100%;
+            image-orientation: 0deg;
         }
     }
 }
 
 .gallery-thumbs {
+    cursor: pointer;
     box-sizing: border-box;
     padding: 10px 0;
     .swiper-slide {
         opacity: 0.4;
+        max-width: 150px;
+        max-height: 150px;
+        // height: auto;
     }
     .active {
         opacity: 1;

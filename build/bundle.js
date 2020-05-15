@@ -20572,7 +20572,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (72:8) {#each photos.main as item}
+    // (76:8) {#each photos.main as item}
     function create_each_block_3(ctx) {
     	let div;
     	let img;
@@ -20584,10 +20584,10 @@ var app = (function () {
     			img = element("img");
     			if (img.src !== (img_src_value = /*item*/ ctx[7])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "SRG photography image");
-    			attr_dev(img, "class", "svelte-1ujetm9");
-    			add_location(img, file$i, 73, 16, 2251);
-    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-1ujetm9");
-    			add_location(div, file$i, 72, 12, 2189);
+    			attr_dev(img, "class", "svelte-13ka4pf");
+    			add_location(img, file$i, 77, 16, 2341);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-13ka4pf");
+    			add_location(div, file$i, 76, 12, 2279);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20607,14 +20607,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(72:8) {#each photos.main as item}",
+    		source: "(76:8) {#each photos.main as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:8) {#each photos.examples as item}
+    // (81:8) {#each photos.examples as item}
     function create_each_block_2(ctx) {
     	let div;
     	let img0;
@@ -20633,14 +20633,14 @@ var app = (function () {
     			t1 = space();
     			if (img0.src !== (img0_src_value = /*item*/ ctx[7].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-1ujetm9");
-    			add_location(img0, file$i, 78, 16, 2428);
+    			attr_dev(img0, "class", "svelte-13ka4pf");
+    			add_location(img0, file$i, 82, 16, 2518);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[7].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-1ujetm9");
-    			add_location(img1, file$i, 79, 16, 2498);
-    			attr_dev(div, "class", "swiper-slide svelte-1ujetm9");
-    			add_location(div, file$i, 77, 12, 2385);
+    			attr_dev(img1, "class", "svelte-13ka4pf");
+    			add_location(img1, file$i, 83, 16, 2588);
+    			attr_dev(div, "class", "swiper-slide svelte-13ka4pf");
+    			add_location(div, file$i, 81, 12, 2475);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20667,14 +20667,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(77:8) {#each photos.examples as item}",
+    		source: "(81:8) {#each photos.examples as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:8) {#each photos.main as item, i}
+    // (95:8) {#each photos.main as item, i}
     function create_each_block_1(ctx) {
     	let div;
     	let img;
@@ -20691,11 +20691,11 @@ var app = (function () {
     			img = element("img");
     			if (img.src !== (img_src_value = /*item*/ ctx[7])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "SRG photography image");
-    			attr_dev(img, "class", "svelte-1ujetm9");
-    			add_location(img, file$i, 92, 16, 3041);
-    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-1ujetm9");
+    			attr_dev(img, "class", "svelte-13ka4pf");
+    			add_location(img, file$i, 96, 16, 3131);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-13ka4pf");
     			toggle_class(div, "active", /*currentIndex*/ ctx[3] === /*i*/ ctx[9]);
-    			add_location(div, file$i, 91, 12, 2877);
+    			add_location(div, file$i, 95, 12, 2967);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20724,14 +20724,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(91:8) {#each photos.main as item, i}",
+    		source: "(95:8) {#each photos.main as item, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:8) {#each photos.examples as item, i}
+    // (100:8) {#each photos.examples as item, i}
     function create_each_block$5(ctx) {
     	let div;
     	let img0;
@@ -20755,15 +20755,15 @@ var app = (function () {
     			t1 = space();
     			if (img0.src !== (img0_src_value = /*item*/ ctx[7].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-1ujetm9");
-    			add_location(img0, file$i, 97, 16, 3330);
+    			attr_dev(img0, "class", "svelte-13ka4pf");
+    			add_location(img0, file$i, 101, 16, 3420);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[7].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-1ujetm9");
-    			add_location(img1, file$i, 98, 16, 3400);
-    			attr_dev(div, "class", "swiper-slide svelte-1ujetm9");
+    			attr_dev(img1, "class", "svelte-13ka4pf");
+    			add_location(img1, file$i, 102, 16, 3490);
+    			attr_dev(div, "class", "swiper-slide svelte-13ka4pf");
     			toggle_class(div, "active", /*currentIndex*/ ctx[3] === /*i*/ ctx[9] + 1);
-    			add_location(div, file$i, 96, 12, 3178);
+    			add_location(div, file$i, 100, 12, 3268);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20799,7 +20799,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(96:8) {#each photos.examples as item, i}",
+    		source: "(100:8) {#each photos.examples as item, i}",
     		ctx
     	});
 
@@ -20885,20 +20885,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "swiper-wrapper svelte-1ujetm9");
-    			add_location(div0, file$i, 70, 8, 2112);
-    			attr_dev(div1, "class", "swiper-button-next svelte-1ujetm9");
-    			add_location(div1, file$i, 84, 8, 2641);
-    			attr_dev(div2, "class", "swiper-button-prev svelte-1ujetm9");
-    			add_location(div2, file$i, 85, 8, 2688);
+    			attr_dev(div0, "class", "swiper-wrapper svelte-13ka4pf");
+    			add_location(div0, file$i, 74, 8, 2202);
+    			attr_dev(div1, "class", "swiper-button-next svelte-13ka4pf");
+    			add_location(div1, file$i, 88, 8, 2731);
+    			attr_dev(div2, "class", "swiper-button-prev svelte-13ka4pf");
+    			add_location(div2, file$i, 89, 8, 2778);
     			attr_dev(div3, "class", "swiper-container gallery-top");
-    			add_location(div3, file$i, 69, 4, 2061);
-    			attr_dev(div4, "class", "swiper-wrapper svelte-1ujetm9");
-    			add_location(div4, file$i, 89, 8, 2797);
-    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-1ujetm9");
-    			add_location(div5, file$i, 88, 4, 2743);
-    			attr_dev(div6, "class", "wrapper svelte-1ujetm9");
-    			add_location(div6, file$i, 68, 0, 2035);
+    			add_location(div3, file$i, 73, 4, 2151);
+    			attr_dev(div4, "class", "swiper-wrapper svelte-13ka4pf");
+    			add_location(div4, file$i, 93, 8, 2887);
+    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-13ka4pf");
+    			add_location(div5, file$i, 92, 4, 2833);
+    			attr_dev(div6, "class", "wrapper svelte-13ka4pf");
+    			add_location(div6, file$i, 72, 0, 2125);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21727,13 +21727,13 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Proceed to checkout";
     			attr_dev(p, "class", "cart-title svelte-or1rb6");
-    			add_location(p, file$k, 70, 12, 2284);
+    			add_location(p, file$k, 70, 12, 2287);
     			attr_dev(div0, "class", "cart-title_border");
-    			add_location(div0, file$k, 71, 12, 2327);
+    			add_location(div0, file$k, 71, 12, 2330);
     			attr_dev(button, "class", "button alegreya svelte-or1rb6");
-    			add_location(button, file$k, 77, 12, 2534);
+    			add_location(button, file$k, 77, 12, 2537);
     			attr_dev(div1, "class", div1_class_value = "" + ((/*showItems*/ ctx[0] ? "items-show" : "items-hide") + " items" + " svelte-or1rb6"));
-    			add_location(div1, file$k, 69, 8, 2135);
+    			add_location(div1, file$k, 69, 8, 2138);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div1, anchor);
@@ -21834,9 +21834,9 @@ var app = (function () {
     			t1 = text(" - $");
     			t2 = text(t2_value);
     			attr_dev(p, "class", "svelte-or1rb6");
-    			add_location(p, file$k, 74, 16, 2447);
+    			add_location(p, file$k, 74, 16, 2450);
     			attr_dev(div, "class", "cart-item svelte-or1rb6");
-    			add_location(div, file$k, 73, 12, 2407);
+    			add_location(div, file$k, 73, 12, 2410);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21898,15 +21898,15 @@ var app = (function () {
     			t3 = space();
     			if (if_block) if_block.c();
     			attr_dev(i0, "class", "fas fa-shopping-cart sg-green svelte-or1rb6");
-    			add_location(i0, file$k, 66, 13, 1925);
+    			add_location(i0, file$k, 66, 13, 1928);
     			attr_dev(i1, "class", i1_class_value = "" + ((/*showItems*/ ctx[0] ? "arrow-up" : "arrow-down") + " fas fa-caret-down" + " svelte-or1rb6"));
-    			add_location(i1, file$k, 66, 105, 2017);
+    			add_location(i1, file$k, 66, 105, 2020);
     			attr_dev(h2, "class", "svelte-or1rb6");
-    			add_location(h2, file$k, 66, 8, 1920);
+    			add_location(h2, file$k, 66, 8, 1923);
     			attr_dev(div0, "class", "cart-icon svelte-or1rb6");
-    			add_location(div0, file$k, 65, 4, 1867);
+    			add_location(div0, file$k, 65, 4, 1870);
     			attr_dev(div1, "class", "cart montserrat svelte-or1rb6");
-    			add_location(div1, file$k, 64, 0, 1833);
+    			add_location(div1, file$k, 64, 0, 1836);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21993,7 +21993,7 @@ var app = (function () {
     	let stripe;
 
     	onMount(async () => {
-    		stripe = await loadStripe("pk_test_LnSZ7UkQkfmtKtBr2Hdjtbtm00MLu5KDIl");
+    		stripe = await loadStripe("pk_live_CRJIbnlYX9tOLYZPRZkg37Fs00X3CwXgxb");
     	});
 
     	const togglCart = () => {
@@ -22012,7 +22012,7 @@ var app = (function () {
     	const proceedToCheckout = () => {
     		if (sessionInfo.line_items.length > 0) {
     			async function createSession() {
-    				const response = await fetch("http://localhost:3000/api/store", {
+    				const response = await fetch("https://srgphoto.video/api/store", {
     					method: "POST",
     					mode: "cors",
     					headers: { "Content-Type": "application/json" },
@@ -22075,8 +22075,8 @@ var app = (function () {
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*$cart*/ 2) {
     			 sessionInfo = {
-    				success_url: "http://localhost:3000/#/success",
-    				cancel_url: "http://localhost:3000/#/store",
+    				success_url: "https://srgphoto.video/#/success",
+    				cancel_url: "https://srgphoto.video/#/store",
     				payment_method_types: ["card"],
     				line_items: $cart
     			};
