@@ -49,7 +49,7 @@ onMount(async () => {
     // height: 100%;
     img {
         object-fit: contain;
-        // height: 100%;
+        height: 100%;
         width: 50%;
         margin: 0 2px;
         image-orientation: 0deg;

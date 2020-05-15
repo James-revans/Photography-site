@@ -20572,7 +20572,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (76:8) {#each photos.main as item}
+    // (77:8) {#each photos.main as item}
     function create_each_block_3(ctx) {
     	let div;
     	let img;
@@ -20584,10 +20584,10 @@ var app = (function () {
     			img = element("img");
     			if (img.src !== (img_src_value = /*item*/ ctx[7])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "SRG photography image");
-    			attr_dev(img, "class", "svelte-13ka4pf");
-    			add_location(img, file$i, 77, 16, 2341);
-    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-13ka4pf");
-    			add_location(div, file$i, 76, 12, 2279);
+    			attr_dev(img, "class", "svelte-tlf9w5");
+    			add_location(img, file$i, 78, 16, 2359);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-tlf9w5");
+    			add_location(div, file$i, 77, 12, 2297);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20607,14 +20607,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(76:8) {#each photos.main as item}",
+    		source: "(77:8) {#each photos.main as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:8) {#each photos.examples as item}
+    // (82:8) {#each photos.examples as item}
     function create_each_block_2(ctx) {
     	let div;
     	let img0;
@@ -20633,14 +20633,14 @@ var app = (function () {
     			t1 = space();
     			if (img0.src !== (img0_src_value = /*item*/ ctx[7].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-13ka4pf");
-    			add_location(img0, file$i, 82, 16, 2518);
+    			attr_dev(img0, "class", "svelte-tlf9w5");
+    			add_location(img0, file$i, 83, 16, 2536);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[7].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-13ka4pf");
-    			add_location(img1, file$i, 83, 16, 2588);
-    			attr_dev(div, "class", "swiper-slide svelte-13ka4pf");
-    			add_location(div, file$i, 81, 12, 2475);
+    			attr_dev(img1, "class", "svelte-tlf9w5");
+    			add_location(img1, file$i, 84, 16, 2606);
+    			attr_dev(div, "class", "swiper-slide svelte-tlf9w5");
+    			add_location(div, file$i, 82, 12, 2493);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20667,14 +20667,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(81:8) {#each photos.examples as item}",
+    		source: "(82:8) {#each photos.examples as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:8) {#each photos.main as item, i}
+    // (96:8) {#each photos.main as item, i}
     function create_each_block_1(ctx) {
     	let div;
     	let img;
@@ -20691,11 +20691,11 @@ var app = (function () {
     			img = element("img");
     			if (img.src !== (img_src_value = /*item*/ ctx[7])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "SRG photography image");
-    			attr_dev(img, "class", "svelte-13ka4pf");
-    			add_location(img, file$i, 96, 16, 3131);
-    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-13ka4pf");
+    			attr_dev(img, "class", "svelte-tlf9w5");
+    			add_location(img, file$i, 97, 16, 3149);
+    			attr_dev(div, "class", "swiper-slide swiper-slide__main svelte-tlf9w5");
     			toggle_class(div, "active", /*currentIndex*/ ctx[3] === /*i*/ ctx[9]);
-    			add_location(div, file$i, 95, 12, 2967);
+    			add_location(div, file$i, 96, 12, 2985);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20724,14 +20724,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(95:8) {#each photos.main as item, i}",
+    		source: "(96:8) {#each photos.main as item, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:8) {#each photos.examples as item, i}
+    // (101:8) {#each photos.examples as item, i}
     function create_each_block$5(ctx) {
     	let div;
     	let img0;
@@ -20755,15 +20755,15 @@ var app = (function () {
     			t1 = space();
     			if (img0.src !== (img0_src_value = /*item*/ ctx[7].before)) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "SRG photography image");
-    			attr_dev(img0, "class", "svelte-13ka4pf");
-    			add_location(img0, file$i, 101, 16, 3420);
+    			attr_dev(img0, "class", "svelte-tlf9w5");
+    			add_location(img0, file$i, 102, 16, 3438);
     			if (img1.src !== (img1_src_value = /*item*/ ctx[7].after)) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "SRG photography image");
-    			attr_dev(img1, "class", "svelte-13ka4pf");
-    			add_location(img1, file$i, 102, 16, 3490);
-    			attr_dev(div, "class", "swiper-slide svelte-13ka4pf");
+    			attr_dev(img1, "class", "svelte-tlf9w5");
+    			add_location(img1, file$i, 103, 16, 3508);
+    			attr_dev(div, "class", "swiper-slide svelte-tlf9w5");
     			toggle_class(div, "active", /*currentIndex*/ ctx[3] === /*i*/ ctx[9] + 1);
-    			add_location(div, file$i, 100, 12, 3268);
+    			add_location(div, file$i, 101, 12, 3286);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, div, anchor);
@@ -20799,7 +20799,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(100:8) {#each photos.examples as item, i}",
+    		source: "(101:8) {#each photos.examples as item, i}",
     		ctx
     	});
 
@@ -20885,20 +20885,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "swiper-wrapper svelte-13ka4pf");
-    			add_location(div0, file$i, 74, 8, 2202);
-    			attr_dev(div1, "class", "swiper-button-next svelte-13ka4pf");
-    			add_location(div1, file$i, 88, 8, 2731);
-    			attr_dev(div2, "class", "swiper-button-prev svelte-13ka4pf");
-    			add_location(div2, file$i, 89, 8, 2778);
+    			attr_dev(div0, "class", "swiper-wrapper svelte-tlf9w5");
+    			add_location(div0, file$i, 75, 8, 2220);
+    			attr_dev(div1, "class", "swiper-button-next svelte-tlf9w5");
+    			add_location(div1, file$i, 89, 8, 2749);
+    			attr_dev(div2, "class", "swiper-button-prev svelte-tlf9w5");
+    			add_location(div2, file$i, 90, 8, 2796);
     			attr_dev(div3, "class", "swiper-container gallery-top");
-    			add_location(div3, file$i, 73, 4, 2151);
-    			attr_dev(div4, "class", "swiper-wrapper svelte-13ka4pf");
-    			add_location(div4, file$i, 93, 8, 2887);
-    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-13ka4pf");
-    			add_location(div5, file$i, 92, 4, 2833);
-    			attr_dev(div6, "class", "wrapper svelte-13ka4pf");
-    			add_location(div6, file$i, 72, 0, 2125);
+    			add_location(div3, file$i, 74, 4, 2169);
+    			attr_dev(div4, "class", "swiper-wrapper svelte-tlf9w5");
+    			add_location(div4, file$i, 94, 8, 2905);
+    			attr_dev(div5, "class", "swiper-container gallery-thumbs svelte-tlf9w5");
+    			add_location(div5, file$i, 93, 4, 2851);
+    			attr_dev(div6, "class", "wrapper svelte-tlf9w5");
+    			add_location(div6, file$i, 73, 0, 2143);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
