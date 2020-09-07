@@ -33,8 +33,8 @@ import presets from '../data.js';
 h1 {
     font-weight: 100;
 } 
-</style>
 
+</style>
 <h1 class="title sg-green vollkorn">Presets</h1>
 <div class="presets">
 {#each presets as preset, i}

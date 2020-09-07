@@ -6,7 +6,8 @@ export const presets = [
             "works best with yellows and reds or pinks",
             "great for a warm skin tone",
         ],
-        amount: 600,
+        baseAmount: 600,
+        amount: 450,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
@@ -52,7 +53,8 @@ export const presets = [
             "works best with oranges and greens",
             "enhances blue to appear teal",
         ],
-        amount: 600,
+        baseAmount: 600,
+        amount: 450,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
@@ -98,7 +100,8 @@ export const presets = [
             "works best with blues and orange or browns",
             "lower saturation of color",
         ],
-        amount: 600,
+        baseAmount: 600,
+        amount: 450,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
@@ -146,7 +149,8 @@ export const presets = [
             "works best with bright colors and deep shadows",
             "brighter look",
         ],
-        amount: 600,
+        baseAmount: 600,
+        amount: 450,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
@@ -189,7 +193,8 @@ export const presets = [
         name: "preset package",
         description: "All 4 SRG photography presets",
         bullets: ["rosy", "rare", "rust", "rays"],
-        amount: 2000,
+        baseAmount: 2000,
+        amount: 1500,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1589160645/media/1-COLLAGE-min_krcol9.jpg",

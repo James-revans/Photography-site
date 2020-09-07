@@ -35,9 +35,6 @@ onMount(async () => {
     max-width: 600px;
     width: 100%;
 } 
-.gallery-top {
-
-}
 .swiper-wrapper {
     display: flex;
     align-items: center;
