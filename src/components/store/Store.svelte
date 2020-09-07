@@ -2,6 +2,7 @@
 import { onMount } from 'svelte';
 import { Router, Route, Link } from 'yrv';
 import PageBanner from "../base/PageBanner.svelte";
+import SaleBanner from "./SaleBanner.svelte";
 import Preset from './preset/preset.svelte';
 import Cart from './cart/cart.svelte';
 import Instructions from './instructions/instructions.svelte';
@@ -16,6 +17,7 @@ let showPage = false;
 <PageBanner on:loaded='{() => showPage = true}' img={url}>
     <h1>Store</h1>
 </PageBanner>
+<SaleBanner/>
 <Preset/>
 <Instructions />
 <Footer />

@@ -1,10 +1,16 @@
 <script>
 import cart from "shared/stores/cart.store.js";
-export let name, description, amount, bullets, images;
-
+export let name, description, amount, bullets, images, baseAmount;
 let isInCart = false;
 $: buttonText = isInCart ? 'Remove from cart' : 'Add to cart'
 
+const decimalAdder = () => {
+    if(amount < 1000) {
+    return "$" + (amount/100) + "0";
+    } else {
+        return "$" + (amount/100);
+    }
+}
 const toggleAdd = () => {
     let cartItem = {
             name, 
@@ -89,10 +95,13 @@ const toggleAdd = () => {
     box-shadow: 0 0 20px 1px rgba(187, 187, 187, 0.521);
 }
 
+.color{
+    color: rgb(231, 105, 105);
+}
 </style>
 <div class="container sg-green">
     <h1 class="title p-marker">{name}</h1>
-    <h2 class="price alegreya">${amount/100}</h2>
+    <h2 class="price alegreya"><s class="color">${baseAmount/100}</s> {decimalAdder()}</h2>
     <p class="description alegreya">{description}</p>
     <div class="bullets alegreya">
         {#each bullets as bullet}
