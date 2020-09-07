@@ -53,9 +53,12 @@ h1{
 }
 
 p{
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 300;
     margin-bottom: 0;
+    @include break-up('md') {
+        font-size: 40px;
+    }
 }
 .number{
     font-size: 30px;

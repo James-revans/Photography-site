@@ -20186,7 +20186,7 @@ var app = (function () {
 
     const file$h = "src\\components\\store\\SaleBanner.svelte";
 
-    // (117:4) {:else}
+    // (120:4) {:else}
     function create_else_block_1$1(ctx) {
     	let p;
 
@@ -20194,8 +20194,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "EXPIRED";
-    			attr_dev(p, "class", "expired svelte-b1lmje");
-    			add_location(p, file$h, 117, 4, 2578);
+    			attr_dev(p, "class", "expired svelte-vxn2p2");
+    			add_location(p, file$h, 120, 4, 2643);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -20210,14 +20210,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$1.name,
     		type: "else",
-    		source: "(117:4) {:else}",
+    		source: "(120:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:4) {#if distance >= 0}
+    // (102:4) {#if distance >= 0}
     function create_if_block$7(ctx) {
     	let div;
 
@@ -20234,8 +20234,8 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			attr_dev(div, "id", "check");
-    			attr_dev(div, "class", "grid montserrat font svelte-b1lmje");
-    			add_location(div, file$h, 99, 4, 1964);
+    			attr_dev(div, "class", "grid montserrat font svelte-vxn2p2");
+    			add_location(div, file$h, 102, 4, 2029);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -20264,14 +20264,14 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(99:4) {#if distance >= 0}",
+    		source: "(102:4) {#if distance >= 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (110:8) {:else}
+    // (113:8) {:else}
     function create_else_block$4(ctx) {
     	let p0;
     	let t0;
@@ -20307,17 +20307,17 @@ var app = (function () {
     			t9 = text(/*seconds*/ ctx[3]);
     			t10 = text("s");
     			attr_dev(p0, "id", "days");
-    			attr_dev(p0, "class", "svelte-b1lmje");
-    			add_location(p0, file$h, 110, 8, 2385);
+    			attr_dev(p0, "class", "svelte-vxn2p2");
+    			add_location(p0, file$h, 113, 8, 2450);
     			attr_dev(p1, "id", "hours");
-    			attr_dev(p1, "class", "svelte-b1lmje");
-    			add_location(p1, file$h, 111, 8, 2419);
+    			attr_dev(p1, "class", "svelte-vxn2p2");
+    			add_location(p1, file$h, 114, 8, 2484);
     			attr_dev(p2, "id", "minutes");
-    			attr_dev(p2, "class", "svelte-b1lmje");
-    			add_location(p2, file$h, 112, 8, 2455);
+    			attr_dev(p2, "class", "svelte-vxn2p2");
+    			add_location(p2, file$h, 115, 8, 2520);
     			attr_dev(p3, "id", "seconds");
-    			attr_dev(p3, "class", "svelte-b1lmje");
-    			add_location(p3, file$h, 113, 8, 2495);
+    			attr_dev(p3, "class", "svelte-vxn2p2");
+    			add_location(p3, file$h, 116, 8, 2560);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -20357,14 +20357,14 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(110:8) {:else}",
+    		source: "(113:8) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (101:8) {#if y > 1260}
+    // (104:8) {#if y > 1260}
     function create_if_block_1$4(ctx) {
     	let p0;
     	let t0;
@@ -20412,25 +20412,25 @@ var app = (function () {
     			p7 = element("p");
     			p7.textContent = "seconds";
     			attr_dev(p0, "id", "days");
-    			attr_dev(p0, "class", "svelte-b1lmje");
-    			add_location(p0, file$h, 101, 8, 2043);
+    			attr_dev(p0, "class", "svelte-vxn2p2");
+    			add_location(p0, file$h, 104, 8, 2108);
     			attr_dev(p1, "id", "hours");
-    			attr_dev(p1, "class", "svelte-b1lmje");
-    			add_location(p1, file$h, 102, 8, 2076);
+    			attr_dev(p1, "class", "svelte-vxn2p2");
+    			add_location(p1, file$h, 105, 8, 2141);
     			attr_dev(p2, "id", "minutes");
-    			attr_dev(p2, "class", "svelte-b1lmje");
-    			add_location(p2, file$h, 103, 8, 2111);
+    			attr_dev(p2, "class", "svelte-vxn2p2");
+    			add_location(p2, file$h, 106, 8, 2176);
     			attr_dev(p3, "id", "seconds");
-    			attr_dev(p3, "class", "svelte-b1lmje");
-    			add_location(p3, file$h, 104, 8, 2150);
-    			attr_dev(p4, "class", "days number svelte-b1lmje");
-    			add_location(p4, file$h, 105, 8, 2189);
-    			attr_dev(p5, "class", "hours number svelte-b1lmje");
-    			add_location(p5, file$h, 106, 8, 2230);
-    			attr_dev(p6, "class", "minutes number svelte-b1lmje");
-    			add_location(p6, file$h, 107, 8, 2273);
-    			attr_dev(p7, "class", "seconds number svelte-b1lmje");
-    			add_location(p7, file$h, 108, 8, 2320);
+    			attr_dev(p3, "class", "svelte-vxn2p2");
+    			add_location(p3, file$h, 107, 8, 2215);
+    			attr_dev(p4, "class", "days number svelte-vxn2p2");
+    			add_location(p4, file$h, 108, 8, 2254);
+    			attr_dev(p5, "class", "hours number svelte-vxn2p2");
+    			add_location(p5, file$h, 109, 8, 2295);
+    			attr_dev(p6, "class", "minutes number svelte-vxn2p2");
+    			add_location(p6, file$h, 110, 8, 2338);
+    			attr_dev(p7, "class", "seconds number svelte-vxn2p2");
+    			add_location(p7, file$h, 111, 8, 2385);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -20482,7 +20482,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(101:8) {#if y > 1260}",
+    		source: "(104:8) {#if y > 1260}",
     		ctx
     	});
 
@@ -20509,10 +20509,10 @@ var app = (function () {
     			h1.textContent = "BACK TO SCHOOL PRESET SALE! 25% OFF";
     			t1 = space();
     			if_block.c();
-    			attr_dev(h1, "class", "svelte-b1lmje");
-    			add_location(h1, file$h, 97, 4, 1889);
-    			attr_dev(div, "class", "banner p-marker svelte-b1lmje");
-    			add_location(div, file$h, 96, 0, 1854);
+    			attr_dev(h1, "class", "svelte-vxn2p2");
+    			add_location(h1, file$h, 100, 4, 1954);
+    			attr_dev(div, "class", "banner p-marker svelte-vxn2p2");
+    			add_location(div, file$h, 99, 0, 1919);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
