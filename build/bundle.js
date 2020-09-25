@@ -20564,7 +20564,7 @@ var app = (function () {
     	let distance = 0;
 
     	// Set the date we're counting down to
-    	let countDownDate = new Date("Sept 11, 2020 00:00:00").getTime();
+    	let countDownDate = new Date("Sept 21, 2020 00:00:00").getTime();
 
     	// Update the count down every 1 second
     	let x = setInterval(
@@ -20656,7 +20656,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (99:8) {#each bullets as bullet}
+    // (100:8) {#each bullets as bullet}
     function create_each_block$4(ctx) {
     	let p;
     	let t0;
@@ -20668,7 +20668,7 @@ var app = (function () {
     			p = element("p");
     			t0 = text("~ ");
     			t1 = text(t1_value);
-    			add_location(p, file$i, 99, 12, 2341);
+    			add_location(p, file$i, 100, 12, 2400);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -20676,7 +20676,7 @@ var app = (function () {
     			append_dev(p, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*bullets*/ 4 && t1_value !== (t1_value = /*bullet*/ ctx[10] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*bullets*/ 8 && t1_value !== (t1_value = /*bullet*/ ctx[10] + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
@@ -20687,7 +20687,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(99:8) {#each bullets as bullet}",
+    		source: "(100:8) {#each bullets as bullet}",
     		ctx
     	});
 
@@ -20700,24 +20700,20 @@ var app = (function () {
     	let t0;
     	let t1;
     	let h2;
-    	let s;
     	let t2;
-    	let t3_value = /*baseAmount*/ ctx[3] / 100 + "";
+    	let t3_value = /*amount*/ ctx[2] / 100 + "";
     	let t3;
     	let t4;
-    	let t5_value = /*decimalAdder*/ ctx[6]() + "";
+    	let p;
     	let t5;
     	let t6;
-    	let p;
-    	let t7;
-    	let t8;
     	let div0;
-    	let t9;
+    	let t7;
     	let button;
-    	let t10;
+    	let t8;
     	let button_class_value;
     	let dispose;
-    	let each_value = /*bullets*/ ctx[2];
+    	let each_value = /*bullets*/ ctx[3];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -20732,36 +20728,31 @@ var app = (function () {
     			t0 = text(/*name*/ ctx[0]);
     			t1 = space();
     			h2 = element("h2");
-    			s = element("s");
     			t2 = text("$");
     			t3 = text(t3_value);
     			t4 = space();
-    			t5 = text(t5_value);
-    			t6 = space();
     			p = element("p");
-    			t7 = text(/*description*/ ctx[1]);
-    			t8 = space();
+    			t5 = text(/*description*/ ctx[1]);
+    			t6 = space();
     			div0 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t9 = space();
+    			t7 = space();
     			button = element("button");
-    			t10 = text(/*buttonText*/ ctx[5]);
+    			t8 = text(/*buttonText*/ ctx[5]);
     			attr_dev(h1, "class", "title p-marker svelte-72zxo2");
     			add_location(h1, file$i, 94, 4, 2075);
-    			attr_dev(s, "class", "color svelte-72zxo2");
-    			add_location(s, file$i, 95, 31, 2145);
     			attr_dev(h2, "class", "price alegreya svelte-72zxo2");
-    			add_location(h2, file$i, 95, 4, 2118);
+    			add_location(h2, file$i, 96, 4, 2219);
     			attr_dev(p, "class", "description alegreya svelte-72zxo2");
-    			add_location(p, file$i, 96, 4, 2210);
+    			add_location(p, file$i, 97, 4, 2269);
     			attr_dev(div0, "class", "bullets alegreya svelte-72zxo2");
-    			add_location(div0, file$i, 97, 4, 2264);
+    			add_location(div0, file$i, 98, 4, 2323);
     			attr_dev(button, "class", button_class_value = "" + ((/*isInCart*/ ctx[4] ? "remove" : "add") + " button alegreya" + " svelte-72zxo2"));
-    			add_location(button, file$i, 102, 4, 2390);
+    			add_location(button, file$i, 103, 4, 2449);
     			attr_dev(div1, "class", "container sg-green svelte-72zxo2");
     			add_location(div1, file$i, 93, 0, 2038);
     		},
@@ -20774,34 +20765,31 @@ var app = (function () {
     			append_dev(h1, t0);
     			append_dev(div1, t1);
     			append_dev(div1, h2);
-    			append_dev(h2, s);
-    			append_dev(s, t2);
-    			append_dev(s, t3);
-    			append_dev(h2, t4);
-    			append_dev(h2, t5);
-    			append_dev(div1, t6);
+    			append_dev(h2, t2);
+    			append_dev(h2, t3);
+    			append_dev(div1, t4);
     			append_dev(div1, p);
-    			append_dev(p, t7);
-    			append_dev(div1, t8);
+    			append_dev(p, t5);
+    			append_dev(div1, t6);
     			append_dev(div1, div0);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div0, null);
     			}
 
-    			append_dev(div1, t9);
+    			append_dev(div1, t7);
     			append_dev(div1, button);
-    			append_dev(button, t10);
+    			append_dev(button, t8);
     			if (remount) dispose();
-    			dispose = listen_dev(button, "click", /*toggleAdd*/ ctx[7], false, false, false);
+    			dispose = listen_dev(button, "click", /*toggleAdd*/ ctx[6], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
-    			if (dirty & /*baseAmount*/ 8 && t3_value !== (t3_value = /*baseAmount*/ ctx[3] / 100 + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*description*/ 2) set_data_dev(t7, /*description*/ ctx[1]);
+    			if (dirty & /*amount*/ 4 && t3_value !== (t3_value = /*amount*/ ctx[2] / 100 + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*description*/ 2) set_data_dev(t5, /*description*/ ctx[1]);
 
-    			if (dirty & /*bullets*/ 4) {
-    				each_value = /*bullets*/ ctx[2];
+    			if (dirty & /*bullets*/ 8) {
+    				each_value = /*bullets*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
 
@@ -20824,7 +20812,7 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*buttonText*/ 32) set_data_dev(t10, /*buttonText*/ ctx[5]);
+    			if (dirty & /*buttonText*/ 32) set_data_dev(t8, /*buttonText*/ ctx[5]);
 
     			if (dirty & /*isInCart*/ 16 && button_class_value !== (button_class_value = "" + ((/*isInCart*/ ctx[4] ? "remove" : "add") + " button alegreya" + " svelte-72zxo2"))) {
     				attr_dev(button, "class", button_class_value);
@@ -20899,10 +20887,10 @@ var app = (function () {
     	$$self.$set = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("description" in $$props) $$invalidate(1, description = $$props.description);
-    		if ("amount" in $$props) $$invalidate(8, amount = $$props.amount);
-    		if ("bullets" in $$props) $$invalidate(2, bullets = $$props.bullets);
-    		if ("images" in $$props) $$invalidate(9, images = $$props.images);
-    		if ("baseAmount" in $$props) $$invalidate(3, baseAmount = $$props.baseAmount);
+    		if ("amount" in $$props) $$invalidate(2, amount = $$props.amount);
+    		if ("bullets" in $$props) $$invalidate(3, bullets = $$props.bullets);
+    		if ("images" in $$props) $$invalidate(7, images = $$props.images);
+    		if ("baseAmount" in $$props) $$invalidate(8, baseAmount = $$props.baseAmount);
     	};
 
     	$$self.$capture_state = () => ({
@@ -20922,10 +20910,10 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("description" in $$props) $$invalidate(1, description = $$props.description);
-    		if ("amount" in $$props) $$invalidate(8, amount = $$props.amount);
-    		if ("bullets" in $$props) $$invalidate(2, bullets = $$props.bullets);
-    		if ("images" in $$props) $$invalidate(9, images = $$props.images);
-    		if ("baseAmount" in $$props) $$invalidate(3, baseAmount = $$props.baseAmount);
+    		if ("amount" in $$props) $$invalidate(2, amount = $$props.amount);
+    		if ("bullets" in $$props) $$invalidate(3, bullets = $$props.bullets);
+    		if ("images" in $$props) $$invalidate(7, images = $$props.images);
+    		if ("baseAmount" in $$props) $$invalidate(8, baseAmount = $$props.baseAmount);
     		if ("isInCart" in $$props) $$invalidate(4, isInCart = $$props.isInCart);
     		if ("buttonText" in $$props) $$invalidate(5, buttonText = $$props.buttonText);
     	};
@@ -20945,14 +20933,13 @@ var app = (function () {
     	return [
     		name,
     		description,
+    		amount,
     		bullets,
-    		baseAmount,
     		isInCart,
     		buttonText,
-    		decimalAdder,
     		toggleAdd,
-    		amount,
-    		images
+    		images,
+    		baseAmount
     	];
     }
 
@@ -20963,10 +20950,10 @@ var app = (function () {
     		init(this, options, instance$j, create_fragment$j, safe_not_equal, {
     			name: 0,
     			description: 1,
-    			amount: 8,
-    			bullets: 2,
-    			images: 9,
-    			baseAmount: 3
+    			amount: 2,
+    			bullets: 3,
+    			images: 7,
+    			baseAmount: 8
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -20987,19 +20974,19 @@ var app = (function () {
     			console.warn("<Preset_description> was created without expected prop 'description'");
     		}
 
-    		if (/*amount*/ ctx[8] === undefined && !("amount" in props)) {
+    		if (/*amount*/ ctx[2] === undefined && !("amount" in props)) {
     			console.warn("<Preset_description> was created without expected prop 'amount'");
     		}
 
-    		if (/*bullets*/ ctx[2] === undefined && !("bullets" in props)) {
+    		if (/*bullets*/ ctx[3] === undefined && !("bullets" in props)) {
     			console.warn("<Preset_description> was created without expected prop 'bullets'");
     		}
 
-    		if (/*images*/ ctx[9] === undefined && !("images" in props)) {
+    		if (/*images*/ ctx[7] === undefined && !("images" in props)) {
     			console.warn("<Preset_description> was created without expected prop 'images'");
     		}
 
-    		if (/*baseAmount*/ ctx[3] === undefined && !("baseAmount" in props)) {
+    		if (/*baseAmount*/ ctx[8] === undefined && !("baseAmount" in props)) {
     			console.warn("<Preset_description> was created without expected prop 'baseAmount'");
     		}
     	}
@@ -21704,7 +21691,7 @@ var app = (function () {
       description: "SRG photography custom preset",
       bullets: ["works best with yellows and reds or pinks", "great for a warm skin tone"],
       baseAmount: 600,
-      amount: 450,
+      amount: 600,
       images: {
         main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg"],
         examples: [{
@@ -21729,7 +21716,7 @@ var app = (function () {
       description: "SRG photography custom preset",
       bullets: ["works best with oranges and greens", "enhances blue to appear teal"],
       baseAmount: 600,
-      amount: 450,
+      amount: 600,
       images: {
         main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg"],
         examples: [{
@@ -21754,7 +21741,7 @@ var app = (function () {
       description: "SRG photography custom preset",
       bullets: ["works best with blues and orange or browns", "lower saturation of color"],
       baseAmount: 600,
-      amount: 450,
+      amount: 600,
       images: {
         main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg"],
         examples: [{
@@ -21779,7 +21766,7 @@ var app = (function () {
       description: "SRG photography custom preset",
       bullets: ["works best with bright colors and deep shadows", "brighter look"],
       baseAmount: 600,
-      amount: 450,
+      amount: 600,
       images: {
         main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg"],
         examples: [{
@@ -21804,7 +21791,7 @@ var app = (function () {
       description: "All 4 SRG photography presets",
       bullets: ["rosy", "rare", "rust", "rays"],
       baseAmount: 2000,
-      amount: 1500,
+      amount: 2000,
       images: {
         main: ["https://res.cloudinary.com/savanna-photos/image/upload/v1589160645/media/1-COLLAGE-min_krcol9.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg", "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg"],
         examples: []
@@ -22833,7 +22820,6 @@ var app = (function () {
     	let t1;
     	let t2;
     	let t3;
-    	let t4;
     	let current;
     	const cart = new Cart({ $$inline: true });
 
@@ -22847,7 +22833,6 @@ var app = (function () {
     		});
 
     	pagebanner.$on("loaded", /*loaded_handler*/ ctx[2]);
-    	const salebanner = new SaleBanner({ $$inline: true });
     	const preset = new Preset({ $$inline: true });
     	const instructions = new Instructions({ $$inline: true });
     	const footer = new Footer({ $$inline: true });
@@ -22858,12 +22843,10 @@ var app = (function () {
     			t0 = space();
     			create_component(pagebanner.$$.fragment);
     			t1 = space();
-    			create_component(salebanner.$$.fragment);
-    			t2 = space();
     			create_component(preset.$$.fragment);
-    			t3 = space();
+    			t2 = space();
     			create_component(instructions.$$.fragment);
-    			t4 = space();
+    			t3 = space();
     			create_component(footer.$$.fragment);
     		},
     		l: function claim(nodes) {
@@ -22874,12 +22857,10 @@ var app = (function () {
     			insert_dev(target, t0, anchor);
     			mount_component(pagebanner, target, anchor);
     			insert_dev(target, t1, anchor);
-    			mount_component(salebanner, target, anchor);
-    			insert_dev(target, t2, anchor);
     			mount_component(preset, target, anchor);
-    			insert_dev(target, t3, anchor);
+    			insert_dev(target, t2, anchor);
     			mount_component(instructions, target, anchor);
-    			insert_dev(target, t4, anchor);
+    			insert_dev(target, t3, anchor);
     			mount_component(footer, target, anchor);
     			current = true;
     		},
@@ -22896,7 +22877,6 @@ var app = (function () {
     			if (current) return;
     			transition_in(cart.$$.fragment, local);
     			transition_in(pagebanner.$$.fragment, local);
-    			transition_in(salebanner.$$.fragment, local);
     			transition_in(preset.$$.fragment, local);
     			transition_in(instructions.$$.fragment, local);
     			transition_in(footer.$$.fragment, local);
@@ -22905,7 +22885,6 @@ var app = (function () {
     		o: function outro(local) {
     			transition_out(cart.$$.fragment, local);
     			transition_out(pagebanner.$$.fragment, local);
-    			transition_out(salebanner.$$.fragment, local);
     			transition_out(preset.$$.fragment, local);
     			transition_out(instructions.$$.fragment, local);
     			transition_out(footer.$$.fragment, local);
@@ -22916,12 +22895,10 @@ var app = (function () {
     			if (detaching) detach_dev(t0);
     			destroy_component(pagebanner, detaching);
     			if (detaching) detach_dev(t1);
-    			destroy_component(salebanner, detaching);
-    			if (detaching) detach_dev(t2);
     			destroy_component(preset, detaching);
-    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t2);
     			destroy_component(instructions, detaching);
-    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(t3);
     			destroy_component(footer, detaching);
     		}
     	};

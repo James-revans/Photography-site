@@ -17,7 +17,7 @@ let showPage = false;
 <PageBanner on:loaded='{() => showPage = true}' img={url}>
     <h1>Store</h1>
 </PageBanner>
-<SaleBanner/>
+<!-- <SaleBanner/> -->
 <Preset/>
 <Instructions />
 <Footer />

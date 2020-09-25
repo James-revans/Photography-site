@@ -7,7 +7,7 @@ export const presets = [
             "great for a warm skin tone",
         ],
         baseAmount: 600,
-        amount: 450,
+        amount: 600,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/3_kt06bc.jpg",
@@ -54,7 +54,7 @@ export const presets = [
             "enhances blue to appear teal",
         ],
         baseAmount: 600,
-        amount: 450,
+        amount: 600,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/IMG_2685_lg1nph.jpg",
@@ -101,7 +101,7 @@ export const presets = [
             "lower saturation of color",
         ],
         baseAmount: 600,
-        amount: 450,
+        amount: 600,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/1_uq9hue.jpg",
@@ -150,7 +150,7 @@ export const presets = [
             "brighter look",
         ],
         baseAmount: 600,
-        amount: 450,
+        amount: 600,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1588563738/media/2_lotoro.jpg",
@@ -194,7 +194,7 @@ export const presets = [
         description: "All 4 SRG photography presets",
         bullets: ["rosy", "rare", "rust", "rays"],
         baseAmount: 2000,
-        amount: 1500,
+        amount: 2000,
         images: {
             main: [
                 "https://res.cloudinary.com/savanna-photos/image/upload/v1589160645/media/1-COLLAGE-min_krcol9.jpg",

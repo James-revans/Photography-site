@@ -101,7 +101,8 @@ const toggleAdd = () => {
 </style>
 <div class="container sg-green">
     <h1 class="title p-marker">{name}</h1>
-    <h2 class="price alegreya"><s class="color">${baseAmount/100}</s> {decimalAdder()}</h2>
+    <!-- <h2 class="price alegreya"><s class="color">${baseAmount/100}</s> {decimalAdder()}</h2> -->
+    <h2 class="price alegreya">${amount/100}</h2>
     <p class="description alegreya">{description}</p>
     <div class="bullets alegreya">
         {#each bullets as bullet}
