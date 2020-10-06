@@ -99,7 +99,7 @@
     <Link on:click="{() => tabSelect('bio')}" href="/bio" class="link-styles sg-green"><p class:active="{navSelect === 'bio'}">bio</p></Link>
     <Link on:click="{() => tabSelect('store')}" href="/store" class="link-styles sg-green"><p class:active="{navSelect === 'store'}">store</p></Link>
     <Link on:click="{() => tabSelect('contact')}" href="/contact" class="link-styles sg-green"><p class:active="{navSelect === 'contact'}">contact</p></Link>
-
+    <Link on:click="{() => tabSelect('pricing')}" href="/pricing" class="link-styles sg-green"><p class:active="{navSelect === 'pricing'}">pricing</p></Link>
 </div>
 
     <!-- <Link on:click="{() => tabSelect('home')}" href="/" class="link-styles sg-green"><p class:active="{navSelect === 'home'}">home</p></Link>
