@@ -30,9 +30,9 @@
 </div>
 
 <!-- <div class='descriptions'> -->
-    {#each packages as packages}
-        <PackageOutline {...packages} />
-    {/each}
+    <!-- {#each packages as packages} -->
+        <PackageOutline {packages}/>
+    <!-- {/each} -->
 <!-- </div> -->
 
 <Footer/>
