@@ -1,5 +1,4 @@
 <script>
-    // export let name, length, photos, outfits, location, price, image;
     import {fade} from 'svelte/transition';
     export let packages;
 
@@ -7,18 +6,24 @@
 
     let visible = true;
 
-    //TODO: make happen same time instead of toggle
     function next(){
-        if(package_item === 2){
+        if(package_item === (packages.length-1)){
             package_item = 0;
         }else{
             package_item++
         }
-        if(visible){
-            visible = false;
+         
+        visible = false;
+    }
+
+    function previous(){
+        if(package_item === 0){
+            package_item = (packages.length-1);
         }else{
-            visible=true;
+            package_item--;
         }
+         
+        visible = false;
     }
 
     
@@ -42,11 +47,21 @@
         font-size: 3vw;
     }
 
+    button{
+        background: white;
+        border:none;
+    }
+
+    button:focus{
+        outline: none;
+    }
+
+    button i:hover{
+        color: rgb(68, 91, 71, 0.50)
+    }
+
     .info{
         display: grid;
-        place-items: center;
-        position: relative;
-        /* text-align:center; */
         height: 85vh;
         justify-content:center;
     }
@@ -55,7 +70,7 @@
         display: grid;
         place-items: center;
         max-height: 100%;
-        min-width: 48%;
+        min-width: 75%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -76,19 +91,43 @@
         grid-column: span 4;
         grid-row: 2;
     }
+
+    .previous{
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .next{
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .main-package{
+        grid-column: 1/ span 2;
+        grid-row: 1;
+        display: grid;
+        position: relative;
+        place-items: center;
+    }
 </style>
 
 <div class='info'>
+    <button class='previous' on:click = {previous}><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></button>
     {#if visible} 
-    <img src={packages[package_item].image} alt ="SRG photography">
-    <div class='white-box' transition:fade>
-        <h1 class='name'>{packages[package_item].name}</h1>
-        <p class='length'><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> {packages[package_item].length}</p>
-        <p class = 'photos'><i class="fa fa-picture-o fa-lg" aria-hidden="true"></i> {packages[package_item].photos}</p>
-        <p class = 'outfits'><i class="fa fa-female" aria-hidden="true"></i> {packages[package_item].outfits}</p>
-        <p class = 'location'><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> {packages[package_item].location}</p>
-        <p class = 'price'><i class="fa fa-usd" aria-hidden="true"></i> {packages[package_item].price}</p>  
+    <div class='main-package' 
+         transition:fade
+         on:outroend="{()=> visible = true}"
+    >
+        <img src={packages[package_item].image} alt ="SRG photography">
+        <div class='white-box'>
+            <h1 class='name'>{packages[package_item].name}</h1>
+            <p class='length'><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> {packages[package_item].length}</p>
+            <p class = 'photos'><i class="fa fa-picture-o fa-lg" aria-hidden="true"></i> {packages[package_item].photos}</p>
+            <p class = 'outfits'><i class="fa fa-female" aria-hidden="true"></i> {packages[package_item].outfits}</p>
+            <p class = 'location'><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> {packages[package_item].location}</p>
+            <p class = 'price'><i class="fa fa-usd" aria-hidden="true"></i> {packages[package_item].price}</p>  
+        </div>
     </div>
     {/if}
-    <button on:click = {next}>Next</button>
+    <button class='next' on:click = {next}><i class="fa fa-arrow-right fa-3x" aria-hidden="true"></i></button>
 </div>

@@ -15,7 +15,7 @@ export const packages = [
         outfits: '1-3',
         location: '1-2',
         price: '175',
-        image: 'https://res.cloudinary.com/savanna-photos/image/upload/v1585161531/media/IMG_0650.JPG.jpg'
+        image: 'https://res.cloudinary.com/savanna-photos/image/upload/v1577141165/media/6E2DB13E-AE62-47C8-B15D-91F29F470EF1_Original.JPG.jpg'
     },
     {
         name: 'PAckage C',
@@ -24,7 +24,7 @@ export const packages = [
         outfits: '1-4',
         location: '1-3',
         price: '250',
-        image: 'https://res.cloudinary.com/savanna-photos/image/upload/v1585161531/media/IMG_0650.JPG.jpg'
+        image: 'https://res.cloudinary.com/savanna-photos/image/upload/v1571730989/media/83F45008-7E76-4D4F-A931-F48A02631FFD.jpg.jpg'
     },
 
 ];

@@ -7,13 +7,6 @@
     const url = './images/Contact-Banner-min.jpg';
 </script>
 <style>
-    .descriptions{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-    }
-
     .writing{
         height: 100vh;
     }
@@ -29,10 +22,7 @@
     <PackageWriting />
 </div>
 
-<!-- <div class='descriptions'> -->
-    <!-- {#each packages as packages} -->
-        <PackageOutline {packages}/>
-    <!-- {/each} -->
-<!-- </div> -->
+<PackageOutline {packages}/>
+    
 
 <Footer/>
