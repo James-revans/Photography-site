@@ -24964,9 +24964,10 @@ var app = (function () {
     const file$v = "src\\components\\packages\\Package-writing.svelte";
 
     function create_fragment$w(ctx) {
-    	let div;
+    	let div1;
     	let h1;
     	let t1;
+    	let div0;
     	let p0;
     	let t3;
     	let ul;
@@ -25003,12 +25004,13 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			div1 = element("div");
     			h1 = element("h1");
     			h1.textContent = "How it Works";
     			t1 = space();
+    			div0 = element("div");
     			p0 = element("p");
-    			p0.textContent = "There is a variety of packages to pick from that give you different options regarding:";
+    			p0.textContent = "There are a variety of packages to pick from that give you different options regarding:";
     			t3 = space();
     			ul = element("ul");
     			li0 = element("li");
@@ -25022,7 +25024,7 @@ var app = (function () {
     			t8 = text(" )");
     			t9 = space();
     			li2 = element("li");
-    			t10 = text("number of outfits( ");
+    			t10 = text("number of outfits ( ");
     			i2 = element("i");
     			t11 = text(" )");
     			t12 = space();
@@ -25032,7 +25034,7 @@ var app = (function () {
     			t14 = text(" )");
     			t15 = space();
     			li4 = element("li");
-    			t16 = text("and of course price( ");
+    			t16 = text("price ( ");
     			i4 = element("i");
     			t17 = text(" )");
     			t18 = space();
@@ -25043,54 +25045,58 @@ var app = (function () {
     			strong = element("strong");
     			strong.textContent = "Disclaimer:";
     			t22 = text(" I can compromise on different options or whatever through communication.");
-    			attr_dev(h1, "class", "svelte-15vvwr8");
-    			add_location(h1, file$v, 20, 4, 364);
-    			attr_dev(p0, "class", "svelte-15vvwr8");
-    			add_location(p0, file$v, 21, 4, 391);
+    			attr_dev(h1, "class", "svelte-13hlv5a");
+    			add_location(h1, file$v, 35, 4, 674);
+    			attr_dev(p0, "class", "svelte-13hlv5a");
+    			add_location(p0, file$v, 37, 8, 734);
     			attr_dev(i0, "class", "fa fa-clock-o");
     			attr_dev(i0, "aria-hidden", "true");
-    			add_location(i0, file$v, 23, 40, 538);
-    			attr_dev(li0, "class", "svelte-15vvwr8");
-    			add_location(li0, file$v, 23, 8, 506);
+    			add_location(i0, file$v, 39, 44, 888);
+    			attr_dev(li0, "class", "svelte-13hlv5a");
+    			add_location(li0, file$v, 39, 12, 856);
     			attr_dev(i1, "class", "fa fa-picture-o");
     			attr_dev(i1, "aria-hidden", "true");
-    			add_location(i1, file$v, 24, 50, 646);
-    			attr_dev(li1, "class", "svelte-15vvwr8");
-    			add_location(li1, file$v, 24, 8, 604);
+    			add_location(i1, file$v, 40, 54, 1000);
+    			attr_dev(li1, "class", "svelte-13hlv5a");
+    			add_location(li1, file$v, 40, 12, 958);
     			attr_dev(i2, "class", "fa fa-female");
     			attr_dev(i2, "aria-hidden", "true");
-    			add_location(i2, file$v, 25, 31, 736);
-    			attr_dev(li2, "class", "svelte-15vvwr8");
-    			add_location(li2, file$v, 25, 8, 713);
+    			add_location(i2, file$v, 41, 36, 1095);
+    			attr_dev(li2, "class", "svelte-13hlv5a");
+    			add_location(li2, file$v, 41, 12, 1071);
     			attr_dev(i3, "class", "fa fa-map-marker");
     			attr_dev(i3, "aria-hidden", "true");
-    			add_location(i3, file$v, 26, 34, 826);
-    			attr_dev(li3, "class", "svelte-15vvwr8");
-    			add_location(li3, file$v, 26, 8, 800);
+    			add_location(i3, file$v, 42, 38, 1189);
+    			attr_dev(li3, "class", "svelte-13hlv5a");
+    			add_location(li3, file$v, 42, 12, 1163);
     			attr_dev(i4, "class", "fa fa-usd");
     			attr_dev(i4, "aria-hidden", "true");
-    			add_location(i4, file$v, 27, 33, 919);
-    			attr_dev(li4, "class", "svelte-15vvwr8");
-    			add_location(li4, file$v, 27, 8, 894);
-    			add_location(ul, file$v, 22, 4, 492);
-    			attr_dev(p1, "class", "svelte-15vvwr8");
-    			add_location(p1, file$v, 29, 4, 987);
-    			add_location(strong, file$v, 30, 7, 1163);
-    			attr_dev(p2, "class", "svelte-15vvwr8");
-    			add_location(p2, file$v, 30, 4, 1160);
-    			attr_dev(div, "class", "package-text svelte-15vvwr8");
-    			add_location(div, file$v, 19, 0, 332);
+    			add_location(i4, file$v, 43, 24, 1273);
+    			attr_dev(li4, "class", "svelte-13hlv5a");
+    			add_location(li4, file$v, 43, 12, 1261);
+    			attr_dev(ul, "class", "svelte-13hlv5a");
+    			add_location(ul, file$v, 38, 8, 838);
+    			attr_dev(p1, "class", "svelte-13hlv5a");
+    			add_location(p1, file$v, 45, 8, 1349);
+    			attr_dev(div0, "class", "text-body svelte-13hlv5a");
+    			add_location(div0, file$v, 36, 4, 701);
+    			add_location(strong, file$v, 47, 7, 1537);
+    			attr_dev(p2, "class", "svelte-13hlv5a");
+    			add_location(p2, file$v, 47, 4, 1534);
+    			attr_dev(div1, "class", "text svelte-13hlv5a");
+    			add_location(div1, file$v, 34, 0, 650);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h1);
-    			append_dev(div, t1);
-    			append_dev(div, p0);
-    			append_dev(div, t3);
-    			append_dev(div, ul);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, h1);
+    			append_dev(div1, t1);
+    			append_dev(div1, div0);
+    			append_dev(div0, p0);
+    			append_dev(div0, t3);
+    			append_dev(div0, ul);
     			append_dev(ul, li0);
     			append_dev(li0, t4);
     			append_dev(li0, i0);
@@ -25115,10 +25121,10 @@ var app = (function () {
     			append_dev(li4, t16);
     			append_dev(li4, i4);
     			append_dev(li4, t17);
-    			append_dev(div, t18);
-    			append_dev(div, p1);
-    			append_dev(div, t20);
-    			append_dev(div, p2);
+    			append_dev(div0, t18);
+    			append_dev(div0, p1);
+    			append_dev(div1, t20);
+    			append_dev(div1, p2);
     			append_dev(p2, strong);
     			append_dev(p2, t22);
     		},
@@ -25126,7 +25132,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     		}
     	};
 
@@ -25170,7 +25176,7 @@ var app = (function () {
     /* src\components\packages\Packages.svelte generated by Svelte v3.22.2 */
     const file$w = "src\\components\\packages\\Packages.svelte";
 
-    // (24:0) <PageBanner img={url}>
+    // (17:0) <PageBanner img={url}>
     function create_default_slot$7(ctx) {
     	let h1;
 
@@ -25178,7 +25184,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "Packages";
-    			add_location(h1, file$w, 24, 4, 582);
+    			add_location(h1, file$w, 17, 4, 443);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -25192,7 +25198,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$7.name,
     		type: "slot",
-    		source: "(24:0) <PageBanner img={url}>",
+    		source: "(17:0) <PageBanner img={url}>",
     		ctx
     	});
 
@@ -25229,8 +25235,8 @@ var app = (function () {
     			create_component(packageoutline.$$.fragment);
     			t2 = space();
     			create_component(footer.$$.fragment);
-    			attr_dev(div, "class", "writing svelte-1fiqah0");
-    			add_location(div, file$w, 27, 0, 618);
+    			attr_dev(div, "class", "writing svelte-4gupit");
+    			add_location(div, file$w, 20, 0, 479);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
