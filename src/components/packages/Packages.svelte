@@ -8,21 +8,33 @@
 </script>
 <style>
     .writing{
-        height: 100vh;
+        /* height: 100vh; */
+    }
+
+    .packages-main{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        margin: 0 auto;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
 </style>
 
 
 <PageBanner img={url}>
-    <h1>Packages</h1>
+    <h1>Pricing</h1>
 </PageBanner>
 
 <div class="writing">
     <PackageWriting />
 </div>
-
-<PackageOutline {packages}/>
+<div class='packages-main'>
+    {#each packages as packages}
+        <PackageOutline {...packages}/>
+    {/each}
+</div>
     
 
 <Footer/>
