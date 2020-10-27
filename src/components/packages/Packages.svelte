@@ -7,10 +7,6 @@
     const url = './images/Contact-Banner-min.jpg';
 </script>
 <style>
-    .writing{
-        /* height: 100vh; */
-    }
-
     .packages-main{
         display: flex;
         flex-direction: column;
@@ -18,6 +14,11 @@
         margin: 0 auto;
         padding-left: 5px;
         padding-right: 5px;
+    }
+    @media only screen and (max-width: 600px) {
+        .packages-main{
+            width: 80%;
+        }
     }
 
 </style>
@@ -27,7 +28,7 @@
     <h1>Pricing</h1>
 </PageBanner>
 
-<div class="writing">
+<div>
     <PackageWriting />
 </div>
 <div class='packages-main'>
@@ -35,6 +36,4 @@
         <PackageOutline {...packages}/>
     {/each}
 </div>
-    
-
 <Footer/>

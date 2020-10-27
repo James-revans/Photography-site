@@ -1,11 +1,13 @@
 <style>
+    
+
     .text{
         display: flex;
         flex-direction: column;
         width: 60%;
         margin: 0 auto;
         padding-left: 5px;
-        padding-right: 5px;
+        padding-right: 5px;   
     }
 
     .text-body{
@@ -15,16 +17,27 @@
 
     h1{
         font-family: 'Vollkorn SC', serif;
-        font-size: 8vh;
-        color: rgb(68, 91, 71)
+        font-size: 60px;
+        color: var(--sg-green);
     }
 
     p {
         font-size: 3.5vh;
         font-family: 'Alegreya Sans SC', sans-serif;
-        color: rgb(68, 91, 71);
+        color: var(--sg-green);
+        margin: 0;
     }
 
+
+    @media only screen and (max-width: 600px) {
+        h1{
+            font-size: 33px;
+        }
+        
+        .text{
+            width: 80%;
+        }
+    }
 </style>
 
 <div class='text'>
