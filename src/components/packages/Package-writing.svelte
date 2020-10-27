@@ -1,5 +1,5 @@
-<style>
-    
+<style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
 
     .text{
         display: flex;
@@ -13,25 +13,37 @@
     .text-body{
         display:inline-block;
         text-align: left;
+        margin-bottom: 50px;
     }
 
     h1{
-        font-family: 'Vollkorn SC', serif;
         font-size: 60px;
-        color: var(--sg-green);
+        margin: 50px 0;
     }
 
     p {
-        font-size: 3.5vh;
+        font-size: 24px;
+        line-height: 1.5;
         font-family: 'Alegreya Sans SC', sans-serif;
         color: var(--sg-green);
         margin: 0;
+    }
+    @include break-up('md') {
+        h1 {
+            margin: 100px 0;
+        }
+        .text-body {
+            margin-bottom: 80px;
+        }
     }
 
 
     @media only screen and (max-width: 600px) {
         h1{
             font-size: 33px;
+        }
+        p {
+            font-size: 20px;
         }
         
         .text{
@@ -41,10 +53,11 @@
 </style>
 
 <div class='text'>
-    <h1>Packages</h1>
+    <h1 class="sg-green vollkorn">Packages</h1>
     <div class='text-body'>
         <p>Choose from one of the following or contact me to customize a package that meets your needs.</p>
-        <p>* All packages will receive photos through an online photo gallery<br> Travel fee: $0.50/mile after 60 mile radius from Eau Claire</p>
+        <p>Travel fee: $0.50/mile after 60 mile radius from Eau Claire</p>
+        <p style="padding-top: 32px;">* All packages will receive photos through an online photo gallery</p>
     </div>
 </div>
 

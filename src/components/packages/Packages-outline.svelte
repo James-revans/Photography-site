@@ -20,25 +20,32 @@
         },
     ];
 </script>
-<style>
+<style type="text/scss">
+@import '../../assets/scss/mixins/mixins';
     h1{
         font-family: 'Vollkorn SC', serif;
         color: var(--sg-green);
+        font-size: 24px;
     }
 
     p{
         font-family: 'Alegreya Sans SC', sans-serif;
-        font-size: 4.25vh;
+        font-size: 24px;
         color: var(--sg-green);
     }
 
     i {
         color: #f0deb4;
-        font-size: 4vh;
+        font-size: 24px;
     }
 
     h1 i {
         color: var(--sg-green);;
+    }
+    @include break-up('md') {
+        p, h1, i {
+            font-size: 36px;
+        }
     }
 
     .main-packages{
@@ -58,9 +65,13 @@
         height: 1px;
         background-image: linear-gradient(to right, rgb(68, 91, 71), white);    
     }
+    .wrapper {
+        padding: 20px 0;
+    }
+
 </style>
 
-
+<div class='wrapper'>
     <div class='title-line'>
         <h1 class='name'>{name}</h1>
         <h1 class = 'price'><i class="fa fa-usd" aria-hidden="true"></i> {price}</h1>  
@@ -73,5 +84,7 @@
         {/each}
     </div>
     <div class='divider'></div>
+</div>
+
 
    

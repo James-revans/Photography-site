@@ -3323,22 +3323,23 @@ body, html {
   color: #f0deb4; }
 
 .raleway {
-  font-family: 'Raleway', sans-serif; }
+  font-family: "Raleway", sans-serif; }
 
 .prata {
-  font-family: 'Prata', serif; }
+  font-family: "Prata", serif; }
 
 .p-marker {
-  font-family: 'Permanent Marker', cursive; }
+  font-family: "Permanent Marker", cursive; }
 
 .vollkorn {
-  font-family: 'Vollkorn SC', serif; }
+  font-family: "Vollkorn SC", serif;
+  font-weight: 100; }
 
 .montserrat {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: "Montserrat", sans-serif; }
 
 .alegreya {
-  font-family: 'Alegreya Sans SC', sans-serif; }
+  font-family: "Alegreya Sans SC", sans-serif; }
 
 .overlay {
   width: 100vw;
