@@ -13,6 +13,7 @@
 	import HamburgerNav from './components/nav/HamburgerNav.svelte';
 	import ScrollTop from './components/home/ScrollTop.svelte';
 	import Success from './components/store/Success.svelte';
+	import Packages from './components/packages/Packages.svelte'
 	//import specific lifecycle methods
 	import { onMount } from 'svelte';
 	onMount(async () => {
@@ -43,6 +44,7 @@
 				<Route exact path="/store" component={Store}/>
 				<Route exact path="/instructions" component={Instructions}/>
 				<Route exact path="/contact" component={Contact}/>
+				<Route exact path="/pricing" component={Packages}/>
 				<Route exact path="/success" component={Success}/>
 				<Route fallback component={Home}/>
 			</Router> 
