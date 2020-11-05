@@ -1,5 +1,6 @@
 <script>
-let src = "images/Coffee.JPG"
+let src = "images/Coffee.JPG";
+let src2 = "images/flowers.jpeg";
 </script>
 
 <style type="text/scss">
@@ -85,8 +86,8 @@ let src = "images/Coffee.JPG"
     }
     &__image {
         width: 100%;
-        max-width: 700px;
-        max-height: 500px;
+        max-width: 630px;
+        // max-height: 500px;
         margin: 80px auto;
         margin-bottom: 0;
 
@@ -139,7 +140,8 @@ let src = "images/Coffee.JPG"
     </div>
 
     <div class="sg-form__image">
-    <img src={src}/>
+        <img src={src}/>
+        <img src={src2}/>
     </div>
 </div>
 

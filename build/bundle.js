@@ -13680,34 +13680,34 @@ var app = (function () {
     			img1 = element("img");
     			attr_dev(div0, "class", "about-nav svelte-7fs79o");
     			attr_dev(div0, "id", "about");
-    			add_location(div0, file$4, 83, 0, 2012);
+    			add_location(div0, file$4, 83, 0, 2017);
     			if (img0.src !== (img0_src_value = /*about*/ ctx[1])) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Savanna Grunzke photography");
     			attr_dev(img0, "class", "svelte-7fs79o");
-    			add_location(img0, file$4, 86, 8, 2120);
+    			add_location(img0, file$4, 86, 8, 2125);
     			attr_dev(div1, "class", "about__photo col svelte-7fs79o");
-    			add_location(div1, file$4, 85, 4, 2081);
+    			add_location(div1, file$4, 85, 4, 2086);
     			attr_dev(h2, "class", "svelte-7fs79o");
-    			add_location(h2, file$4, 90, 12, 2278);
+    			add_location(h2, file$4, 90, 12, 2283);
     			attr_dev(div2, "class", "about__bio__header vollkorn svelte-7fs79o");
-    			add_location(div2, file$4, 89, 8, 2224);
+    			add_location(div2, file$4, 89, 8, 2229);
     			attr_dev(p0, "class", "svelte-7fs79o");
-    			add_location(p0, file$4, 93, 12, 2381);
+    			add_location(p0, file$4, 93, 12, 2386);
     			attr_dev(p1, "class", "svelte-7fs79o");
-    			add_location(p1, file$4, 94, 12, 2717);
+    			add_location(p1, file$4, 94, 12, 2722);
     			attr_dev(p2, "class", "svelte-7fs79o");
-    			add_location(p2, file$4, 95, 12, 2917);
+    			add_location(p2, file$4, 95, 12, 2922);
     			if (img1.src !== (img1_src_value = /*src*/ ctx[0])) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Savanna Grunzke signature");
-    			add_location(img1, file$4, 96, 56, 2986);
+    			add_location(img1, file$4, 96, 56, 2991);
     			attr_dev(div3, "class", "about__bio__content__signature svelte-7fs79o");
-    			add_location(div3, file$4, 96, 12, 2942);
+    			add_location(div3, file$4, 96, 12, 2947);
     			attr_dev(div4, "class", "about__bio__content alegreya svelte-7fs79o");
-    			add_location(div4, file$4, 92, 8, 2326);
+    			add_location(div4, file$4, 92, 8, 2331);
     			attr_dev(div5, "class", "about__bio col svelte-7fs79o");
-    			add_location(div5, file$4, 88, 4, 2187);
+    			add_location(div5, file$4, 88, 4, 2192);
     			attr_dev(div6, "class", "about row svelte-7fs79o");
-    			add_location(div6, file$4, 84, 0, 2053);
+    			add_location(div6, file$4, 84, 0, 2058);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13756,7 +13756,7 @@ var app = (function () {
 
     function instance$4($$self, $$props, $$invalidate) {
     	let src = "images/SavSig.png";
-    	let about = "./images/About.jpg";
+    	let about = "./images/savabout2.jpeg";
 
     	onMount(async () => {
     		sal$1();
@@ -14515,6 +14515,7 @@ var app = (function () {
     const file$9 = "src/components/bio/BioAboutMe.svelte";
 
     function create_fragment$9(ctx) {
+    	let div4;
     	let div2;
     	let div0;
     	let h1;
@@ -14528,11 +14529,19 @@ var app = (function () {
     	let p3;
     	let t9;
     	let div1;
-    	let img;
-    	let img_src_value;
+    	let img0;
+    	let img0_src_value;
+    	let t10;
+    	let img1;
+    	let img1_src_value;
+    	let t11;
+    	let div3;
+    	let img2;
+    	let img2_src_value;
 
     	const block = {
     		c: function create() {
+    			div4 = element("div");
     			div2 = element("div");
     			div0 = element("div");
     			h1 = element("h1");
@@ -14551,33 +14560,51 @@ var app = (function () {
     			p3.textContent = "So that’s what I’m doing. Capturing and creating life’s most precious moments is what I beleive to be my current purpose. Allow me to accompany you in preserving these moments.";
     			t9 = space();
     			div1 = element("div");
-    			img = element("img");
-    			attr_dev(h1, "class", "vollkorn svelte-14tk2bm");
-    			add_location(h1, file$9, 39, 8, 879);
-    			attr_dev(p0, "class", "svelte-14tk2bm");
-    			add_location(p0, file$9, 40, 8, 922);
-    			attr_dev(p1, "class", "svelte-14tk2bm");
-    			add_location(p1, file$9, 41, 8, 1547);
-    			attr_dev(p2, "class", "svelte-14tk2bm");
-    			add_location(p2, file$9, 42, 8, 1877);
-    			attr_dev(p3, "class", "svelte-14tk2bm");
-    			add_location(p3, file$9, 43, 8, 1926);
-    			attr_dev(div0, "class", "bio-content__text sg-green alegreya svelte-14tk2bm");
-    			add_location(div0, file$9, 38, 4, 821);
-    			if (img.src !== (img_src_value = /*src*/ ctx[0])) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Savanna Grunzke");
-    			attr_dev(img, "class", "svelte-14tk2bm");
-    			add_location(img, file$9, 46, 8, 2164);
-    			attr_dev(div1, "class", "bio-content__img svelte-14tk2bm");
-    			add_location(div1, file$9, 45, 4, 2125);
-    			attr_dev(div2, "class", "bio-content");
-    			add_location(div2, file$9, 37, 0, 791);
+    			img0 = element("img");
+    			t10 = space();
+    			img1 = element("img");
+    			t11 = space();
+    			div3 = element("div");
+    			img2 = element("img");
+    			attr_dev(h1, "class", "vollkorn svelte-taidio");
+    			add_location(h1, file$9, 61, 12, 1520);
+    			attr_dev(p0, "class", "svelte-taidio");
+    			add_location(p0, file$9, 62, 12, 1567);
+    			attr_dev(p1, "class", "svelte-taidio");
+    			add_location(p1, file$9, 63, 12, 2196);
+    			attr_dev(p2, "class", "svelte-taidio");
+    			add_location(p2, file$9, 64, 12, 2530);
+    			attr_dev(p3, "class", "svelte-taidio");
+    			add_location(p3, file$9, 65, 12, 2583);
+    			attr_dev(div0, "class", "bio-content__text__description svelte-taidio");
+    			add_location(div0, file$9, 60, 8, 1463);
+    			if (img0.src !== (img0_src_value = /*srcHead*/ ctx[1])) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "Savanna Grunzke");
+    			attr_dev(img0, "class", "svelte-taidio");
+    			add_location(img0, file$9, 68, 12, 2839);
+    			if (img1.src !== (img1_src_value = /*srcMilitary*/ ctx[2])) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "Savanna Grunzke");
+    			attr_dev(img1, "class", "svelte-taidio");
+    			add_location(img1, file$9, 69, 12, 2893);
+    			attr_dev(div1, "class", "bio-content__text__img svelte-taidio");
+    			add_location(div1, file$9, 67, 8, 2790);
+    			attr_dev(div2, "class", "bio-content__text sg-green alegreya svelte-taidio");
+    			add_location(div2, file$9, 59, 4, 1405);
+    			if (img2.src !== (img2_src_value = /*src*/ ctx[0])) attr_dev(img2, "src", img2_src_value);
+    			attr_dev(img2, "alt", "Savanna Grunzke");
+    			attr_dev(img2, "class", "svelte-taidio");
+    			add_location(img2, file$9, 73, 8, 3008);
+    			attr_dev(div3, "class", "bio-content__img svelte-taidio");
+    			add_location(div3, file$9, 72, 4, 2969);
+    			attr_dev(div4, "class", "bio-content");
+    			add_location(div4, file$9, 58, 0, 1375);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div2, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div2);
     			append_dev(div2, div0);
     			append_dev(div0, h1);
     			append_dev(div0, t1);
@@ -14590,13 +14617,18 @@ var app = (function () {
     			append_dev(div0, p3);
     			append_dev(div2, t9);
     			append_dev(div2, div1);
-    			append_dev(div1, img);
+    			append_dev(div1, img0);
+    			append_dev(div1, t10);
+    			append_dev(div1, img1);
+    			append_dev(div4, t11);
+    			append_dev(div4, div3);
+    			append_dev(div3, img2);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div4);
     		}
     	};
 
@@ -14613,6 +14645,8 @@ var app = (function () {
 
     function instance$9($$self, $$props, $$invalidate) {
     	let src = "images/Bio-Sav.jpg";
+    	let srcHead = "images/savbio.jpeg";
+    	let srcMilitary = "images/sav-military.jpeg";
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -14621,17 +14655,19 @@ var app = (function () {
 
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("BioAboutMe", $$slots, []);
-    	$$self.$capture_state = () => ({ src });
+    	$$self.$capture_state = () => ({ src, srcHead, srcMilitary });
 
     	$$self.$inject_state = $$props => {
     		if ("src" in $$props) $$invalidate(0, src = $$props.src);
+    		if ("srcHead" in $$props) $$invalidate(1, srcHead = $$props.srcHead);
+    		if ("srcMilitary" in $$props) $$invalidate(2, srcMilitary = $$props.srcMilitary);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [src];
+    	return [src, srcHead, srcMilitary];
     }
 
     class BioAboutMe extends SvelteComponentDev {
@@ -22990,8 +23026,11 @@ var app = (function () {
     	let iframe_src_value;
     	let t1;
     	let div1;
-    	let img;
-    	let img_src_value;
+    	let img0;
+    	let img0_src_value;
+    	let t2;
+    	let img1;
+    	let img1_src_value;
 
     	const block = {
     		c: function create() {
@@ -23001,24 +23040,29 @@ var app = (function () {
     			iframe.textContent = "Loading…";
     			t1 = space();
     			div1 = element("div");
-    			img = element("img");
+    			img0 = element("img");
+    			t2 = space();
+    			img1 = element("img");
     			if (iframe.src !== (iframe_src_value = "https://docs.google.com/forms/d/e/1FAIpQLSeQX8JXZ9f3XSI2MOi0WfTjk1AFAhPb43fqPppn5ttdYZWd5Q/viewform?embedded=true")) attr_dev(iframe, "src", iframe_src_value);
     			attr_dev(iframe, "width", "640");
     			attr_dev(iframe, "height", "1543");
     			attr_dev(iframe, "frameborder", "0");
     			attr_dev(iframe, "marginheight", "0");
     			attr_dev(iframe, "marginwidth", "0");
-    			attr_dev(iframe, "class", "svelte-mu62i9");
-    			add_location(iframe, file$o, 55, 8, 2025);
-    			attr_dev(div0, "class", "sg-form__wrapper svelte-mu62i9");
-    			add_location(div0, file$o, 54, 4, 1986);
-    			if (img.src !== (img_src_value = /*src*/ ctx[0])) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "class", "svelte-mu62i9");
-    			add_location(img, file$o, 59, 4, 2299);
-    			attr_dev(div1, "class", "sg-form__image svelte-mu62i9");
-    			add_location(div1, file$o, 58, 4, 2266);
-    			attr_dev(div2, "class", "sg-form svelte-mu62i9");
-    			add_location(div2, file$o, 31, 0, 654);
+    			attr_dev(iframe, "class", "svelte-e3medf");
+    			add_location(iframe, file$o, 55, 8, 2037);
+    			attr_dev(div0, "class", "sg-form__wrapper svelte-e3medf");
+    			add_location(div0, file$o, 54, 4, 1998);
+    			if (img0.src !== (img0_src_value = /*src*/ ctx[0])) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "class", "svelte-e3medf");
+    			add_location(img0, file$o, 59, 8, 2315);
+    			if (img1.src !== (img1_src_value = /*src2*/ ctx[1])) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "class", "svelte-e3medf");
+    			add_location(img1, file$o, 60, 8, 2340);
+    			attr_dev(div1, "class", "sg-form__image svelte-e3medf");
+    			add_location(div1, file$o, 58, 4, 2278);
+    			attr_dev(div2, "class", "sg-form svelte-e3medf");
+    			add_location(div2, file$o, 31, 0, 666);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -23029,7 +23073,9 @@ var app = (function () {
     			append_dev(div0, iframe);
     			append_dev(div2, t1);
     			append_dev(div2, div1);
-    			append_dev(div1, img);
+    			append_dev(div1, img0);
+    			append_dev(div1, t2);
+    			append_dev(div1, img1);
     		},
     		p: noop,
     		i: noop,
@@ -23052,6 +23098,7 @@ var app = (function () {
 
     function instance$p($$self, $$props, $$invalidate) {
     	let src = "images/Coffee.JPG";
+    	let src2 = "images/flowers.jpeg";
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -23060,17 +23107,18 @@ var app = (function () {
 
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("ContactForm", $$slots, []);
-    	$$self.$capture_state = () => ({ src });
+    	$$self.$capture_state = () => ({ src, src2 });
 
     	$$self.$inject_state = $$props => {
     		if ("src" in $$props) $$invalidate(0, src = $$props.src);
+    		if ("src2" in $$props) $$invalidate(1, src2 = $$props.src2);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [src];
+    	return [src, src2];
     }
 
     class ContactForm extends SvelteComponentDev {

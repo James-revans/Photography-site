@@ -1,7 +1,7 @@
 <script>
 import sal from 'sal.js';
 let src = 'images/SavSig.png'
-let about = './images/About.jpg';
+let about = './images/savabout2.jpeg';
 import { onMount } from 'svelte';
 onMount(async () => {
     sal();
