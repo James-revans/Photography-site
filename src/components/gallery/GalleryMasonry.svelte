@@ -19,7 +19,7 @@ let grid;
 let gridItem;
 let selectedArray = photoArray;
 let imageCount = 0;
-let showImages = false;
+let showImages = true;
 
 function countImages() {
     imageCount += 1;
@@ -65,9 +65,6 @@ onMount(async () => {
     top: 0;
     left: 0;
 }
-
-
-
  
 .grid-item-preload {
     width: 44%;
