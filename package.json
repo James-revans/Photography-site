@@ -29,7 +29,7 @@
         "rollup-plugin-svelte": "^5.2.1",
         "rucksack-css": "^1.0.2",
         "sirv-cli": "^0.4.5",
-        "svelte": "^3.22.2",
+        "svelte": "^3.49.0",
         "svelte-preprocess": "^3.7.4",
         "svelte-preprocess-sass": "^0.2.0"
     },
