@@ -47,7 +47,7 @@
         "parallax-js": "^3.1.0",
         "sal.js": "^0.6.6",
         "stripe": "^8.50.0",
-        "svelte-event-router": "^1.0.2",
+        "svelte-event-router": "^1.0.12",
         "swiper": "^4.5.1",
         "xstate": "^4.9.1",
         "yrv": "0.0.30"
