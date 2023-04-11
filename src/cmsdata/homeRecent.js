@@ -4,7 +4,7 @@ const API_GET_RECENT = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
-        axios.get(`https://photo-cms.herokuapp.com/api/imageurl/recent/james@email.com`)
+        axios.get(`https://photo-cms-api.onrender.com/api/imageurl/recent/james@email.com`)
             .then((response) => {
                 resolve(response.data);
             })

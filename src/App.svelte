@@ -46,7 +46,6 @@
 				<Route exact path="/contact" component={Contact}/>
 				<Route exact path="/pricing" component={Packages}/>
 				<Route exact path="/success" component={Success}/>
-				<Route fallback component={Home}/>
-			</Router> 
+			</Router>
 		</div>		
 	</div>

@@ -19,7 +19,7 @@ const API_GET_FAMILY = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
-        axios.get(`https://photo-cms.herokuapp.com/api/imageurl/family/james@email.com`)
+        axios.get(`https://photo-cms-api.onrender.com/api/imageurl/family/james@email.com`)
             .then((response) => {
                 resolve(response.data);
             })

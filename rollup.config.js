@@ -31,7 +31,7 @@ export default {
             dev: !production,
 
             css: (css) => {
-                css.write(`${OUTPUT_DIR}/bundle.js.css`);
+                css.write(`bundle.js.css`);
             },
         }),
         scss({}),

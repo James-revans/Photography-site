@@ -36,7 +36,7 @@ const API_GET_BANNERS = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
-        axios.get(`https://photo-cms.herokuapp.com/api/imageurl/banners/james@email.com`)
+        axios.get(`https://photo-cms-api.onrender.com/api/imageurl/banners/james@email.com`)
             .then((response) => {
                 resolve(response.data);
             })

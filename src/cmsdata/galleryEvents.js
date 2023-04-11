@@ -55,7 +55,7 @@ const API_GET_EVENTS = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
-        axios.get(`https://photo-cms.herokuapp.com/api/imageurl/events/james@email.com`)
+        axios.get(`https://photo-cms-api.onrender.com/api/imageurl/events/james@email.com`)
             .then((response) => {
                 resolve(response.data);
             })

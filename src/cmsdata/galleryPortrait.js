@@ -49,7 +49,7 @@ const API_GET_PORTRAITS = () => {
     return new Promise((resolve, reject) => {
             
         //Make the call 
-        axios.get(`https://photo-cms.herokuapp.com/api/imageurl/portrait/james@email.com`)
+        axios.get(`https://photo-cms-api.onrender.com/api/imageurl/portrait/james@email.com`)
             .then((response) => {
                 resolve(response.data);
             })
